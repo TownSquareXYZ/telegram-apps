@@ -1,7 +1,31 @@
 import { defineConfig } from 'vitepress';
 
-import { packagesNavItem, packagesSidebar } from './packages';
-import { platformNavItem, platformSidebar } from './platform';
+import { linkGenerator } from "./utils";
+
+import packagesSidebarJson from "./packagesSidebar.json";
+import platformSidebarJson from "./platformSidebar.json";
+
+import { zh } from "./zh";
+
+const { prefixNavItem: packagesNavItem, prefixSideBar: packagesSidebar } =
+  linkGenerator(
+    "/packages",
+    {
+      text: "Packages",
+      link: `/telegram-apps-sdk`,
+    },
+    packagesSidebarJson as any
+  );
+
+const { prefixNavItem: platformNavItem, prefixSideBar: platformSidebar } =
+  linkGenerator(
+    "/platform",
+    {
+      text: "Platform",
+      link: `/about`,
+    },
+    platformSidebarJson
+  );
 
 function withSlashes(value: string | undefined): string {
   if (!value) {
@@ -31,6 +55,10 @@ export default defineConfig({
     root: {
       label: 'English',
       lang: 'en',
+    },
+    zh: {
+      label: "中文",
+      ...zh,
     },
   },
 
