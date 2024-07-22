@@ -75,7 +75,7 @@ This method returns a promise with the execution status.
 List of events, which could be [tracked](../components#events):
 
 | Event                    | Listener                        | Triggered when                     |
-|--------------------------|---------------------------------|------------------------------------|
+| ------------------------ | ------------------------------- | ---------------------------------- |
 | `change:accessGranted`   | `(value: boolean) => void`      | `accessGranted` property changed   |
 | `change:accessRequested` | `(value: boolean) => void`      | `accessRequested` property changed |
 | `change:available`       | `(value: boolean) => void`      | `available` property changed       |
