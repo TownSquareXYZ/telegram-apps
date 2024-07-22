@@ -1,5 +1,7 @@
 ---
-outline: [ 2, 4 ]
+outline:
+  - 2
+  - 4
 ---
 
 # Getting App Link
@@ -119,9 +121,9 @@ in your browser, Telegram for macOS, Telegram Desktop, or Telegram Web A/K will 
 message related to an untrusted certificate.
 
 <img
-   src="/untrusted-cert-warning.png"
-   class="guides-image"
-   style="border: 1px solid #ebebeb"
+src="/untrusted-cert-warning.png"
+class="guides-image"
+style="border: 1px solid #ebebeb"
 />
 
 Just make an exception for this and proceed to the application.
@@ -136,7 +138,7 @@ the [installation guide](https://github.com/FiloSottile/mkcert?tab=readme-ov-fil
 Let's say you would like to create a custom domain, known only to your device, which will be used
 only for development purposes. Let it be something like `tma.internal`. To let your current device
 know which IP is associated with this domain, we should modify
-the [hosts](https://en.wikipedia.org/wiki/Hosts_(file)) file and map `tma.internal` to `127.0.0.1`.
+the [hosts](https://en.wikipedia.org/wiki/Hosts_\(file\)) file and map `tma.internal` to `127.0.0.1`.
 
 Then, you should run the mkcert tool specifying this domain and receive two files: an SSL
 certificate and a private key. Both of these files should be specified in the Vite config.
