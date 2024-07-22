@@ -60,6 +60,10 @@ export default defineConfig({
       label: "中文",
       ...zh,
     },
+    translate:{
+      label:"Help Us Translate",
+      link:"https://ton-docs-git-mandarinlocalization-townsquarexyz.vercel.app/contribute/localization-program/overview"
+    }
   },
 
   // Show when each page content was last updated.
