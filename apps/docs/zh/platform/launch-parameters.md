@@ -6,13 +6,13 @@ the current device, get basic information about the user and much more.
 
 ## Transmission Method
 
-In a web environment, one of the simplest and fastest ways to transfer data between locally running 
-applications is by specifying it in the address bar. A server can include data in the URL's hash, 
-making it accessible to the client application. Similarly, Telegram Mini Apps use this approach, with 
-the Telegram client environment sending data to the Mini App through the URL's hash. This enables 
+In a web environment, one of the simplest and fastest ways to transfer data between locally running
+applications is by specifying it in the address bar. A server can include data in the URL's hash,
+making it accessible to the client application. Similarly, Telegram Mini Apps use this approach, with
+the Telegram client environment sending data to the Mini App through the URL's hash. This enables
 the Mini App to access essential information upon launch.
 
-The native Telegram application transmits a list of these parameters in the dynamic part of the URL 
+The native Telegram application transmits a list of these parameters in the dynamic part of the URL
 (in the hash #). To access these parameters, you need to use the window.location.hash property in your JavaScript code.
 
 ## Extraction
