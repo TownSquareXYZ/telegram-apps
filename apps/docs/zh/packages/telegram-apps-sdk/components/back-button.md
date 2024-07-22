@@ -23,14 +23,14 @@ console.log(backButton.isVisible); // true
 
 backButton.hide();
 console.log(backButton.isVisible); // false  
-```  
+```
 
 ## Events
 
 List of events, which could be [tracked](../components#events):
 
 | Event              | Listener                   | Triggered when                 |
-|--------------------|----------------------------|--------------------------------|
+| ------------------ | -------------------------- | ------------------------------ |
 | `click`            | `() => void`               | Back Button was clicked        |
 | `change`           | `() => void`               | Something in component changed |
 | `change:isVisible` | `(value: boolean) => void` | `isVisible` property changed   |
