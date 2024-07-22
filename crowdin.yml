@@ -6,7 +6,7 @@ files:
     translation: /apps/docs/%two_letters_code%/**/%original_file_name%
     ignore:
       - /apps/docs/public
-      - /apps/docs/.vitepress
+      - /apps/docs/.vitepress/
       - /apps/docs/package.json
       - /apps/docs/vercel.json
-      - /apps/docs/%two_letters_code%/**
+      - /apps/docs/%two_letters_code%/
