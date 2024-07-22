@@ -1,26 +1,26 @@
 ---
 layout: home
 title: Home
-description: Documentation home page.
+description: 文档主页。
 hero:
-  name: Telegram Mini Apps
-  text: Full fledged web applications inside Telegram
-  tagline: Simple, flexible, native-like web applications to enhance user experience
+  name: Telegram 迷你应用程序
+  text: Telegram 内成熟的网络应用程序
+  tagline: 简单、灵活、类似本机的网络应用程序，提升用户体验
   actions:
     - theme: brand
-      text: Platform
-      link: /platform/about
+      text: 平台
+      link: /zh/platform/about
     - theme: alt
-      text: Packages
-      link: /packages/telegram-apps-sdk
+      text: 包
+      link: /zh/packages/telegram-apps-sdk
 features:
   - icon: 💻
-    title: Multiplatform
-    details: Works in all Telegram official applications, including Web and desktop versions
+    title: 多平台
+    details: 适用于所有 Telegram 官方应用程序，包括网络版和桌面版
   - icon: 🌐
-    title: Web based
-    details: Platform requires knowledge of only web-based technologies
+    title: 基于网络
+    details: 平台仅要求了解基于网络的技术
   - icon: 🧑
-    title: Better user experience
-    details: Simplifies user communication with a project connected with Telegram
+    title: 更好的用户体验
+    details: 简化用户与 Telegram 项目的沟通
 ---
