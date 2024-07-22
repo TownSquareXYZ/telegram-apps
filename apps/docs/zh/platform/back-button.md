@@ -14,4 +14,3 @@ To show the Back Button, it is required to
 call [web_app_setup_back_button](methods.md#web-app-setup-back-button)
 method. When user clicks this component, Telegram application
 emits [back_button_pressed](events.md#back-button-pressed) event.
-
