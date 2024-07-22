@@ -22,9 +22,9 @@ of the interface. At the same time, opening an application using a direct link w
 user not seeing any additional elements in the interface.
 
 <img
-  src="/components/viewport/views.png"
-  srcset="/components/viewport/views.png, /components/viewport/views@2x.png 2x"
-  class="guides-image"
+src="/components/viewport/views.png"
+srcset="/components/viewport/views.png, /components/viewport/views@2x.png 2x"
+class="guides-image"
 />
 
 ## Expanding
@@ -39,9 +39,9 @@ application via code, developer should
 call [web_app_expand](methods.md#web-app-expand) method.
 
 <img
-  src="/components/viewport/expansion.png"
-  srcset="/components/viewport/expansion.png, /components/viewport/expansion@2x.png 2x"
-  class="guides-image"
+src="/components/viewport/expansion.png"
+srcset="/components/viewport/expansion.png, /components/viewport/expansion@2x.png 2x"
+class="guides-image"
 />
 
 During the process of dragging, viewport is considered not stable. For developer, it means, that he
