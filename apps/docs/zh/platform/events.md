@@ -1,5 +1,7 @@
 ---
-outline: [2, 3]
+outline:
+  - 2
+  - 3
 ---
 
 # Events
@@ -119,9 +121,9 @@ Biometry authentication request completed. This event usually occurs in a respon
 
 If authentication was successful, the event contains a token from the local secure storage.
 
-| Field  | Type                         | Description                                                                                                |
-|--------|------------------------------|------------------------------------------------------------------------------------------------------------|
-| status | `'failed'` or `'authorized'` | Authentication status.                                                                                     |
+| Field  | Type                         | Description                                                                                                                                                |
+| ------ | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| status | `'failed'` or `'authorized'` | Authentication status.                                                                                                                     |
 | token  | `string`                     | _Optional_. Token from the local secure storage saved previously. Passed only if `status` is `authorized`. |
 
 ### `biometry_info_received`
@@ -130,14 +132,14 @@ Available since: **v7.2**
 
 Biometry settings were received.
 
-| Field            | Type                   | Description                                                                   |
-|------------------|------------------------|-------------------------------------------------------------------------------|
-| available        | `boolean`              | Shows whether biometry is available.                                          |
+| Field                                 | Type                   | Description                                                                                   |
+| ------------------------------------- | ---------------------- | --------------------------------------------------------------------------------------------- |
+| available                             | `boolean`              | Shows whether biometry is available.                                          |
 | access_requested | `boolean`              | Shows whether permission to use biometrics has been requested.                |
 | access_granted   | `boolean`              | Shows whether permission to use biometrics has been granted.                  |
 | device_id        | `string`               | A unique device identifier that can be used to match the token to the device. |
 | token_saved      | `boolean`              | Show whether local secure storage contains previously saved token.            |
-| type             | `'face'` or `'finger'` | The type of biometrics currently available on the device.                     |
+| type                                  | `'face'` or `'finger'` | The type of biometrics currently available on the device.                     |
 
 ### `biometry_token_updated`
 
@@ -145,8 +147,8 @@ Available since: **v7.2**
 
 Biometry token was updated.
 
-| Field  | Type                   | Description    |
-|--------|------------------------|----------------|
+| Field  | Type                   | Description                    |
+| ------ | ---------------------- | ------------------------------ |
 | status | `updated` or `removed` | Update status. |
 
 ### `clipboard_text_received`
@@ -155,10 +157,10 @@ Available since: **v6.4**
 
 Telegram application attempted to extract text from clipboard.
 
-| Field  | Type               | Description                                                                                                                                              |
-|--------|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| req_id | `string`           | Passed during the [web_app_read_text_from_clipboard](methods.md#web-app-read-text-from-clipboard) method invocation `req_id` value.                      |
-| data   | `string` or `null` | _Optional_. Data extracted from the clipboard. The returned value will have the type `string` only in the case, application has access to the clipboard. |
+| Field                       | Type               | Description                                                                                                                                                                                                                                                  |
+| --------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| req_id | `string`           | Passed during the [web_app_read_text_from_clipboard](methods.md#web-app-read-text-from-clipboard) method invocation `req_id` value. |
+| data                        | `string` or `null` | _Optional_. Data extracted from the clipboard. The returned value will have the type `string` only in the case, application has access to the clipboard.                                                     |
 
 ### `custom_method_invoked`
 
@@ -166,11 +168,11 @@ Available since: **v6.9**
 
 Custom method invocation completed.
 
-| Field  | Type      | Description                                      |
-|--------|-----------|--------------------------------------------------|
-| req_id | `string`  | Unique identifier of this invocation.            |
-| result | `unknown` | _Optional_. Method invocation successful result. |
-| error  | `string`  | _Optional_. Method invocation error code.        |
+| Field                       | Type      | Description                                                                      |
+| --------------------------- | --------- | -------------------------------------------------------------------------------- |
+| req_id | `string`  | Unique identifier of this invocation.                            |
+| result                      | `unknown` | _Optional_. Method invocation successful result. |
+| error                       | `string`  | _Optional_. Method invocation error code.        |
 
 ### `invoice_closed`
 
@@ -208,8 +210,8 @@ An invoice was closed.
       <code>string</code>
     </td>
     <td>
-      Invoice status. Values:
-      <ul>
+      Invoice status. Values:      
+<ul>
         <li>
           <code>paid</code>, invoice was paid
         </li>
@@ -239,16 +241,16 @@ Available since: **v6.9**
 
 Application received phone access request status.
 
-| Field  | Type     | Description                         |
-|--------|----------|-------------------------------------|
+| Field  | Type     | Description                                                         |
+| ------ | -------- | ------------------------------------------------------------------- |
 | status | `string` | Request status. Can only be `sent`. |
 
 ### `popup_closed`
 
 [Popup](popup.md) was closed.
 
-| Field     | Type     | Description                                                                                                                             |
-|-----------|----------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| Field                          | Type     | Description                                                                                                                                                                             |
+| ------------------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | button_id | `string` | _Optional_. Identifier of the clicked button. In case, the popup was closed without clicking any button, this property will be omitted. |
 
 ### `reload_iframe`
@@ -261,8 +263,8 @@ Available since: **v6.4**
 
 The QR scanner scanned some QR and extracted its content.
 
-| Field | Type     | Description                             |
-|-------|----------|-----------------------------------------|
+| Field | Type     | Description                                                             |
+| ----- | -------- | ----------------------------------------------------------------------- |
 | data  | `string` | _Optional_. Data extracted from the QR. |
 
 ### `scan_qr_popup_closed`
@@ -288,8 +290,8 @@ Occurs when the [Settings Button](settings-button.md) was pressed.
 Occurs whenever [the theme](theming.md) was changed in the user's Telegram app (
 including switching to night mode).
 
-| Field        | Type                     | Description                                                                                            |
-|--------------|--------------------------|--------------------------------------------------------------------------------------------------------|
+| Field                             | Type                     | Description                                                                                                            |
+| --------------------------------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
 | theme_params | `Record<string, string>` | Map where the key is a theme stylesheet key and value is  the corresponding color in `#RRGGBB` format. |
 
 ### `viewport_changed`
@@ -297,14 +299,14 @@ including switching to night mode).
 Occurs whenever the [viewport](viewport.md) has been changed. For example, when the
 user started dragging the application or called the expansion method.
 
-| Field           | Type      | Description                                                                      |
-|-----------------|-----------|----------------------------------------------------------------------------------|
-| height          | `number`  | The viewport height.                                                             |
-| width           | `number`  | _Optional_. The viewport width.                                                  |
-| is_expanded     | `boolean` | Is the viewport currently expanded.                                              |
+| Field                                                     | Type      | Description                                                                                      |
+| --------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------------ |
+| height                                                    | `number`  | The viewport height.                                                             |
+| width                                                     | `number`  | _Optional_. The viewport width.                                  |
+| is_expanded                          | `boolean` | Is the viewport currently expanded.                                              |
 | is_state_stable | `boolean` | Is the viewport current state stable and not going to change in the next moment. |
 
-::: tip
+:::tip
 Pay attention to the fact, that send rate of this method is not enough to smoothly resize the
 application window. You should probably use a stable height instead of the current one, or handle
 this problem in another way.
@@ -316,6 +318,6 @@ Available since: **v6.9**
 
 Application received write access request status.
 
-| Field  | Type     | Description                            |
-|--------|----------|----------------------------------------|
+| Field  | Type     | Description                                                            |
+| ------ | -------- | ---------------------------------------------------------------------- |
 | status | `string` | Request status. Can only be `allowed`. |
