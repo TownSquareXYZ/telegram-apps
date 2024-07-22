@@ -1,11 +1,13 @@
 ---
-outline: [2, 3]
+outline:
+  - 2
+  - 3
 ---
 
 # `InitData`
 
 The component which is responsible for implementing the Telegram Mini
-Apps [init data](../../../platform/init-data.md). 
+Apps [init data](../../../platform/init-data.md).
 
 ## Initialization
 
