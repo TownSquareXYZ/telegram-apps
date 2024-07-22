@@ -1,6 +1,6 @@
 ---
 layout: home
-title: home
+title: Home
 description: 文档主页。
 hero:
   name: Telegram 迷你应用程序
