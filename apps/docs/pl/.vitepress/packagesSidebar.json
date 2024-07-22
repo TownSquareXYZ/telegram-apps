@@ -1,0 +1,65 @@
+{
+  "CLI": {
+    "@telegram-apps/create-mini-app": ""
+  },
+  "TypeScript": {
+    "@telegram-apps/sdk": [
+      "",
+      {
+        "Components": [
+          "",
+          {
+            "BackButton": "",
+            "BiometryManager": "",
+            "ClosingBehavior": "",
+            "CloudStorage": "",
+            "HapticFeedback": "",
+            "InitData": "",
+            "Invoice": "",
+            "MainButton": "",
+            "MiniApp": "",
+            "Popup": "",
+            "QRScanner": "",
+            "SettingsButton": "",
+            "SwipeBehavior": "",
+            "ThemeParams": "",
+            "Utils": "",
+            "Viewport": ""
+          },
+          ""
+        ],
+        "Environment": "",
+        "Methods and Events": "",
+        "Launch Parameters": "",
+        "Theme Parameters": "",
+        "Init Data": [
+          "",
+          {
+            "InitData": "",
+            "Chat": "",
+            "User": ""
+          },
+          ""
+        ],
+        "Navigation": [
+          "",
+          {
+            "BrowserNavigator": ""
+          },
+          ""
+        ],
+        "CSS Variables": ""
+      }
+    ],
+    "@telegram-apps/sdk-react": "",
+    "@telegram-apps/sdk-solid": "",
+    "@telegram-apps/solid-router-integration": "",
+    "@telegram-apps/react-router-integration": ""
+  },
+  "Node": {
+    "@telegram-apps/init-data-node": ""
+  },
+  "GoLang": {
+    "init-data-golang": ""
+  }
+}
