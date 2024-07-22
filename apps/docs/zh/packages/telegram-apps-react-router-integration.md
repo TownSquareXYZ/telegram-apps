@@ -77,4 +77,3 @@ function App() {
 
 You can learn more about how to use it real world applications using
 our [React template](https://github.com/Telegram-Mini-Apps/reactjs-template).
-
