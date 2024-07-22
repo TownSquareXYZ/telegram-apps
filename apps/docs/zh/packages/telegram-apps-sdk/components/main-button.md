@@ -102,7 +102,7 @@ mainButton.setParams({
 List of events, which could be [tracked](../components#events):
 
 | Event                    | Listener                   | Triggered when                     |
-|--------------------------|----------------------------|------------------------------------|
+| ------------------------ | -------------------------- | ---------------------------------- |
 | `click`                  | `() => void`               | Main Button was clicked            |
 | `change`                 | `() => void`               | Something in component changed     |
 | `change:backgroundColor` | `(value: RGB) => void`     | `backgroundColor` property changed |
