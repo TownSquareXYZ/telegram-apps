@@ -1,6 +1,6 @@
 # About the Platform
 
-Telegram Mini Apps is a technology created by the developers of the famous messenger Telegram. Its main 
+Telegram Mini Apps is a technology created by the developers of the famous messenger Telegram. Its main
 purpose is to provide developers with a more flexible communication channel with Telegram users.
 
 It may seem unclear, but Mini Apps are not self-served services. The first thing to note is,
@@ -28,9 +28,9 @@ is enough to learn standard front-end development technologies, such as:
 Really simple, isn't it? But to make much more serious and bigger applications, we recommend using
 more solid technologies, such as `TypeScript`, `React`, `SCSS`, etc.
 
-So, if we want to create a Mini App, we should create a standard web application with any technology 
-stack. The only thing Telegram needs from the developer is the application URL. This URL will be used as 
-a source for the WebView component of the Telegram client, which will load and display the application 
+So, if we want to create a Mini App, we should create a standard web application with any technology
+stack. The only thing Telegram needs from the developer is the application URL. This URL will be used as
+a source for the WebView component of the Telegram client, which will load and display the application
 within Telegram.
 
 ## Usage
