@@ -56,7 +56,7 @@ console.log(scanner.isOpened); // false
 List of events, which could be [tracked](../components#events):
 
 | Event             | Listener                   | Triggered when                 |
-|-------------------|----------------------------|--------------------------------|
+| ----------------- | -------------------------- | ------------------------------ |
 | `change`          | `() => void`               | Something in component changed |
 | `change:isOpened` | `(value: boolean) => void` | `isOpened` property changed    |
 
