@@ -41,18 +41,21 @@ iOS webview debugging requires Safari desktop browser and therefore macOS.
 To access iOS debugging features without macOS, refer to the [Eruda](#eruda) section.
 
 On iOS device:
+
 - Go to `Settings`.
 - Find Safari icon and press on it.
 - Scroll down and press `Advanced`.
 - Enable `Web Inspector` option.
 
 On macOS:
+
 - Open Safari browser.
 - Open `Settings` (`⌘ + ,`).
 - Select `Advanced` tab.
 - Check `Show features for web developers` option at the bottom.
 
 Next steps:
+
 - Connect iOS device to Mac via cable.
 - Open Mini App inside iOS Telegram client.
 - Open `Develop` tab in the menu bar in Safari on macOS.
