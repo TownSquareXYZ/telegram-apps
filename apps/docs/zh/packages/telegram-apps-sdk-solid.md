@@ -1,5 +1,7 @@
 ---
-outline: [2, 3]
+outline:
+  - 2
+  - 3
 ---
 
 # @telegram-apps/sdk-solid
@@ -144,7 +146,7 @@ hook result. Note that the received value will be a signal, not the value behind
 ## Hooks and HOCs List
 
 | Hook                 | HOC                   | Signal value                                                                       |
-|----------------------|-----------------------|------------------------------------------------------------------------------------|
+| -------------------- | --------------------- | ---------------------------------------------------------------------------------- |
 | `useBackButton`      | `withBackButton`      | [BackButton](telegram-apps-sdk/components/back-button.md)                          |
 | `useBiometryManager` | `withBiometryManager` | [BiometryManager](telegram-apps-sdk/components/biometry-manager.md) or `undefined` |
 | `useClosingBehavior` | `withClosingBehavior` | [ClosingBehavior](telegram-apps-sdk/components/closing-behavior.md)                |
