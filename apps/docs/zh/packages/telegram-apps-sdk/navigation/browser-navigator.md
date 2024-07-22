@@ -16,7 +16,7 @@ new BrowserNavigator(['/index'], 0);
 new BrowserNavigator([{ pathname: '/a' }, { pathname: '/b' }], 1);
 ```
 
-::: warning
+:::warning
 If an empty history items list or a cursor pointing to a non-existent item is passed, the
 constructor will throw an appropriate error.
 :::
@@ -86,7 +86,7 @@ The `initNavigator` function is responsible for creating a `BrowserNavigator` in
 using previously saved navigator state. It also automatically saves it in the session storage
 for future state restoration.
 
-This function accepts session storage key name, which will contain navigator's state and an 
+This function accepts session storage key name, which will contain navigator's state and an
 optional object, representing navigator constructor options.
 
 ```ts
@@ -239,7 +239,7 @@ navigator.push({ search: '?id=1' });
 // Navigator will add a new entry, and the current one becomes /home/blog?id=1
 ```
 
-::: info
+:::info
 Pushing a new pathname with different or missing query parameters will result in the loss of current
 query parameters. To prevent this, the developer should pass them again.
 :::
