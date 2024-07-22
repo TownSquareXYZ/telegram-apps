@@ -1,5 +1,7 @@
 ---
-outline: [2, 3]
+outline:
+  - 2
+  - 3
 ---
 
 # Methods
@@ -107,8 +109,8 @@ Notifies parent iframe about the current frame is ready. This method is only use
 of Telegram. As a result, Mini App will receive [set_custom_style](events.md#set-custom-style)
 event.
 
-| Field            | Type      | Description                                                      |
-|------------------|-----------|------------------------------------------------------------------|
+| Field                                 | Type      | Description                                                                                      |
+| ------------------------------------- | --------- | ------------------------------------------------------------------------------------------------ |
 | reload_supported | `boolean` | _Optional_. True, if current Mini App supports native reloading. |
 
 ### `iframe_will_reload`
@@ -141,8 +143,8 @@ Available since: **v7.2**
 
 Requests permission to use biometrics.
 
-| Field  | Type     | Description                                                                                                                      |
-|--------|----------|----------------------------------------------------------------------------------------------------------------------------------|
+| Field  | Type     | Description                                                                                                                                                      |
+| ------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | reason | `string` | _Optional_. The text to be displayed to a user in the popup describing why the bot needs access to biometrics, 0-128 characters. |
 
 ### `web_app_biometry_request_auth`
@@ -151,8 +153,8 @@ Available since: **v7.2**
 
 Authenticates the user using biometrics.
 
-| Field  | Type     | Description                                                                                                                                                                                       |
-|--------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Field  | Type     | Description                                                                                                                                                                                                                       |
+| ------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | reason | `string` | _Optional_. The text to be displayed to a user in the popup describing why you are asking them to authenticate and what action you will be taking based on that authentication, 0-128 characters. |
 
 ### `web_app_biometry_update_token`
@@ -162,8 +164,8 @@ Available since: **v7.2**
 Updates the biometric token in secure storage on the device. To remove the token, pass an empty
 string.
 
-| Field | Type     | Description                                     |
-|-------|----------|-------------------------------------------------|
+| Field | Type     | Description                                                                     |
+| ----- | -------- | ------------------------------------------------------------------------------- |
 | token | `string` | Token to store. Has max length of 1024 symbols. |
 
 ### `web_app_close`
@@ -185,8 +187,8 @@ the data of the length up to 4096 bytes. Then, Mini App will be closed.
 To get more information, take a look at `web_app_data` field in the
 class [Message](https://core.telegram.org/bots/api#message).
 
-| Field | Type     | Description                                                          |
-|-------|----------|----------------------------------------------------------------------|
+| Field | Type     | Description                                                                                          |
+| ----- | -------- | ---------------------------------------------------------------------------------------------------- |
 | data  | `string` | Data to send to a bot. Should not have size of more than 4096 bytes. |
 
 ### `web_app_expand`
@@ -197,11 +199,11 @@ class [Message](https://core.telegram.org/bots/api#message).
 
 Available since: **v6.9**
 
-| Field  | Type      | Description                           |
-|--------|-----------|---------------------------------------|
+| Field                       | Type      | Description                                           |
+| --------------------------- | --------- | ----------------------------------------------------- |
 | req_id | `string`  | Current invocation unique identifier. |
-| method | `string`  | Method name.                          |
-| params | `unknown` | Parameters according to `method`.     |
+| method                      | `string`  | Method name.                          |
+| params                      | `unknown` | Parameters according to `method`.     |
 
 ### `web_app_open_invoice`
 
@@ -210,17 +212,17 @@ Available since: **v6.1**
 Opens an invoice by its specified slug. More information about invoices in
 this [documentation](https://core.telegram.org/bots/payments).
 
-| Field | Type     | Description                |
-|-------|----------|----------------------------|
+| Field | Type     | Description                                |
+| ----- | -------- | ------------------------------------------ |
 | slug  | `string` | Invoice unique identifier. |
 
 ### `web_app_open_link`
 
 Opens link in the default browser. Mini App will not be closed.
 
-| Field            | Type      | Description                                                                                            | Available since |
-|------------------|-----------|--------------------------------------------------------------------------------------------------------|-----------------|
-| url              | `string`  | URL to be opened by Telegram application. Should be a full path with `https` protocol.                 |                 |
+| Field                                                      | Type      | Description                                                                                                                            | Available since |
+| ---------------------------------------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| url                                                        | `string`  | URL to be opened by Telegram application. Should be a full path with `https` protocol.                 |                 |
 | try_instant_view | `boolean` | _Optional_. Link will be opened in [Instant View](https://instantview.telegram.org/) mode if possible. | `v6.4`          |
 
 ### `web_app_open_popup`
@@ -301,8 +303,8 @@ the [popup_closed](events.md#popup-closed) event.
       <code>string</code>
     </td>
     <td>
-      Type of the button. Values:
-      <ul>
+      Type of the button. Values:      
+<ul>
         <li>
           <code>default</code>, a button with the default style
         </li>
@@ -345,8 +347,8 @@ Opens a QR scanner. When the scanner was closed, the Telegram application create
 the [scan_qr_popup_closed](events.md#scan-qr-popup-closed) event. When the scanner reads QR,
 Telegram creates the [qr_text_received](events.md#qr-text-received) event.
 
-| Field | Type     | Description                                         |
-|-------|----------|-----------------------------------------------------|
+| Field | Type     | Description                                                                         |
+| ----- | -------- | ----------------------------------------------------------------------------------- |
 | text  | `string` | _Optional_. Text to be displayed in the QR scanner. |
 
 ### `web_app_open_tg_link`
@@ -356,8 +358,8 @@ Available since: **v6.1**
 Opens the Telegram link by its pathname and query parameters. The link will be opened in the
 Telegram app, Mini App will be closed.
 
-| Field     | Type     | Description                                                                                                                  |
-|-----------|----------|------------------------------------------------------------------------------------------------------------------------------|
+| Field                          | Type     | Description                                                                                                                                                                  |
+| ------------------------------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | path_full | `string` | Should be a value taken from the link of this format: `https://t.me/{path_full}`. Can additionally contain query parameters. |
 
 ### `web_app_read_text_from_clipboard`
@@ -368,8 +370,8 @@ Reads text from the clipboard. The method accepts a request identifier which is 
 appropriately retrieve the method execution result from
 the [clipboard_text_received](events.md#clipboard-text-received) event.
 
-| Field  | Type     | Description                                                                                         |
-|--------|----------|-----------------------------------------------------------------------------------------------------|
+| Field                       | Type     | Description                                                                                                                         |
+| --------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | req_id | `string` | Unique request identifier. Should be any unique string to handle the generated event appropriately. |
 
 ### `web_app_ready`
@@ -381,7 +383,7 @@ remove application loader and display Mini App.
 
 Available since: **v6.9**
 
-[//]: # (TODO: Check if it is right. It probably requests other user phone.)
+[//]: # "TODO: Check if it is right. It probably requests other user phone."
 
 Requests access to current user's phone.
 
@@ -407,8 +409,8 @@ Available since: **v6.1**
 
 Updates the Mini App [background color](theming.md#background-and-header-colors).
 
-| Field | Type     | Description                                        |
-|-------|----------|----------------------------------------------------|
+| Field | Type     | Description                                                        |
+| ----- | -------- | ------------------------------------------------------------------ |
 | color | `string` | The Mini App background color in `#RRGGBB` format. |
 
 ### `web_app_set_header_color`
@@ -418,10 +420,10 @@ Available since: **v6.1**
 Updates the Mini App [header color](theming.md#background-and-header-colors). This
 method should accept `color_key` or `color` property.
 
-| Field     | Type     | Description                                                                        | Available since |
-|-----------|----------|------------------------------------------------------------------------------------|-----------------|
+| Field                          | Type     | Description                                                                                                        | Available since |
+| ------------------------------ | -------- | ------------------------------------------------------------------------------------------------------------------ | --------------- |
 | color_key | `string` | The Mini App header color key. Could be either `bg_color` or `secondary_bg_color`. |                 |
-| color     | `string` | Color in RGB format.                                                               | `v6.9`          |
+| color                          | `string` | Color in RGB format.                                                                               | `v6.9`          |
 
 ### `web_app_setup_back_button`
 
@@ -429,30 +431,30 @@ Available since: **v6.1**
 
 Updates the [Back Button](back-button.md) settings.
 
-| Field      | Type      | Description                        |
-|------------|-----------|------------------------------------|
+| Field                           | Type      | Description                                        |
+| ------------------------------- | --------- | -------------------------------------------------- |
 | is_visible | `boolean` | Should the Back Button be visible. |
 
 ### `web_app_setup_closing_behavior`
 
 Updates current [closing behavior](closing-behavior.md).
 
-| Field             | Type      | Description                                                          |
-|-------------------|-----------|----------------------------------------------------------------------|
+| Field                                  | Type      | Description                                                                          |
+| -------------------------------------- | --------- | ------------------------------------------------------------------------------------ |
 | need_confirmation | `boolean` | Will user be prompted in case, an application is going to be closed. |
 
 ### `web_app_setup_main_button`
 
 Updates the [Main Button](main-button.md) settings.
 
-| Field               | Type      | Description                                                                                                                                                        |
-|---------------------|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| is_visible          | `boolean` | _Optional_. Should the Main Button be displayed.                                                                                                                   |
-| is_active           | `boolean` | _Optional_. Should the Main Button be enabled.                                                                                                                     |
+| Field                                                         | Type      | Description                                                                                                                                                                                                                        |
+| ------------------------------------------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| is_visible                               | `boolean` | _Optional_. Should the Main Button be displayed.                                                                                                                                                   |
+| is_active                                | `boolean` | _Optional_. Should the Main Button be enabled.                                                                                                                                                     |
 | is_progress_visible | `boolean` | _Optional_. Should loader inside the Main Button be displayed. Use this property in case, some operation takes time. This loader will make user notified about it. |
-| text                | `string`  | _Optional_. Text inside the Main Button.                                                                                                                           |
-| color               | `string`  | _Optional_. The Main Button background color in `#RRGGBB` format.                                                                                                  |
-| text_color          | `string`  | _Optional_. The Main Button text color in `#RRGGBB` format.                                                                                                        |
+| text                                                          | `string`  | _Optional_. Text inside the Main Button.                                                                                                                                                           |
+| color                                                         | `string`  | _Optional_. The Main Button background color in `#RRGGBB` format.                                                                                                                                  |
+| text_color                               | `string`  | _Optional_. The Main Button text color in `#RRGGBB` format.                                                                                                                                        |
 
 ### `web_app_setup_settings_button`
 
@@ -460,8 +462,8 @@ Available since: **v6.10**
 
 Updates current state of [Settings Button](settings-button.md).
 
-| Field      | Type      | Description                              |
-|------------|-----------|------------------------------------------|
+| Field                           | Type      | Description                                              |
+| ------------------------------- | --------- | -------------------------------------------------------- |
 | is_visible | `boolean` | Should the Settings Button be displayed. |
 
 ### `web_app_setup_swipe_behavior`
@@ -470,8 +472,8 @@ Available since: **v7.7**
 
 Sets new swipe behavior.
 
-| Field                | Type      | Description                                          |
-|----------------------|-----------|------------------------------------------------------|
+| Field                                                          | Type      | Description                                                          |
+| -------------------------------------------------------------- | --------- | -------------------------------------------------------------------- |
 | allow_vertical_swipe | `boolean` | Allows closing the application using vertical swipe. |
 
 ### `web_app_switch_inline_query`
@@ -512,8 +514,8 @@ the specified inline query in the input field.
       <code>string[]</code>
     </td>
     <td>
-      List of chat types which could be chosen to send the message. Could be empty list. Values:
-      <ul>
+      List of chat types which could be chosen to send the message. Could be empty list. Values:      
+<ul>
         <li>
           <code>users</code> 
         </li>
@@ -557,8 +559,8 @@ Generates the [haptic feedback](haptic-feedback.md) event.
       <code>string</code>
     </td>
     <td>
-      Type of haptic event. Values:
-      <ul>
+      Type of haptic event. Values:      
+<ul>
         <li>
           <code>impact</code>, when there's a collision involving UI components.
         </li>
@@ -578,8 +580,8 @@ Generates the [haptic feedback](haptic-feedback.md) event.
       <code>string</code>
     </td>
     <td>
-      Required when <code>type</code> is <code>impact</code>. Values:
-      <ul>
+      Required when <code>type</code> is <code>impact</code>. Values:      
+<ul>
         <li>
           <code>light</code>, indicates a collision between small or lightweight UI objects
         </li>
@@ -605,8 +607,8 @@ Generates the [haptic feedback](haptic-feedback.md) event.
       <code>string</code>
     </td>
     <td>
-      Required when <code>type</code> is <code>notification</code>. Values:
-      <ul>
+      Required when <code>type</code> is <code>notification</code>. Values:      
+<ul>
         <li>
           <code>error</code>, indicates that a task or action has failed
         </li>
