@@ -3,7 +3,7 @@
 ::: tip
 
 Starting from the Mini Apps version **7.7**, you are able to prevent the application from
-closing due to swipe down by using a special method. 
+closing due to swipe down by using a special method.
 
 - [Mini Apps method](methods.md#web-app-setup-swipe-behavior)
 - [@telegram-apps/sdk component](../packages/telegram-apps-sdk/components/swipe-behavior.md)
