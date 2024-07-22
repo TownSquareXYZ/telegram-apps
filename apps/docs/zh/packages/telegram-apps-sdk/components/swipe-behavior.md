@@ -19,7 +19,7 @@ To prevent a possible closure, you can disable this behavior by calling the `dis
 method, or enable via the `enableVerticalSwipe()` method. In turn,
 both of these methods update the `isVerticalSwipeEnabled` property:
 
-```typescript  
+```typescript
 swipeBehavior.enableVerticalSwipe();
 console.log(swipeBehavior.isVerticalSwipeEnabled); // true  
 
@@ -32,7 +32,7 @@ console.log(swipeBehavior.isVerticalSwipeEnabled); // false
 List of events, which could be [tracked](../components#events):
 
 | Event                           | Listener                   | Triggered when                            |
-|---------------------------------|----------------------------|-------------------------------------------|
+| ------------------------------- | -------------------------- | ----------------------------------------- |
 | `change`                        | `() => void`               | Something in component changed            |
 | `change:isVerticalSwipeEnabled` | `(value: boolean) => void` | `isVerticalSwipeEnabled` property changed |
 
