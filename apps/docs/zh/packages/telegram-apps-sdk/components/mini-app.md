@@ -1,5 +1,7 @@
 ---
-outline: [2, 3]
+outline:
+  - 2
+  - 3
 ---
 
 # `MiniApp`
@@ -124,7 +126,7 @@ Closes the Mini App.
 miniApp.close();
 ```
 
-If you would like to wrap the application into the bottom app bar, but not to close it, 
+If you would like to wrap the application into the bottom app bar, but not to close it,
 consider using the first argument `returnBack: boolean`.
 
 ```ts
@@ -145,7 +147,7 @@ the `web_app_data` field in the [Message](https://core.telegram.org/bots/api#mes
 List of events, which could be [tracked](../components#events):
 
 | Event                | Listener                                 | Triggered when                 |
-|----------------------|------------------------------------------|--------------------------------|
+| -------------------- | ---------------------------------------- | ------------------------------ |
 | `change`             | `() => void`                             | Something in component changed |
 | `change:bgColor`     | `(value: RGB) => void`                   | `bgColor` property changed     |
 | `change:headerColor` | `(value: HeaderColorKey or RGB) => void` | `headerColor` property changed |
@@ -153,5 +155,5 @@ List of events, which could be [tracked](../components#events):
 ## Methods Support
 
 List of methods and parameters, which could be used
-in [support checks](../components#methods-support): `requestWriteAccess`, `requestPhoneAccess`, 
+in [support checks](../components#methods-support): `requestWriteAccess`, `requestPhoneAccess`,
 `switchInlineQuery`, `setHeaderColor`, `setBgColor` and `setHeaderColor.color`.
