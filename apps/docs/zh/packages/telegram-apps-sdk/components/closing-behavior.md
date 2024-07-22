@@ -18,7 +18,7 @@ const [closingBehavior] = initClosingBehavior();
 To enable and disable closing confirmation, it is required to use `enableConfirmation()`
 and `disableConfirmation()` methods. These methods update `isConfirmationNeeded` property:
 
-```typescript  
+```typescript
 closingBehaviour.enableConfirmation();
 console.log(closingBehaviour.isConfirmationNeeded); // true  
 
@@ -31,6 +31,6 @@ console.log(closingBehaviour.isConfirmationNeeded); // false
 List of events, which could be [tracked](../components#events):
 
 | Event                         | Listener                   | Triggered when                          |
-|-------------------------------|----------------------------|-----------------------------------------|
+| ----------------------------- | -------------------------- | --------------------------------------- |
 | `change`                      | `() => void`               | Something in component changed          |
 | `change:isConfirmationNeeded` | `(value: boolean) => void` | `isConfirmationNeeded` property changed |
