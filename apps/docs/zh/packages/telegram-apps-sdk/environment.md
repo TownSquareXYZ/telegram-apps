@@ -54,7 +54,7 @@ mockTelegramEnv({
 });
 ```
 
-::: warning
+:::warning
 Note that this function only imitates Telegram environment behavior. It doesn't send any real
 requests or perform actions that you will only see in the Telegram application.
 :::
