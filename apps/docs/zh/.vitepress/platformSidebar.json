@@ -1,0 +1,38 @@
+{
+  "Introduction": {
+    "About Platform": ""
+  },
+  "Functional Features": {
+    "Closing Behavior": "",
+    "Swipe Behavior": "",
+    "Haptic Feedback": ""
+  },
+  "Apps Communication": {
+    "Flow Definition": "",
+    "Methods": "",
+    "Events": ""
+  },
+  "Launch Parameters": {
+    "About": "",
+    "Start Parameter": "",
+    "Init Data": ""
+  },
+  "Development": {
+    "Debugging": "",
+    "Test Environment": ""
+  },
+  "UI": {
+    "Back Button": "",
+    "Main Button": "",
+    "Popup": "",
+    "Settings Button": "",
+    "Theming": "",
+    "Viewport": ""
+  },
+  "Guides": {
+    "Authorizing User": "",
+    "Creating New App": "",
+    "Getting App Link": "",
+    "Sticky App": ""
+  }
+}
