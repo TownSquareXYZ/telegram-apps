@@ -38,8 +38,8 @@ utils.openLink('https://google.com', { tryBrowser: true });
 
 ### `openTelegramLink`
 
-In case, a developer would like to open a link related to Telegram (starting with `https://t.me`) 
-the method `openTelegramLink` can be used. 
+In case, a developer would like to open a link related to Telegram (starting with `https://t.me`)
+the method `openTelegramLink` can be used.
 
 Using this method, the Telegram application will handle such a link on its own side:
 
