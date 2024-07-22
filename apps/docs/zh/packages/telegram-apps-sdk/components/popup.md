@@ -43,7 +43,7 @@ case where the user didn't click any button, the method will return `null`.
 List of events, which could be [tracked](../components#events):
 
 | Event              | Listener                   | Triggered when                 |
-|--------------------|----------------------------|--------------------------------|
+| ------------------ | -------------------------- | ------------------------------ |
 | `changed`          | `() => void`               | Something in component changed |
 | `changed:isOpened` | `(value: boolean) => void` | `isOpened` property changed    |
 
