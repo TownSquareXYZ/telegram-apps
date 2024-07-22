@@ -89,51 +89,29 @@ will display the web component with the source address as the URL specified in t
 Sometimes, it is necessary to debug the developed application. To learn more, refer
 to [this](debugging.md) article.
 
-[//]: # (## Additional)
-
-[//]: # ()
-[//]: # (### Hot Module Replacement)
-
-[//]: # ()
-[//]: # (The application development process is a fairly complex and lengthy process. You always want to see)
-
-[//]: # (the changes you make in the code right away on the screen. In order to see the changes in real time,)
-
-[//]: # (it is necessary to use such a technique as **Hot Module Replacement**. This section will not cover)
-
-[//]: # (the process of setting it up, as it often depends on the project, but well-known frameworks already)
-
-[//]: # (include this functionality by default.)
-
-[//]: # ()
-[//]: # (How to configure HMR can be found)
-
-[//]: # (in [this Webpack article]&#40;https://webpack.js.org/guides/hot-module-replacement/&#41;.)
-
-[//]: # (## Заключение)
-
-[//]: # ()
-
-[//]: # (Этого вполне достаточно для того, чтобы создать свое первое приложение TWA.)
-
-[//]: # (Тем не менее, данный гайд не покрывает все особенности платформы, а лишь)
-
-[//]: # (помогает избежать бесполезной траты времени на базовые и простые проблемы.)
-
-[//]: # (## Debugging application)
-
-[//]: # ()
-
-[//]: # (As long as Web Apps are web applications, and they are opened in some native)
-
-[//]: # (components &#40;not in browser&#41;, we are not allowed to debug them in common way as)
-
-[//]: # (we do it in browser applications until some additional actions are done.)
-
-[//]: # ()
-
-[//]: # (To enable debug mode in native application follow)
-
-[//]: # ([official documentation]&#40;https://core.telegram.org/bots/webapps#debug-mode-for-web-apps&#41;)
-
-[//]: # (.)
+[//]: # "## Additional"
+[//]: #
+[//]: # "### Hot Module Replacement"
+[//]: #
+[//]: # "The application development process is a fairly complex and lengthy process. You always want to see"
+[//]: # "the changes you make in the code right away on the screen. In order to see the changes in real time,"
+[//]: # "it is necessary to use such a technique as **Hot Module Replacement**. This section will not cover"
+[//]: # "the process of setting it up, as it often depends on the project, but well-known frameworks already"
+[//]: # "include this functionality by default."
+[//]: #
+[//]: # "How to configure HMR can be found"
+[//]: # "in [this Webpack article](https://webpack.js.org/guides/hot-module-replacement/)."
+[//]: # "## Заключение"
+[//]: #
+[//]: # "Этого вполне достаточно для того, чтобы создать свое первое приложение TWA."
+[//]: # "Тем не менее, данный гайд не покрывает все особенности платформы, а лишь"
+[//]: # "помогает избежать бесполезной траты времени на базовые и простые проблемы."
+[//]: # "## Debugging application"
+[//]: #
+[//]: # "As long as Web Apps are web applications, and they are opened in some native"
+[//]: # "components (not in browser), we are not allowed to debug them in common way as"
+[//]: # "we do it in browser applications until some additional actions are done."
+[//]: #
+[//]: # "To enable debug mode in native application follow"
+[//]: # "[official documentation](https://core.telegram.org/bots/webapps#debug-mode-for-web-apps)"
+[//]: # "."
