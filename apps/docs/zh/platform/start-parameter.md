@@ -18,7 +18,7 @@ https://t.me/botusername?startattach=ABC
 https://t.me/botusername/appname?startapp=ABC
 ```
 
-[//]: # (TODO: Direct Link: refer to the direct links page)
+[//]: # "TODO: Direct Link: refer to the direct links page"
 
 In both cases mentioned above, the start parameter will be set to `ABC`.
 
