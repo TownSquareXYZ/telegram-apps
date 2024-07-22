@@ -1,5 +1,7 @@
 ---
-outline: [2, 3]
+outline:
+  - 2
+  - 3
 ---
 
 # @telegram-apps/sdk-react
@@ -186,13 +188,13 @@ const B = withBackButton('bb', true, ({ bb }) => {
 ```
 
 As the first argument, you must pass a value responsible for the component property name receiving a
-hook result. The second argument is SSR flag mode, which will be passed to the hook, used 
+hook result. The second argument is SSR flag mode, which will be passed to the hook, used
 internally.
 
 ## Hooks and HOCs List
 
-| Hook and HOC (Raw)                                | Hook and HOC (Result)                       | Returned value                                                                     |
-|---------------------------------------------------|---------------------------------------------|------------------------------------------------------------------------------------|
+| Hook and HOC (Raw)             | Hook and HOC (Result)    | Returned value                                                                     |
+| ------------------------------------------------- | ------------------------------------------- | ---------------------------------------------------------------------------------- |
 | `useBackButtonRaw`, `withBackButtonRaw`           | `useBackButton`, `withBackButton`           | [BackButton](telegram-apps-sdk/components/back-button.md)                          |
 | `useBiometryManagerRaw`, `withBiometryManagerRaw` | `useBiometryManager`, `withBiometryManager` | [BiometryManager](telegram-apps-sdk/components/biometry-manager.md) or `undefined` |
 | `useClosingBehaviorRaw`, `withClosingBehaviorRaw` | `useClosingBehavior`, `withClosingBehavior` | [ClosingBehavior](telegram-apps-sdk/components/closing-behavior.md)                |
