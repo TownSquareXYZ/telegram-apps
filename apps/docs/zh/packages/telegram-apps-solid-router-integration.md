@@ -72,4 +72,3 @@ function App() {
 
 You can learn more about how to use it real world applications using
 our [Solid template](https://github.com/Telegram-Mini-Apps/solidjs-template).
-
