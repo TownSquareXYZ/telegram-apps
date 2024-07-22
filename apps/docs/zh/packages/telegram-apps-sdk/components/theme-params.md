@@ -76,6 +76,6 @@ themeParams.accentTextColor; // '#aa1399'
 List of events, which could be [tracked](../components#events):
 
 | Event                | Listener               | Triggered when                   |
-|----------------------|------------------------|----------------------------------|
+| -------------------- | ---------------------- | -------------------------------- |
 | `change`             | `() => void`           | Something in component changed   |
 | `change:{theme_key}` | `(value: RGB) => void` | Color with specified key changed |
