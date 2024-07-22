@@ -28,7 +28,7 @@ the developer can do the same by calling `expand` method (use `isExpanded` prop 
 expansion state). As the position of the Mini App changes, the current height value of the visible
 area will be updated in real time.
 
-::: info
+:::info
 Please note that the refresh rate of this value (`height`) is not sufficient to smoothly follow the
 lower border of the window. It should not be used to pin interface elements to the bottom of the
 visible area. It's more appropriate to use the value of the `stableHeight` field for this purpose.
@@ -53,7 +53,7 @@ requestViewport().then((data) => {
 List of events, which could be [tracked](../components#events):
 
 | Event                 | Listener                          | Triggered when                  |
-|-----------------------|-----------------------------------|---------------------------------|
+| --------------------- | --------------------------------- | ------------------------------- |
 | `change`              | `() => void`                      | Something in component changed  |
 | `change:height`       | `(height: number) => void`        | `height` property changed       |
 | `change:isExpanded`   | `(isExpanded: boolean) => void`   | `isExpanded` property changed   |
