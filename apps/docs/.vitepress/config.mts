@@ -62,7 +62,7 @@ export default defineConfig({
     },
     translate:{
       label:"Help Us Translate",
-      link:"https://ton-docs-git-mandarinlocalization-townsquarexyz.vercel.app/contribute/localization-program/overview"
+      link:"https://docs.ton.org/contribute/localization-program/overview"
     }
   },
 
