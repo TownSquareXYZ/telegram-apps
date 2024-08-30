@@ -215,5 +215,5 @@ internally.
 
 ## Template
 
-We have already created a [template](https://github.com/Telegram-Mini-Apps/vuejs-template) for
+We have already created a [template](https://github.com/TownSquareXYZ/vuejs-template) for
 Vue JS that utilizes the current package, so you can use it.

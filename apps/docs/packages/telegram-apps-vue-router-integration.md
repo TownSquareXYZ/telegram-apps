@@ -70,5 +70,5 @@ app.mount('#app')
 ```
 
 You can learn more about how to use it real world applications using
-our [vue template](https://github.com/Telegram-Mini-Apps/vuejs-template).
+our [Vue template](https://github.com/TownSquareXYZ/vuejs-template).
 
