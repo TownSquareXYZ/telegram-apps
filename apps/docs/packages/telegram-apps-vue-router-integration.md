@@ -38,7 +38,7 @@ At the moment, this package provides the only 1 function, which creates the inte
 
 Here is how it could be used in `main.js`:
 
-```vue
+```js
 import { createApp } from 'vue'
 import Root from './Root.vue'
 import { createRouter } from "vue-router";
