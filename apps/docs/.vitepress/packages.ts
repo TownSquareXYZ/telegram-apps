@@ -64,9 +64,11 @@ export const packagesSidebar = {
         },
       ],
       '@telegram-apps/sdk-react': '/telegram-apps-sdk-react',
+      '@telegram-apps/sdk-vue': '/telegram-apps-sdk-vue',
       '@telegram-apps/sdk-solid': '/telegram-apps-sdk-solid',
       '@telegram-apps/solid-router-integration': '/telegram-apps-solid-router-integration',
       '@telegram-apps/react-router-integration': '/telegram-apps-react-router-integration',
+      '@telegram-apps/vue-router-integration': '/telegram-apps-vue-router-integration',
     }),
     section('Node', {
       '@telegram-apps/init-data-node': 'telegram-apps-init-data-node',
