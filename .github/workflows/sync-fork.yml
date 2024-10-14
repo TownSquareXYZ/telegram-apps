@@ -14,7 +14,7 @@ jobs:
       - uses: tgymnich/fork-sync@v1.8
         with:
           owner: TownSquareXYZ
-          base: master
+          base: main
           head: master
           merge_method: rebase
           pr_title: 'Fork Sync: Update from Telegram-Mini-Apps/telegram-apps'
