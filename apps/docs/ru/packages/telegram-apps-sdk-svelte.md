@@ -65,7 +65,7 @@ yarn add @telegram-apps/sdk-svelte
 
 ```svelte [BackButton.svelte]
 /**
- * Component which controls the Back Button visibility.
+ * Компонент, который управляет видимостью кнопки "Назад".
  */
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
