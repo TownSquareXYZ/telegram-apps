@@ -15,7 +15,7 @@ const [mainButton] = initMainButton();
 ## Видимость кнопки
 
 Чтобы управлять видимостью главной кнопки, разработчик может использовать такие методы, как `show()` и `hide()`.
-Оба они обновляют свойство `isVisible` компонента:
+Оба они обновляют свойство компонента `isVisible`:
 
 ```typescript
 mainButton.show();
@@ -96,13 +96,13 @@ mainButton.setParams({
 
 Список событий, которые можно [отследить](#events):
 
-| Событие                  | Слушатель                                   | Срабатывает, когда                  |
-| ------------------------ | ------------------------------------------- | ----------------------------------- |
-| `click`                  | `() => void`                                | Была нажата главная кнопка          |
-| `change`                 | `() => void`                                | Что-то в компоненте изменилось      |
-| `change:backgroundColor` | `(value: RGB) => void`                      | Изменено свойство `backgroundColor` |
-| `change:isLoaderVisible` | `(value: boolean) => void`. | Изменено свойство `isLoaderVisible` |
-| `change:isEnabled`       | `(value: boolean) => void`. | Изменено свойство `isEnabled`       |
-| `change:isVisible`       | `(value: boolean) => void`. | Изменено свойство `isVisible`       |
-| `change:text`            | `(value: string) => void`.  | Изменено свойство `text`            |
-| `change:textColor`       | `(value: RGB) => void`                      | Изменено свойство `textColor`       |
+| Событие                  | Обработчик                 | Срабатывает, когда                  |
+| ------------------------ | -------------------------- | ----------------------------------- |
+| `click`                  | `() => void`               | Была нажата главная кнопка          |
+| `change`                 | `() => void`               | Что-то в компоненте изменилось      |
+| `change:backgroundColor` | `(value: RGB) => void`     | Изменено свойство `backgroundColor` |
+| `change:isLoaderVisible` | `(value: boolean) => void` | Изменено свойство `isLoaderVisible` |
+| `change:isEnabled`       | `(value: boolean) => void` | Изменено свойство `isEnabled`       |
+| `change:isVisible`       | `(value: boolean) => void` | Изменено свойство `isVisible`       |
+| `change:text`            | `(value: string) => void`  | Изменено свойство `text`            |
+| `change:textColor`       | `(value: RGB) => void`     | Изменено свойство `textColor`       |
