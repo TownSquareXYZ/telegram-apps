@@ -39,62 +39,62 @@ import express, {
 } from 'express';
 
 /**
- * Sets init data in the specified Response object.
- * @param res - Response object.
- * @param initData - init data.
+ * Устанавливает init data в указанный объект ответа.
+ * @param res - Объект ответа.
+ * @param initData - Init data.
  */
 function setInitData(res: Response, initData: InitDataParsed): void {
   res.locals.initData = initData;
 }
 
 /**
- * Extracts init data from the Response object.
- * @param res - Response object.
- * @returns Init data stored in the Response object. Can return undefined in case,
- * the client is not authorized.
+ * Извлекает init data из объекта ответа.
+ * @param res - Объект ответа.
+ * @returns Init data, сохраненный в объекте ответа. Может вернуть undefined в случае,
+ * если клиент не авторизован.
  */
 function getInitData(res: Response): InitDataParsed | undefined {
   return res.locals.initData;
 }
 
 /**
- * Middleware which authorizes the external client.
- * @param req - Request object.
- * @param res - Response object.
- * @param next - function to call the next middleware.
+ * Мидлварь, которая аутентифицирует внешнего клиента.
+ * @param req - Объект запроса.
+ * @param res - Объект ответа.
+ * @param next - Функция для вызова следующего мидлваря.
  */
 const authMiddleware: RequestHandler = (req, res, next) => {
-  // We expect passing init data in the Authorization header in the following format:
+  // Ожидаем передачи init data в заголовке Authorization в следующем формате:
   // <auth-type> <auth-data>
-  // <auth-type> must be "tma", and <auth-data> is Telegram Mini Apps init data.
+  // <auth-type> должно быть "tma", а <auth-data> — данные инициализации Telegram Mini Apps.
   const [authType, authData = ''] = (req.header('authorization') || '').split(' ');
 
   switch (authType) {
     case 'tma':
       try {
-        // Validate init data.
+        // Проверяем init data.
         validate(authData, token, {
-          // We consider init data sign valid for 1 hour from their creation moment.
+          // Рассматриваем подписку на init data как допустимую в течение одного часа с момента их создания.
           expiresIn: 3600,
         });
 
-        // Parse init data. We will surely need it in the future.
+        // Парсим init data. Мы обязательно понадобимся им в будущем.
         setInitData(res, parse(authData));
         return next();
       } catch (e) {
         return next(e);
       }
-    // ... other authorization methods.
+    // ... другие методы аутентификации.
     default:
       return next(new Error('Unauthorized'));
   }
 };
 
 /**
- * Middleware which shows the user init data.
+ * Мидлварь, которая отображает данные инициализации пользователя.
  * @param _req
- * @param res - Response object.
- * @param next - function to call the next middleware.
+ * @param res - Объект ответа.
+ * @param next - Функция для вызова следующего мидлваря.
  */
 const showInitDataMiddleware: RequestHandler = (_req, res, next) => {
   const initData = getInitData(res);
@@ -105,10 +105,10 @@ const showInitDataMiddleware: RequestHandler = (_req, res, next) => {
 };
 
 /**
- * Middleware which displays the user init data.
- * @param err - handled error.
+ * Мидлварь, которая отображает данные инициализации пользователя.
+ * @param err - Обработанный ошибкой.
  * @param _req
- * @param res - Response object.
+ * @param res - Объект ответа.
  */
 const defaultErrorMiddleware: ErrorRequestHandler = (err, _req, res) => {
   res.status(500).json({
@@ -116,10 +116,10 @@ const defaultErrorMiddleware: ErrorRequestHandler = (err, _req, res) => {
   });
 };
 
-// Your secret bot token.
+// Ваш секретный токен бота.
 const token = '1234567890:ABC';
 
-// Create an Express applet and start listening to port 3000.
+// Создайте приложение Express и начните прослушивание порта 3000.
 const app = express();
 
 app.use(authMiddleware);
@@ -128,8 +128,8 @@ app.use(defaultErrorMiddleware);
 
 app.listen(3000);
 
-// After the HTTP server was launched, try sending an HTTP GET request to the URL 
-// http://localhost:3000/ with an Authorization header containing data in the required format.
+// После запуска HTTP-сервера попробуйте отправить HTTP GET запрос на URL 
+// http://localhost:3000/ с заголовком Authorization, содержащим данные в требуемом формате.
 ```
 
 ### GoLang
@@ -154,23 +154,23 @@ const (
 	_initDataKey contextKey = "init-data"
 )
 
-// Returns new context with specified init data.
+// Возвращает новый контекст с указанными данными инициализации.
 func withInitData(ctx context.Context, initData initdata.InitData) context.Context {
 	return context.WithValue(ctx, _initDataKey, initData)
 }
 
-// Returns the init data from the specified context.
+// Получает данные инициализации из указанного контекста.
 func ctxInitData(ctx context.Context) (initdata.InitData, bool) {
 	initData, ok := ctx.Value(_initDataKey).(initdata.InitData)
 	return initData, ok
 }
 
-// Middleware which authorizes the external client.
+// Мидлварь для аутентификации внешнего клиента.
 func authMiddleware(token string) gin.HandlerFunc {
 	return func(context *gin.Context) {
-		// We expect passing init data in the Authorization header in the following format:
+		// Ожидаем передачи данных инициализации в заголовке Authorization в следующем формате:
 		// <auth-type> <auth-data>
-		// <auth-type> must be "tma", and <auth-data> is Telegram Mini Apps init data.
+		// <auth-type> должно быть "tma", а <auth-data> — данные инициализации Telegram Mini Apps.
 		authParts := strings.Split(context.GetHeader("authorization"), " ")
 		if len(authParts) != 2 {
 			context.AbortWithStatusJSON(401, map[string]any{
@@ -184,8 +184,7 @@ func authMiddleware(token string) gin.HandlerFunc {
 
 		switch authType {
 		case "tma":
-			// Validate init data. We consider init data sign valid for 1 hour from their
-			// creation moment.
+			// Проверяем данные инициализации. Мы считаем подпись данных инициализации действительной в течение одного часа с момента их создания.
 			if err := initdata.Validate(authData, token, time.Hour); err != nil {
 				context.AbortWithStatusJSON(401, map[string]any{
 					"message": err.Error(),
@@ -193,7 +192,7 @@ func authMiddleware(token string) gin.HandlerFunc {
 				return
 			}
 
-			// Parse init data. We will surely need it in the future.
+			// Парсим данные инициализации. Мы обязательно понадобимся им в будущем.
 			initData, err := initdata.Parse(authData)
 			if err != nil {
 				context.AbortWithStatusJSON(500, map[string]any{
@@ -209,7 +208,7 @@ func authMiddleware(token string) gin.HandlerFunc {
 	}
 }
 
-// Middleware which shows the user init data.
+// Мидлварь для отображения данных инициализации пользователя.
 func showInitDataMiddleware(context *gin.Context) {
 	initData, ok := ctxInitData(context.Request.Context())
 	if !ok {
@@ -223,7 +222,7 @@ func showInitDataMiddleware(context *gin.Context) {
 }
 
 func main() {
-	// Your secret bot token.
+	// Ваш секретный токен бота.
 	token := "1234567890:ABC"
 
 	r := gin.New()
