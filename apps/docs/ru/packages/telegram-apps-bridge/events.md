@@ -26,13 +26,13 @@ defineEventHandlers();
 ```typescript
 import { on } from '@telegram-apps/bridge';
 
-// Start listening to the "viewport_changed" event. The returned value
-// is a function that removes this event listener.
+// Начните прослушивание события "viewport_changed". Возвращаемое значение
+// — это функция, которая удаляет этот слушатель события.
 const removeListener = on('viewport_changed', (payload) => {
   console.log('Viewport changed:', payload);
 });
 
-// Remove this event listener.
+// Удаляем этот слушатель событий.
 removeListener();
 ```
 
@@ -45,10 +45,10 @@ const listener: EventListener<'viewport_changed'> = (payload) => {
   console.log('Viewport changed:', payload);
 };
 
-// Start listening to the event.
+// Начать прослушивание события.
 on('viewport_changed', listener);
 
-// Remove the event listener.
+// Удаляет слушатель событий.
 off('viewport_changed', listener);
 ```
 
@@ -57,7 +57,7 @@ off('viewport_changed', listener);
 ```typescript
 import { on } from '@telegram-apps/bridge';
 
-// Will automatically be removed after the first listener execution.
+// Будет автоматически удален после первого выполнения слушателя.
 on('viewport_changed', (payload) => {
   console.log('Viewport changed:', payload);
 }, true);
@@ -78,9 +78,9 @@ const listener: SubscribeListener = (event) => {
   console.log('Received event', event);
 };
 
-// Listen to all events.
+// Прослушивание всех событий.
 subscribe(listener);
 
-// Remove the listener.
+// Удаление слушателя.
 unsubscribe(listener);
 ```
