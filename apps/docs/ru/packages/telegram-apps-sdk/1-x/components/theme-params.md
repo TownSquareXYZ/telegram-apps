@@ -22,7 +22,7 @@ import { requestThemeParams } from '@telegram-apps/sdk';
 
 requestThemeParams.then(console.log);
 
-// Output:
+// Вывод:
 // { bgColor: '#ffaabb', ... }
 ```
 
@@ -39,7 +39,7 @@ themeParams.get('packageUnknownColor');
 
 ```typescript
 themeParams.getState();
-// Output:
+// Вывод:
 // {
 //   accentTextColor: '#aa1399',
 //   bgColor: '#baac12',
