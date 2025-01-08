@@ -55,7 +55,7 @@ import { createApp } from 'vue';
 import { init } from '@telegram-apps/sdk-vue';
 import App from './App.vue';
 
-// Initialize the package.
+// Инициализировать пакет.
 init();
 
 const app = createApp(App);
@@ -99,8 +99,7 @@ function open() {
 
 ```ts [useMainButton.vue]
 /**
- * Composable which encapsulates mainButton interaction logic
- */
+ * Композиция, который инкапсулирует логику взаимодействия mainButton */
 import { mainButton, useSignal } from '@telegram-apps/sdk-vue';
 
 export function useMainButton() {
@@ -120,7 +119,7 @@ export function useMainButton() {
 
 ```ts [useInitApp.ts]
 /**
- * Composable which encapsulates start param processing logic
+ * Композиция, который инкапсулирует логику параметров запуска
  */
 import { useLaunchParams } from '@telegram-apps/sdk-vue';
 
