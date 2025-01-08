@@ -33,14 +33,14 @@ cloudStorage
   .get('my-key')
   .then((value) => {
     console.log(value);
-    // Output: 'my-value'
+    // Вывод: 'my-value'
   });
 
 cloudStorage
   .get('non-existent')
   .then((value) => {
     console.log(value);
-    // Output: ''
+    // Вывод: ''
   });
 ```
 
@@ -49,7 +49,7 @@ cloudStorage
   .get(['my-key', 'non-existent'])
   .then((result) => {
     console.log('Result is', result);
-    // Output:
+    // Вывод:
     // {
     //   'my-key': 'my-value',
     //   'non-existent': ''
@@ -69,7 +69,7 @@ cloudStorage
 cloudStorage
   .getKeys()
   .then((keys) => {
-    // Will be ['my-key'].
+    // Будет ['my-key'].
     console.log('Keys are', keys);
   })
 ```
