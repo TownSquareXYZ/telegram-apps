@@ -45,11 +45,11 @@ import { createRouter } from '@telegram-apps/solid-router-integration';
 import { IndexPage } from './IndexPage.js';
 
 function App() {
-  // We should create navigator to pass it to integration creation.
+  // Мы должны создать навигатор, чтобы передать его при создании интеграции.
   const navigator = initNavigator('app-navigator-state');
 
-  // Then, to allow this navigator update current browser history, 
-  // we should attach it. Otherwise, it will work in memory mode.
+  // Затем, чтобы разрешить этому навигатору обновлять текущую историю браузера,
+  // мы должны прикрепить его. В противном случае он будет работать в режиме памяти.
   void navigator.attach();
   onCleanup(() => {
     navigator.detach();
