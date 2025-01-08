@@ -19,7 +19,7 @@ const qrScanner = initQRScanner();
 ```typescript
 qrScanner.open('Scan QR code').then((content) => {
   console.log(content);
-  // Output: 'some-data=22l&app=93...'
+  // Вывод: 'some-data=22l&app=93...'
 });
 console.log(qrScanner.isOpened); // true
 ```
@@ -32,11 +32,11 @@ console.log(qrScanner.isOpened); // true
 qrScanner.open({ 
   text: 'Scan QR code',
   capture({ data }) {
-    // Capture QRs contanining Telegram user link.
+    // Захват QR-кодов, содержащих ссылку пользователя Telegram.
     return data.startsWith('https://t.me');
   }
 }).then((qr) => {
-  // May be something like 'https://t.me/heyqbnk' or null.
+  // Может быть что-то вроде 'https://t.me/heyqbnk' или null.
   console.log(qr);
 });
 ```
