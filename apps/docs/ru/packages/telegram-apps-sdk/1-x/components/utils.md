@@ -72,7 +72,7 @@ utils.shareURL('https://t.me/mybot/myapp', 'Look! Some cool app here!');
 ```typescript
 utils.readTextFromClipboard().then((data) => {
   console.log('Clipboard data:', data);
-  // Output: string or null
+  // Вывод: string или null
 });
 ```
 
