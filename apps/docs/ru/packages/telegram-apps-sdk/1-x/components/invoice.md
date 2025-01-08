@@ -27,7 +27,7 @@ const invoice = initInvoice();
 invoice
   .open('abIIks213')
   .then((status) => {
-    // Output: 'paid'
+    // Вывод: 'paid'
     return console.log(status);
   });
 ```
@@ -36,7 +36,7 @@ invoice
 invoice
   .open('https://t.me/invoice/abIIks213', 'url')
   .then((status) => {
-    // Output: 'paid'
+    // Вывод: 'paid'
     return console.log(status);
   });
 ```
