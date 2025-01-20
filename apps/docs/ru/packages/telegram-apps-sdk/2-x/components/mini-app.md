@@ -153,7 +153,7 @@ if (miniApp.setBackgroundColor.isAvailable()) {
 ```
 
 ```ts [Functions]
-import { 
+import {
   setMiniAppBackgroundColor,
   miniAppBackgroundColor,
 } from '@telegram-apps/sdk';
@@ -162,6 +162,26 @@ if (setMiniAppBackgroundColor.isAvailable()) {
   setMiniAppBackgroundColor('#ffffff');
   miniAppBackgroundColor(); // '#ffffff'
 }
+```
+
+:::
+
+## Активное состояние
+
+Мини-приложение становится неактивным, если оно свернуто в нижний трей клиента Telegram или если текущая активная вкладка браузера мини-приложений изменена на другую.
+
+Чтобы отслеживать, активно ли в данный момент мини-приложение, используйте сигнал `isActive`.
+
+::: code-group
+
+```ts [Variable]
+miniApp.isActive();
+```
+
+```ts [Functions]
+import { isMiniAppActive } from '@telegram-apps/sdk';
+
+isMiniAppActive()
 ```
 
 :::
@@ -190,7 +210,7 @@ if (miniApp.close.isAvailable()) {
 
 :::
 
-### `готово`
+### `ready`
 
 Чтобы сообщить, что мини-приложение готово к отображению, используйте метод `ready`. После вызова заполнитель загрузки скрывается, а мини-приложение отображается.
 
