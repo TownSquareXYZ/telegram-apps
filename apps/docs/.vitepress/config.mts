@@ -5,6 +5,8 @@ import { platformLinksGenerator } from './platform';
 
 import { zh } from "./zh/config";
 
+import { ru } from "./ru/config";
+
 const { packagesNavItem, packagesSidebar } = packagesLinksGenerator();
 const { platformNavItem, platformSidebar } = platformLinksGenerator();
 
@@ -42,6 +44,10 @@ export default defineConfig({
     zh: {
       label: "中文",
       ...zh,
+    },
+    ru: {
+      label: "Русский",
+      ...ru,
     },
   },
 
