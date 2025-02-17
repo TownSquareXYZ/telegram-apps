@@ -5,7 +5,7 @@ Apps [触觉反馈](../../../../platform/haptic-feedback.md) 的💠[组件](../
 
 ## 检查支持
 
-要检查当前 Telegram 小程序版本是否支持触觉反馈，需要使用
+要检查当前 Telegram 迷你应用程序版本是否支持触觉反馈，需要使用
 `isSupported` 方法：
 
 ::: code-group
@@ -24,7 +24,7 @@ isHapticFeedbackSupported(); // boolean
 
 :::
 
-## Impact Occurred
+## 发生影响
 
 `impactOccurred` 是发出撞击事件信号的方法。 Telegram 应用程序可根据传递的样式值播放
 适当的触觉反馈。
@@ -32,22 +32,18 @@ isHapticFeedbackSupported(); // boolean
 ::: code-group
 
 ```ts [Variable]
-if (hapticFeedback.impactOccurred.isAvailable()) {
-  hapticFeedback.impactOccurred('medium');
-}
+hapticFeedback.impactOccurred('medium');
 ```
 
 ```ts [Functions]
 import { hapticFeedbackImpactOccurred } from '@telegram-apps/sdk';
 
-if (hapticFeedbackImpactOccurred.isAvailable()) {
-  hapticFeedbackImpactOccurred('medium');
-}
+hapticFeedbackImpactOccurred('medium');
 ```
 
 :::
 
-可用的碰撞事件样式有：
+冲击触觉事件的可用样式有
 
 - `light`: 表示小型或轻量级用户界面对象之间发生碰撞。
 - `medium`: 表示中等大小或中等重量的用户界面对象之间发生碰撞。
@@ -55,7 +51,7 @@ if (hapticFeedbackImpactOccurred.isAvailable()) {
 - `rigid`: 表示硬质或不灵活的用户界面对象之间发生碰撞。
 - `soft`: 表示软性或柔性用户界面对象之间发生碰撞。
 
-## Notification Occurred
+## 发生通知
 
 `notificationOccurred` 是一种方法，用于发出任务或操作成功、失败或触发警告的信号。 Telegram 应用程序可根据传递的类型
 值播放适当的触觉反馈。
@@ -63,17 +59,13 @@ if (hapticFeedbackImpactOccurred.isAvailable()) {
 ::: code-group
 
 ```ts [Variable]
-if (hapticFeedback.notificationOccurred.isAvailable()) {
-  hapticFeedback.notificationOccurred('success');
-}
+hapticFeedback.notificationOccurred('success');
 ```
 
 ```ts [Functions]
 import { hapticFeedbackNotificationOccurred } from '@telegram-apps/sdk';
 
-if (hapticFeedbackNotificationOccurred.isAvailable()) {
-  hapticFeedbackNotificationOccurred('success');
-}
+hapticFeedbackNotificationOccurred('success');
 ```
 
 :::
@@ -84,9 +76,9 @@ if (hapticFeedbackNotificationOccurred.isAvailable()) {
 - `success`: 表示任务或操作已成功完成。
 - `warning`: 表示某项任务或操作触发了警告。
 
-## 选择更改
+## 更改了选择
 
-`selectionChanged` 是用户更改选择时发出信号的方法。  Telegram 应用程序可能会
+`selectionChanged` 是用户更改选择时发出信号的方法。 Telegram 应用程序可能会播放相应的触觉反馈。 Telegram 应用程序可能会
 播放相应的触觉反馈。
 
 只有在选择发生变化时，而不是在做出或确认选择时，才使用此反馈。
@@ -94,15 +86,11 @@ if (hapticFeedbackNotificationOccurred.isAvailable()) {
 ::: code-group
 
 ```ts [Variable]
-if (hapticFeedback.selectionChanged.isAvailable()) {
-  hapticFeedback.selectionChanged();
-}
+hapticFeedback.selectionChanged();
 ```
 
 ```ts [Functions]
 import { hapticFeedbackSelectionChanged } from '@telegram-apps/sdk';
 
-if (hapticFeedbackSelectionChanged.isAvailable()) {
-  hapticFeedbackSelectionChanged();
-}
+hapticFeedbackSelectionChanged();
 ```
