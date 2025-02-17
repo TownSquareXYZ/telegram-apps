@@ -1,6 +1,6 @@
 # `设置按钮`
 
-执行 Telegram 小程序 [设置按钮](../../../../platform/settings-button.md)。
+执行 Telegram 迷你应用程序 [设置按钮](../../../../platform/settings-button.md)。
 
 ## 初始化
 
@@ -14,7 +14,8 @@ const [settingsButton] = initSettingsButton();
 
 ## 展示与隐藏
 
-要显示和隐藏 `SettingsButton`，需要使用 `show()` 和 `hide()` 方法。  这些
+要显示和隐藏 `SettingsButton`，需要使用 `show()` 和 `hide()` 方法。 这些
+方法会更新按钮的 `isVisible` 属性： 这些
 方法会更新按钮的 `isVisible` 属性：
 
 ```typescript
