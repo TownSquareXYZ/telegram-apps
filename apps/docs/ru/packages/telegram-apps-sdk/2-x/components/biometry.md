@@ -125,7 +125,7 @@ if (requestBiometryAccess.isAvailable()) {
 - `reason?: string`: причина для аутентификации, которая будет отображаться пользователю.
 
 Метод возвращает объект с `status` (`'failed'` или `'authorized') и, в случае успеха,
-`token: string\`.
+`token: string\\`.
 
 ::: code-group
 
