@@ -20,7 +20,9 @@ bindViewportCSSVars(vp);
 ```
 
 默认情况下，该函数会创建名为
-的全局 CSS 变量：`-tg-viewport-height`、`-tg-viewport-width` 和 `-tg-viewport-stable-height`。  不过，
+的全局 CSS 变量：`-tg-viewport-height`、`-tg-viewport-width` 和 `-tg-viewport-stable-height`。 不过，
+函数允许传递一个 CSS 变量名生成器，该生成器接受其中一个字符串值，每个
+负责一个特定属性：`width`、`height` 或 `stableHeight`。 不过，
 函数允许传递一个 CSS 变量名生成器，该生成器接受其中一个字符串值，每个
 负责一个特定属性：`width`, `height`, 或 `stable-height`。
 
@@ -53,7 +55,7 @@ bindThemeParamsCSSVars(tp);
 ```
 
 默认情况下，该函数会将 ThemeParams 实例属性的驼峰字母大小写转换为短横线命名法大小写，并在
-中添加前缀 `--tg-theme-`。  下面是创建变量的示例：
+中添加前缀 `--tg-theme-`。 下面是创建变量的示例： 下面是创建变量的示例：
 
 - `--tg-theme-bg-color`
 - `--tg-theme-secondary-bg-color`
