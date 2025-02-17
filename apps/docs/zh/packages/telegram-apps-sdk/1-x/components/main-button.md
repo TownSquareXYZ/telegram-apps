@@ -1,6 +1,6 @@
-# `主按钮`
+# 主按钮
 
-执行 Telegram 小程序 [主按钮](../../../../platform/main-button.md)。
+执行 Telegram 迷你应用程序 [主按钮](../../../../platform/main-button.md)。
 
 ## 初始化
 
@@ -26,10 +26,10 @@ mainButton.hide();
 console.log(mainButton.isVisible); // false  
 ```
 
-## 加载器
+## 装载机
 
-主按钮内部可以显示一个加载器。  要控制其可见性，
-使用 `showLoader()` 和 `hideLoader()` 方法。 `isLoaderVisible` 属性将被更改。
+主按钮内部可以显示一个加载器。 主按钮内部可以显示一个加载器。 要控制其可见性，
+使用 `showLoader()` 和 `hideLoader()` 方法。 `isLoaderVisible` 属性将被更改。 `isLoaderVisible` 属性将被更改。
 
 ```typescript
 mainButton.showLoader();
@@ -39,7 +39,7 @@ mainButton.hideLoader();
 console.log(mainButton.isLoaderVisible); // false
 ```
 
-## 激活状态
+## 活跃状态
 
 可以通过调用 `disable()` 和 `enable()` 方法启用或禁用主按钮。
 这两个方法都会更新 `isEnabled` 属性。 这两个方法都会更新 `isEnabled` 属性。
@@ -58,7 +58,7 @@ console.log(mainButton.isEnabled); // false
 ## 背景颜色
 
 要更新主按钮的背景颜色，请使用 `setBackgroundColor(color: RGB)` 方法。
-将更新 `backgroundColor` 属性。 它将更新 `backgroundColor` 属性。
+将更新 `backgroundColor` 属性。 触发条件
 
 ```typescript
 mainButton.setBackgroundColor('#ffffaa');
@@ -67,7 +67,8 @@ console.log(mainButton.color); // '#ffffaa'
 
 ## 文字颜色
 
-要更新主按钮文本的颜色，请使用 `setTextColor(color: RGB)` 方法。  它将更新
+要更新主按钮文本的颜色，请使用 `setTextColor(color: RGB)` 方法。 它将更新
+`textColor`属性。 它将更新
 `textColor`属性。
 
 ```typescript
@@ -77,7 +78,8 @@ console.log(mainButton.textColor); // '#cca233'
 
 ## 文本
 
-要更新主按钮文本，请使用 `setText(text: string)` 方法。  它将更新 `text`
+要更新主按钮文本，请使用 `setText(text: string)` 方法。 它将更新 `text`
+属性。 它将更新 `text`
 属性。
 
 ```typescript
@@ -88,7 +90,7 @@ console.log(mainButton.text); // 'Submit'
 ## 设置多个属性
 
 有时，连续设置几个主按钮参数可能会导致
-UI 出现问题。  为了避免这个问题，可以使用 `setParams` 方法：
+UI 出现问题。 为了避免这个问题，可以使用 `setParams` 方法： 为了避免这个问题，可以使用 `setParams` 方法：
 
 ```typescript
 mainButton.setParams({
