@@ -15,7 +15,7 @@ const [closingBehavior] = initClosingBehavior();
 ## Подтверждение закрытия
 
 Чтобы включить и отключить подтверждение закрытия, необходимо использовать методы `enableConfirmation()`
-и `disableConfirmation()`. Эти методы обновляют свойство `isConfirmationNeeded`:
+и `disableConfirmation()`. Обработчик
 
 ```typescript
 closingBehavior.enableConfirmation();
@@ -25,11 +25,11 @@ closingBehavior.disableConfirmation();
 console.log(closingBehavior.isConfirmationNeeded); // false
 ```
 
-## События
+## Событие
 
 Список событий, которые можно [отследить](#events):
 
-| Событие                       | Обработчик                 | Срабатывает, когда                       |
+| События                       | Обработчик                 | Срабатывает, когда                       |
 | ----------------------------- | -------------------------- | ---------------------------------------- |
 | `change`                      | `() => void`               | Что-то изменилось в компоненте           |
 | `change:isConfirmationNeeded` | `(value: boolean) => void` | Свойство `isConfirmationNeeded` изменено |
