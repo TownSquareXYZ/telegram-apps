@@ -13,7 +13,7 @@ import { initThemeParams } from '@telegram-apps/sdk';
 const [themeParams] = initThemeParams();  
 ```
 
-## 请求实际数据 {#request-actual-data}
+## 索取实际数据 {#request-actual-data}
 
 要获取实际的主题参数信息，开发人员可以使用 `requestThemeParams`
 函数：
