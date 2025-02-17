@@ -13,12 +13,13 @@ $debug.set(true);
 ```
 
 将其设置为 `true`后，在调用 `postEvent` 函数或接收
-小程序事件时就会看到日志。
+Mini Apps 事件时就会看到日志。
 
 ## `$targetOrigin`
 
 如果软件包在浏览器环境（iframe）中使用，它将使用 `window.parent.postMessage`
-函数。  该功能需要指定目标来源，以确保事件只发送到
+函数。 该功能需要指定目标来源，以确保事件只发送到
+受信任的父 iframe。 默认情况下，软件包使用 `https://web.telegram.org` 作为原点。 该功能需要指定目标来源，以确保事件只发送到
 受信任的父 iframe。 默认情况下，该软件包使用`https://web.telegram.org`作为来源。
 
 ```typescript
@@ -29,4 +30,5 @@ $targetOrigin.set('https://i-know-what-i-am.doing');
 
 > [!WARNING]
 > 强烈建议不要覆盖此值，否则可能导致安全问题。
+> 只有在确定其影响时才指定该值。
 > 只有在确定其影响时才指定该值。
