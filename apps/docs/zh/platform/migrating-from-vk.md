@@ -1,10 +1,10 @@
-# 将小程序从 VK 迁移到 Telegram
+# 将迷你应用程序从 VK 迁移到 Telegram
 
 ## 1. 入门
 
 ### 在 Telegram 中创建机器人
 
-要开始在 Telegram 中使用 MiniApps，您需要创建一个机器人。  请按照以下步骤操作：
+要开始在 Telegram 中使用 MiniApps，您需要创建一个机器人。 请按照以下步骤操作： 请按照以下步骤操作：
 
 1. 打开 Telegram 应用程序并找到 BotFather。
 2. 开始与 BotFather 对话，并使用 `/start`命令开始创建机器人。
@@ -20,15 +20,15 @@
 
 ## 2) 与平台应用程序接口互动
 
-专用库用于与平台应用程序接口交互，方便用户访问这些平台的功能和特性。 VKontakte 和 Telegram 提供了此类库，分别是 `vk-bridge` 和 `@tma.js/sdk`。  这两个库的功能相似，都允许开发人员与其平台的应用程序接口交互，以获取用户数据并执行其他任务。
+专用库用于与平台应用程序接口交互，方便用户访问这些平台的功能和特性。 专用库用于与平台应用程序接口交互，方便用户访问这些平台的功能和特性。 VKontakte 和 Telegram 提供了此类库，分别是 `vk-bridge` 和 `@tma.js/sdk`。 这两个库的功能相似，都允许开发人员与其平台的应用程序接口交互，以获取用户数据并执行其他任务。 这两个库的功能相似，都允许开发人员与其平台的应用程序接口交互，以获取用户数据并执行其他任务。
 
 ### VKontakte: vk-bridge
 
-`vk-bridge` 库旨在与 VKontakte API 交互。  官方文件可在 [此处](https://dev.vk.com/ru/bridge/overview) 找到。
+`vk-bridge` 库旨在与 VKontakte API 交互。 官方文件可在 [此处](https://dev.vk.com/ru/bridge/overview) 找到。 官方文件可在 [此处](https://dev.vk.com/ru/bridge/overview) 找到。
 
 ### Telegram：@tma.js/sdk
 
-`@tma.js/sdk` 库旨在与 Telegram API 交互。  此外，您还可以使用 Ton 钱包对用户进行授权。
+`@tma.js/sdk` 库旨在与 Telegram API 交互。 官方文件可在 [此处](https://docs.telegram-mini-apps.com/packages/tma-js-sdk) 找到。 此外，您还可以使用 Ton 钱包对用户进行授权。
 标准方法是使用 Ton Proof。 示例如下。 更多信息，请访问 [官方文档](https://docs.ton.org/develop/dapps/ton-connect/sign)。
 
 ## 3. 应用程序授权
@@ -37,9 +37,9 @@ vk 和 telegram 的主要区别在于如何授权用户。
 
 ### VK
 
-#### Backend
+#### 后端
 
-Vk 没有授权任何自定义库。 您需要使用密钥手动计算 `signParams` 的哈希值，该密钥在 vk miniapp 设置中提供。
+Vk 没有授权任何自定义库。 Vk 没有授权任何自定义库。 您需要使用密钥手动计算 `signParams` 的哈希值，该密钥在 vk miniapp 设置中提供。
 
 ```ts
 const VK_APP_SECRET_KEY = 'VK_APP_SECRET_KEY';
@@ -80,7 +80,7 @@ const vkUserId = signParams.vk_user_id;
 
 #### 后台
 
-Telegram 也有类似的机制。 但你可以使用软件包 `@tma.js/init-data-node` 来验证`initData`，使用由 `@BotFather` 提供的秘钥，而不是手动验证。
+Telegram 也有类似的机制。 Telegram 也有类似的机制。 但你可以使用软件包 `@tma.js/init-data-node` 来验证`initData`，使用由 `@BotFather` 提供的秘钥，而不是手动验证。
 
 ```ts
 import { validate } from '@tma.js/init-data-node';
