@@ -24,9 +24,12 @@ qrScanner.open('Scan QR code').then((content) => {
 console.log(qrScanner.isOpened); // true
 ```
 
-因此，方法返回一个 Promise，当扫描到某个二维码时，该 Promise 将被解析。 如果扫描仪已关闭，也可能解析为`null`。
+因此，该方法会返回一个承诺，一旦扫描到某个 QR
+，该承诺就会被解析。 如果扫描仪已关闭，也可能解析为`null`。 如果扫描仪已关闭，也可能解析为`null`。
 
-可以传递一个包含可选属性 `text` 和 `capture` 的对象，`text` 用于在二维码扫描器中显示文本，`capture` 用于确定是否应捕获扫描到的二维码并解析 Promise。
+允许传递一个带有可选属性 `text` 和 `capture` 的对象，该对象负责
+，以便在 QR 扫描仪中显示文本，并确定是否应捕获扫描的 QR 以及是否应履行承诺
+。
 
 ```ts
 qrScanner.open({ 
