@@ -13,7 +13,7 @@
 - `selection_change`，当用户更改选择时。
 - `notification`，当某些操作执行完毕时。
 
-几乎每种类型都有自己的子类型。 几乎每种类型都有自己的子类型。 为了产生触觉反馈，Telegram 小程序
+几乎每种类型都有自己的子类型。 几乎每种类型都有自己的子类型。 为了产生触觉反馈，Telegram 小应用程序
 提供了 [web_app_trigger_haptic_feedback](methods.md#web-app-trigger-haptic-feedback)
 方法。
 

@@ -1,6 +1,6 @@
 # `滑动行为`
 
-执行 Telegram 小程序 [滑动行为](.../.../.../.../platform/swipe-behavior.md) 功能。
+执行 Telegram 迷你应用程序 [轻扫行为](.../.../.../.../platform/swipe-behavior.md) 功能。
 
 ## 初始化
 
@@ -15,8 +15,10 @@ const [swipeBehavior] = initSwipeBehavior();
 ## 垂直滑动 {#vertical-swipe}
 
 默认情况下，用户可以通过向下滑动应用程序来隐藏应用程序。
+默认情况下，用户可以通过向下滑动应用程序来隐藏应用程序。
 为防止可能出现的关闭，可通过调用 `disableVerticalSwipe()`
-方法禁用此行为，或通过 `enableVerticalSwipe()` 方法启用此行为。  反过来，
+方法禁用此行为，或通过 `enableVerticalSwipe()` 方法启用此行为。 反过来，
+这两个方法都会更新 `isVerticalSwipeEnabled` 属性： 反过来，
 这两个方法都会更新 `isVerticalSwipeEnabled` 属性：
 
 ```typescript

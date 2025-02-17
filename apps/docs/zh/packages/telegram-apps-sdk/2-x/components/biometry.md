@@ -1,10 +1,10 @@
 # 生物识别
 
-负责 Telegram 小程序生物识别功能的💠[组件](../scopes.md)。
+负责 Telegram 迷你应用程序生物测量功能的💠[组件](../scopes.md)。
 
 ## 检查支持
 
-要检查当前 Telegram 小程序版本是否支持生物识别，请使用 `isSupported`
+要检查当前 Telegram 小应用程序版本是否支持生物测量，请使用 `isSupported`
 方法：
 
 ::: code-group
@@ -23,31 +23,29 @@ isBiometrySupported(); // boolean
 
 :::
 
-## 挂载
+## 安装
 
-在使用此组件之前，需要将其挂载。
+在使用组件之前，必须先安装组件。
 
 这个过程是异步的，因为生物识别数据需要向 Telegram 应用程序申请。
 在进程中， `isMounting`信号将被设置为 `true`，并在
 完成后更新为 `false`。
 
-如果挂载成功，`isMounted` 信号将设为 `true`。  如果出现错误，`mountError` 信号将反映错误。
+如果挂载成功，`isMounted` 信号将设为 `true`。 如果出现错误，`mountError` 信号将反映错误。 如果出现错误，`mountError` 信号将反映错误。
 
 ::: code-group
 
 ```ts [Variable]
-if (biometry.mount.isAvailable()) {
-  try {
-    const promise = biometry.mount();
-    biometry.isMounting(); // true
-    await promise;
-    biometry.isMounting(); // false
-    biometry.isMounted(); // true
-  } catch (err) {
-    biometry.mountError(); // equals "err"
-    biometry.isMounting(); // false
-    biometry.isMounted(); // false
-  }
+try {
+  const promise = biometry.mount();
+  biometry.isMounting(); // true
+  await promise;
+  biometry.isMounting(); // false
+  biometry.isMounted(); // true
+} catch (err) {
+  biometry.mountError(); // equals "err"
+  biometry.isMounting(); // false
+  biometry.isMounted(); // false
 }
 ```
 
@@ -59,18 +57,16 @@ import {
   biometryMountError,
 } from '@telegram-apps/sdk';
 
-if (mountBiometry.isAvailable()) {
-  try {
-    const promise = mountBiometry();
-    isBiometryMounting(); // true
-    await promise;
-    isBiometryMounting(); // false
-    isBiometryMounted(); // true
-  } catch (err) {
-    biometryMountError(); // equals "err"
-    isBiometryMounting(); // false
-    isBiometryMounted(); // false
-  }
+try {
+  const promise = mountBiometry();
+  isBiometryMounting(); // true
+  await promise;
+  isBiometryMounting(); // false
+  isBiometryMounted(); // true
+} catch (err) {
+  biometryMountError(); // equals "err"
+  isBiometryMounting(); // false
+  isBiometryMounted(); // false
 }
 ```
 
@@ -94,25 +90,22 @@ isBiometryMounted(); // false
 
 :::
 
-## 申请生物识别访问
+## 申请生物测量访问
 
-要请求生物识别访问，请使用 `requestAccess` 方法。  它返回一个带有布尔
+要请求生物测量访问，请使用 `requestAccess` 方法。 它返回一个带有布尔
+值的 promise，表示用户是否允许访问。 它返回一个带有布尔
 值的 promise，表示用户是否允许访问。
 
 ::: code-group
 
 ```ts [Variable]
-if (biometry.requestAccess.isAvailable()) {
-  const granted = await biometry.requestAccess(); // boolean
-}
+const granted = await biometry.requestAccess(); // boolean
 ```
 
 ```ts [Functions]
 import { requestBiometryAccess } from '@telegram-apps/sdk';
 
-if (requestBiometryAccess.isAvailable()) {
-  const granted = await requestBiometryAccess(); // boolean
-}
+const granted = await requestBiometryAccess(); // boolean
 ```
 
 :::
@@ -125,37 +118,34 @@ if (requestBiometryAccess.isAvailable()) {
 
 - `reason?: string`: 要向用户显示的身份验证原因。
 
-该方法返回一个对象，其中包含 `status`（`'failed'` 或 `'authorized'`），如果成功，还会包含 `token: string`。
+该方法返回一个包含 `status` （`'failed'` 或`'authorized'`）的对象，如果成功，
+`token: string`。
 
 ::: code-group
 
 ```ts [Variable]
-if (biometry.authenticate.isAvailable()) {
-  const { status, token } = await biometry.authenticate({
-    reason: 'Please!',
-  });
+const { status, token } = await biometry.authenticate({
+  reason: 'Please!',
+});
 
-  if (status === 'authorized') {
-    console.log(`Authorized. Token: ${token}`);
-  } else {
-    console.log('Not authorized');
-  }
+if (status === 'authorized') {
+  console.log(`Authorized. Token: ${token}`);
+} else {
+  console.log('Not authorized');
 }
 ```
 
 ```ts [Functions]
 import { authenticateBiometry } from '@telegram-apps/sdk';
 
-if (authenticateBiometry.isAvailable()) {
-  const { status, token } = await authenticateBiometry({
-    reason: 'Please!',
-  });
+const { status, token } = await authenticateBiometry({
+  reason: 'Please!',
+});
 
-  if (status === 'authorized') {
-    console.log(`Authorized. Token: ${token}`);
-  } else {
-    console.log('Not authorized');
-  }
+if (status === 'authorized') {
+  console.log(`Authorized. Token: ${token}`);
+} else {
+  console.log('Not authorized');
 }
 ```
 
@@ -173,31 +163,27 @@ if (authenticateBiometry.isAvailable()) {
 ::: code-group
 
 ```ts [Variable]
-if (biometry.updateToken.isAvailable()) {
-  const updated = await biometry.updateToken({
-    reason: 'Want to delete',
-  });
+const updated = await biometry.updateToken({
+  reason: 'Want to delete',
+});
 
-  await biometry.updateToken({
-    reason: 'Will set a new one',
-    token: 'new token',
-  });
-}
+await biometry.updateToken({
+  reason: 'Will set a new one',
+  token: 'new token',
+});
 ```
 
 ```ts [Functions]
 import { updateBiometryToken } from '@telegram-apps/sdk';
 
-if (updateBiometryToken.isAvailable()) {
-  const updated = await updateBiometryToken({
-    reason: 'Want to delete',
-  });
+const updated = await updateBiometryToken({
+  reason: 'Want to delete',
+});
 
-  await updateBiometryToken({
-    reason: 'Will set a new one',
-    token: 'new token',
-  });
-}
+await updateBiometryToken({
+  reason: 'Will set a new one',
+  token: 'new token',
+});
 ```
 
 :::
@@ -210,17 +196,13 @@ if (updateBiometryToken.isAvailable()) {
 ::: code-group
 
 ```ts [Variable]
-if (biometry.openSettings.isAvailable()) {
-  biometry.openSettings();
-}
+biometry.openSettings();
 ```
 
 ```ts [Functions]
 import { openBiometrySettings } from '@telegram-apps/sdk';
 
-if (openBiometrySettings.isAvailable()) {
-  openBiometrySettings();
-}
+openBiometrySettings();
 ```
 
 :::

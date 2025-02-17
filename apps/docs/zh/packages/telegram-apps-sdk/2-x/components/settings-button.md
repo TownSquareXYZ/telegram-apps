@@ -5,7 +5,7 @@ Apps [settings button](../../../../platform/settings-button.md) 的💠[组件](
 
 ## 检查支持
 
-要检查当前 Telegram 小程序版本是否支持设置按钮，可使用
+要检查当前 Telegram 迷你应用程序版本是否支持设置按钮，可使用
 `isSupported` 方法：
 
 ::: code-group
@@ -24,7 +24,7 @@ isSettingsButtonSupported(); // boolean
 
 :::
 
-## 挂载
+## 安装
 
 在使用此组件之前，需要将其挂载，以便与正确配置的属性一起工作。
 在使用该组件之前，有必要将其安装到正确配置的属性中。
@@ -35,10 +35,8 @@ isSettingsButtonSupported(); // boolean
 ```ts [Variable]
 import { settingsButton } from '@telegram-apps/sdk';
 
-if (settingsButton.mount.isAvailable()) {
-  settingsButton.mount();
-  settingsButton.isMounted(); // true
-}
+settingsButton.mount();
+settingsButton.isMounted(); // true
 ```
 
 ```ts [Functions]
@@ -47,10 +45,8 @@ import {
   isSettingsButtonMounted,
 } from '@telegram-apps/sdk';
 
-if (mountSettingsButton.isAvailable()) {
-  mountSettingsButton();
-  isSettingsButtonMounted(); // true
-}
+mountSettingsButton();
+isSettingsButtonMounted(); // true
 ```
 
 :::
@@ -78,21 +74,18 @@ isSettingsButtonMounted(); // false
 
 ## 展示与隐藏
 
-要更改按钮的可见性，请使用 `hide()` 和 `show()` 方法。  这些方法会更新
+要更改按钮的可见性，请使用 `hide()` 和 `show()` 方法。 这些方法会更新
+`isVisible` 信号属性值。 这些方法会更新
 `isVisible` 信号属性值。
 
 ::: code-group
 
 ```ts [Variable]
-if (settingsButton.show.isAvailable()) {
-  settingsButton.show();
-  settingsButton.isVisible(); // true
-}
+settingsButton.show();
+settingsButton.isVisible(); // true
 
-if (settingsButton.hide.isAvailable()) {
-  settingsButton.hide();
-  settingsButton.isVisible(); // false
-}
+settingsButton.hide();
+settingsButton.isVisible(); // false
 ```
 
 ```ts [Functions]
@@ -102,15 +95,11 @@ import {
   isSettingsButtonVisible,
 } from '@telegram-apps/sdk';
 
-if (showSettingsButton.isAvailable()) {
-  showSettingsButton();
-  isSettingsButtonVisible(); // true
-}
+showSettingsButton();
+isSettingsButtonVisible(); // true
 
-if (hideSettingsButton.isAvailable()) {
-  hideSettingsButton();
-  isSettingsButtonVisible(); // false
-}
+hideSettingsButton();
+isSettingsButtonVisible(); // false
 ```
 
 :::
@@ -123,36 +112,29 @@ if (hideSettingsButton.isAvailable()) {
 ::: code-group
 
 ```ts [Variable]
-if (settingsButton.onClick.isAvailable()) {
-  function listener() {
-    console.log('Clicked!');
-  }
-
-  const offClick = settingsButton.onClick(listener);
-  offClick();
-  // or
-  settingsButton.onClick(listener);
-  settingsButton.offClick(listener);
+function listener() {
+  console.log('Clicked!');
 }
+
+const offClick = settingsButton.onClick(listener);
+offClick();
+// or
+settingsButton.onClick(listener);
+settingsButton.offClick(listener);
 ```
 
 ```ts [Functions]
-import {
-  onSettingsButtonClick,
-  offSettingsButtonClick,
-} from '@telegram-apps/sdk';
+import { onSettingsButtonClick, offSettingsButtonClick } from '@telegram-apps/sdk';
 
-if (onSettingsButtonClick.isAvailable()) {
-  function listener() {
-    console.log('Clicked!');
-  }
-
-  const offClick = onSettingsButtonClick(listener);
-  offClick();
-  // or
-  onSettingsButtonClick(listener);
-  offSettingsButtonClick(listener);
+function listener() {
+  console.log('Clicked!');
 }
+
+const offClick = onSettingsButtonClick(listener);
+offClick();
+// or
+onSettingsButtonClick(listener);
+offSettingsButtonClick(listener);
 ```
 
 :::

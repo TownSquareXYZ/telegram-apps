@@ -1,6 +1,6 @@
-# `返回按钮`
+# 返回按钮
 
-执行 Telegram 小程序 [返回按钮](.../.../.../.../platform/back-button.md)。
+执行 Telegram 迷你应用程序 [返回按钮](.../.../.../.../platform/back-button.md)。
 
 ## 初始化
 

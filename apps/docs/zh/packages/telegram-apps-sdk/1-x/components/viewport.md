@@ -1,6 +1,7 @@
-# `视口 - Viewport {#Viewport}`
+# `视口`
 
-实现小程序 [viewport](../../../../platform/viewport.md) 功能。
+实现 Telegram Mini
+Apps [viewport](../../../../platform/viewport.md) 功能。
 
 ## 初始化
 
@@ -22,8 +23,9 @@ const [viewport] = initViewport();
 ## 尺寸
 
 应用程序可以只显示小程序的上半部分，下半部分则保留在
-屏幕区域之外。 从这个位置，用户可以将小程序 "拉 "到最大高度，而
-开发人员也可以通过调用 `expand` 方法（使用`isExpanded`属性获取当前
+屏幕区域之外。 应用程序可以只显示迷你应用程序的上半部分，下半部分则保留在
+屏幕区域之外。 从这个位置，用户可以将迷你应用程序 "拉 "到最大高度，而
+开发人员也可以通过调用 `expand` 方法（使用`isExpanded`道具获取当前
 的扩展状态）来完成同样的操作：
 
 ```typescript
@@ -45,7 +47,7 @@ if (!vp.isExpanded) {
 可视区域的底部。 为此，使用 `stableHeight` 字段的值更为合适。
 :::
 
-## 获取实际数据
+## 索取实际数据
 
 要获取实际的视口信息，开发人员可以使用 `requestViewport` 函数：
 
@@ -66,7 +68,7 @@ requestViewport().then((data) => {
 | 事件                    | 监听器                               | 触发条件                  |
 | --------------------- | --------------------------------- | --------------------- |
 | `change`              | `() => void`                      | 组件中的某些部分发生了变化         |
-| `change:height`       | `(height: number) => void`        | `height` 属性已更改        |
+| `change:height`       | `(height: number) => void`        | 高度 "属性已更改             |
 | `change:isExpanded`   | `(isExpanded: boolean) => void`   | 更改了 `isExpanded` 属性   |
 | `change:stableHeight` | `(stableHeight: boolean) => void` | 更改了 `stableHeight` 属性 |
 | `change:width`        | `(width: boolean) => void`        | 更改了 `width` 属性        |

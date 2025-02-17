@@ -16,7 +16,7 @@ const [swipeBehavior] = initSwipeBehavior();
 
 По умолчанию пользователи могут скрыть приложение, просто проведя по нему пальцем вниз.
 Чтобы предотвратить возможное закрытие, вы можете отключить это поведение, вызвав метод `disableVerticalSwipe()`
-или включить с помощью метода `enableVerticalSwipe()`. В свою очередь, оба этих метода обновляют свойство `isVerticalSwipeEnabled`:
+или включить с помощью метода `enableVerticalSwipe()`. Обработчик
 
 ```typescript
 swipeBehavior.enableVerticalSwipe();
@@ -26,11 +26,11 @@ swipeBehavior.disableVerticalSwipe();
 console.log(swipeBehavior.isVerticalSwipeEnabled); // false
 ```
 
-## События
+## Событие
 
 Список событий, которые можно [отследить](#events):
 
-| Событие                         | Обработчик                 | Срабатывает, когда                         |
+| События                         | Обработчик                 | Срабатывает, когда                         |
 | ------------------------------- | -------------------------- | ------------------------------------------ |
 | `change`                        | `() => void`               | Что-то в компоненте изменилось             |
 | `change:isVerticalSwipeEnabled` | `(value: boolean) => void` | Изменено свойство `isVerticalSwipeEnabled` |

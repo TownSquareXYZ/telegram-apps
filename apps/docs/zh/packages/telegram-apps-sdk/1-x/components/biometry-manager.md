@@ -1,4 +1,4 @@
-# `BiometryManager`
+# 生物测量管理器
 
 ## 初始化
 
@@ -12,7 +12,8 @@ const [biometryManager] = initBiometryManager();
 
 ::: info
 
-由于 `BiometryManager` 无法同步实例化，因此此函数返回一个 Promise，当生物识别管理器数据被检索到时，该 Promise 将被解析。
+由于 BiometryManager 无法同步实例化，因此该函数返回一个承诺，在获取生物测量管理器数据时，
+。
 
 :::
 
@@ -32,17 +33,17 @@ bm
 
 ## 打开设置
 
-要打开带有生物识别设置的模态窗口，请使用 `openSettings` 方法：
+要打开包含生物测量设置的模态窗口，请使用 `openSettings` 方法：
 
 ```ts
 bm.openSettings();
 ```
 
-在此模态窗口中，用户可以启用或禁用生物识别功能。
+在该模式下，用户可以打开或关闭生物测量功能。
 
 ## 申请访问
 
-要申请使用生物识别的权限，请使用 `requestAccess` 方法：
+要申请使用生物测量的权限，请使用 `requestAccess` 方法：
 
 ```ts
 bm
@@ -55,7 +56,7 @@ bm
 除了 `authenticate` 方法外，它还接受一个可选的 `reason: string` 属性，长度为
 ，最多 128 个符号。
 
-## 更新生物识别令牌 - Biometry Token {#update-biometry-token}
+## 更新生物测量令牌 - Biometry Token {#update-biometry-token}
 
 要更新存储在安全存储器中的令牌，请使用 `updateToken` 方法：
 
