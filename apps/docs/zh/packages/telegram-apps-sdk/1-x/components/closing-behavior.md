@@ -13,7 +13,7 @@ import { initClosingBehavior } from '@telegram-apps/sdk';
 const [closingBehavior] = initClosingBehavior()；  
 ```
 
-## 关闭确认
+## 闭幕确认
 
 关闭行为 要启用或禁用关闭确认，需要使用 `enableConfirmation()`
 和 `disableConfirmation()` 方法。 这些方法会更新 `isConfirmationNeeded` 属性：
@@ -30,7 +30,7 @@ console.log(closingBehavior.isConfirmationNeeded); // false
 
 可被 [跟踪](#events) 的事件列表：
 
-| 事件                            | 监听器                        | 触发条件                         |
-| ----------------------------- | -------------------------- | ---------------------------- |
-| `change`                      | `() => void`               | 组件中的某些部分发生了变化                |
-| `change:isConfirmationNeeded` | `(value: boolean) => void` | `isConfirmationNeeded` 属性已更改 |
+| 事件                            | 监听器                        | 触发条件                          |
+| ----------------------------- | -------------------------- | ----------------------------- |
+| `change`                      | `() => void`               | 组件中的某些部分发生了变化                 |
+| `change:isConfirmationNeeded` | `(value: boolean) => void` | 已更改 `isConfirmationNeeded` 属性 |
