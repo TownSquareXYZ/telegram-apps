@@ -9,10 +9,10 @@ hero:
   actions:
     - theme: brand
       text: Платформа
-      link: /platform/about
+      link: /ru/platform/about
     - theme: alt
       text: Пакеты
-      link: /packages/telegram-apps-create-mini-app
+      link: /ru/packages/telegram-apps-create-mini-app
 features:
   - icon: 💻
     title: Мультиплатформенность
