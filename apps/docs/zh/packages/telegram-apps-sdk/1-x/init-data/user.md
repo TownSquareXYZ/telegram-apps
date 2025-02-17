@@ -47,15 +47,14 @@
 类型：`string`, _可选_
 
 用户语言的[IETF 语言标记](https://en.wikipedia.org/wiki/IETF_language_tag)。 仅返回用户字段中的
-。 仅返回用户字段中的
 。
 
 ### `photoUrl`
 
 类型：`string`, _可选_
 
-用户个人照片的 URL。 照片可以是 .jpeg 或 .svg 格式。 仅为从附件菜单启动的 Web
-应用程序返回。
+用户个人照片的 URL。 照片可以是 .jpeg 或 .svg 格式。 仅返回从附件菜单启动的 Web
+应用程序。
 
 ### `username`
 

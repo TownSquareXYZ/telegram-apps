@@ -1,7 +1,5 @@
 ---
-outline:
-  - 2
-  - 3
+outline: [2, 3]
 ---
 
 # 迷你应用程序
@@ -21,11 +19,11 @@ const [miniApp] = initMiniApp();
 
 ## 颜色
 
-### 页眉(Header)
+### 页眉
 
 开发人员可以获取并更新 Mini App 的标题和背景颜色。 要获取
 标题颜色的当前值，开发人员可参考 `headerColor` 属性，并通过
-`setHeaderColor` 方法进行更新： 页眉
+`setHeaderColor` 方法进行更新：
 
 ```typescript
 miniApp.setHeaderColor('secondary_bg_color');
@@ -42,7 +40,7 @@ miniApp.setBgColor('#888311');
 ```
 
 迷你应用背景色用于确定当前迷你应用是否为深色调。 要知道
-当前调色板是否为暗色，开发人员应使用 `isDark` 属性： 触发条件
+当前调色板是否为暗色，开发人员应使用 `isDark` 属性：
 
 ```typescript
 console.log(miniApp.isDark); // false
@@ -52,7 +50,6 @@ console.log(miniApp.isDark); // false
 
 从 Telegram Mini Apps 6.9 版本开始，允许 Mini Apps 申请访问手机
 号码和申请写入当前用户的权限。 为此，允许开发人员使用
-`requestPhoneAccess` 和 `requestWriteAccess` 方法： 为此，允许开发人员使用
 `requestPhoneAccess` 和 `requestWriteAccess` 方法：
 
 ```typescript
@@ -87,8 +84,7 @@ miniApp.requestContact().then(contact => {
 
 迷你应用程序可在 [内联模式](https://core.telegram.org/bots/inline) 下启动。 当
 在这种模式下启动迷你应用程序时，允许开发人员使用 `switchInlineQuery`
-方法： 建议尽早调用该方法，即在加载所有基本接口
-元素后立即调用。 调用该方法后，加载占位符将被隐藏，迷你应用程序将显示出来。
+方法：
 
 ```typescript
 miniApp.switchInlineQuery('Show me something', ['users', 'groups']);
@@ -112,7 +108,7 @@ console.log(miniApp.isBotInline); // false
 通知 Telegram 应用程序已准备好显示迷你应用程序。
 
 建议尽早调用该方法，即在加载所有基本接口
-元素后立即调用。 调用该方法后，加载占位符将被隐藏，小程序将显示出来。
+元素后立即调用。 调用该方法后，加载占位符将被隐藏，迷你应用程序将显示出来。
 
 如果该方法未被调用，占位符只有在页面完全加载后才会被隐藏。
 
@@ -139,9 +135,7 @@ miniApp.close(true);
 
 ### `sendData`
 
-用于向机器人发送数据的方法。 调用此方法时，Telegram 应用程序会发送机器人用户名和指定文本，以
-用户选择的聊天内容。 可用聊天列表将受到第二个参数中指定的聊天类型
-的限制。 用于向机器人发送数据的方法。 调用该方法时，会向
+用于向机器人发送数据的方法。 调用该方法时，会向
 机器人发送一条服务消息，其中包含长度不超过 4096 字节的数据，然后关闭 Mini App。 请参阅
 [Message](https://core.telegram.org/bots/api#message) 类中的 `web_app_data` 字段。
 
@@ -149,14 +143,14 @@ miniApp.close(true);
 
 可被 [跟踪](#events) 的事件列表：
 
-| 事件                   | 监听器                                      | 触发条件                 |
-| -------------------- | ---------------------------------------- | -------------------- |
-| `change`             | `() => void`                             | 组件中的某些部分发生了变化        |
-| `change:bgColor`     | `(value: RGB) => void`                   | 更改了 `bgColor` 属性     |
+| 事件                             | 监听器                                                            | 触发条件                 |
+| ------------------------------ | ------------------------------------------------------------- | -------------------- |
+| `change`                             | `() => void`                                                  | 组件中的某些部分发生了变化        |
+| `change:bgColor`     | `(value: RGB) => void`     | 更改了 `bgColor` 属性     |
 | `change:headerColor` | `(value: HeaderColorKey or RGB) => void` | 更改了 `headerColor` 属性 |
 
 ## 方法支持 {#methods-support}
 
 方法和参数列表，可在
-[support checks](../components.md#methods-support) 中使用：`requestWriteAccess`、`requestPhoneAccess`、
+[support checks](../components.md#methods-support) 中使用：`requestWriteAccess`、`requestPhoneAccess`、 
 `switchInlineQuery`、`setHeaderColor`、`setBgColor`和`setHeaderColor.color`。

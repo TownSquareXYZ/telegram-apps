@@ -29,7 +29,7 @@ isHapticFeedbackSupported(); // boolean
 `impactOccurred` 是发出撞击事件信号的方法。 Telegram 应用程序可根据传递的样式值播放
 适当的触觉反馈。
 
-::: code-group
+::: code-group 
 
 ```ts [Variable]
 hapticFeedback.impactOccurred('medium');
@@ -53,8 +53,8 @@ hapticFeedbackImpactOccurred('medium');
 
 ## 发生通知
 
-`notificationOccurred` 是一种方法，用于发出任务或操作成功、失败或触发警告的信号。 Telegram 应用程序可根据传递的类型
-值播放适当的触觉反馈。
+`notificationOccurred` 是一种方法，用于发出任务或操作成功、失败或触发警告的信号。
+Telegram 应用程序可根据传递的类型值播放适当的触觉反馈。
 
 ::: code-group
 
@@ -78,8 +78,7 @@ hapticFeedbackNotificationOccurred('success');
 
 ## 更改了选择
 
-`selectionChanged` 是用户更改选择时发出信号的方法。 Telegram 应用程序可能会播放相应的触觉反馈。 Telegram 应用程序可能会
-播放相应的触觉反馈。
+`selectionChanged` 是用户更改选择时发出信号的方法。 Telegram 应用程序可能会播放相应的触觉反馈。
 
 只有在选择发生变化时，而不是在做出或确认选择时，才使用此反馈。
 

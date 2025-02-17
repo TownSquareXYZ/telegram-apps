@@ -14,7 +14,7 @@ postEvent('web_app_setup_back_button', { is_visible: true });
 ```
 
 该功能会根据当前
-环境自动确定发送事件的正确方式。 它能识别 Telegram 应用程序类型并选择合适的流程。 它能识别 Telegram 应用程序类型并选择合适的流程。
+环境自动确定发送事件的正确方式。 它能识别 Telegram 应用程序类型并选择合适的流程。
 
 ### `request`
 
@@ -143,7 +143,7 @@ request('web_app_open_invoice', 'invoice_closed', {
 });
 ```
 
-默认情况下，`request` 函数会捕获带有所需名称的第一个事件。 默认情况下，`request` 函数会捕获具有所需名称的第一个事件。 在这种情况下，只有当事件具有预期的标签时，该函数才会捕获事件，特定于
+默认情况下，`request` 函数会捕获具有所需名称的第一个事件。 在这种情况下，只有当事件具有预期的标签时，该函数才会捕获事件，特定于
 [invoice_closed](../../platform/events.md#invoice-closed) 事件。
 
 当传递一个事件数组时，`capture` 函数将收到一个对象，其中包含
@@ -186,12 +186,11 @@ invokeCustomMethod('deleteStorageValues', { keys: ['a'] }, 'ABC');
 。
 
 与`request`函数不同，`invokeCustomMethod`函数会解析结果，并检查
-是否包含`error`属性。 如果是，函数会抛出相应的错误；否则，返回 `result` 属性。 如果是，函数会抛出相应的错误；否则，
-，返回 `result` 属性。
+是否包含`error`属性。 如果是，函数会抛出相应的错误；否则，返回 `result` 属性。
 
 ## 检查方法支持
 
-`postEvent` 函数不会检查当前 Telegram 应用程序是否支持指定的方法。 为此，需要使用 `supports` 函数。 为此，需要使用 `supports` 函数。
+`postEvent` 函数不会检查当前 Telegram 应用程序是否支持指定的方法。 为此，需要使用 `supports` 函数。
 
 它接受 Mini Apps 方法名称和当前平台版本：
 

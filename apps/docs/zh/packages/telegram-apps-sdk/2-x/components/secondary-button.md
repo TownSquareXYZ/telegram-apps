@@ -25,8 +25,8 @@ isSecondaryButtonSupported(); // boolean
 
 ## 安装
 
-在使用此组件之前，需要将其挂载，以便与正确配置的属性一起工作。 在使用该组件之前，有必要将其安装到配置正确的
-属性中。 为此，请使用 `mount` 方法。 它将更新 `isMounted` 信号属性。 它将更新 `isMounted` 信号属性。
+在使用该组件之前，有必要将其安装到配置正确的
+属性中。 为此，请使用 `mount` 方法。 它将更新 `isMounted` 信号属性。
 
 ::: code-group
 
@@ -74,14 +74,11 @@ isSecondaryButtonMounted(); // false
 > 该组件的属性取决于 [Mini App](mini-app.md)
 > 和 [Theme Params](theme-params.md) 组件的值。 具体来说，二级按钮使用 Mini
 > App 的 `bottomBarBgColor` 和一些主题参数颜色。 在使用辅助按钮之前，请确保将这些组件安装到
-> 。 具体来说，次级按钮使用 Mini
-> App 的 `bottomBarBgColor` 和一些主题参数颜色。 在使用次级按钮之前，请确保将这些组件已挂载
 > 。
 
 ## 设置属性
 
 要更新按钮属性，请使用 `setParams` 方法。 它接受一个带有可选
-属性的对象，每个属性负责各自的按钮特性。 它接受一个带有可选
 属性的对象，每个属性负责各自的按钮特性。
 
 反过来，调用该方法会更新

@@ -26,9 +26,8 @@ isSettingsButtonSupported(); // boolean
 
 ## 安装
 
-在使用此组件之前，需要将其挂载，以便与正确配置的属性一起工作。
 在使用该组件之前，有必要将其安装到正确配置的属性中。
-为此，请使用 `mount` 方法。 它将更新 `isMounted` 信号属性。 它将更新 `isMounted` 信号属性。
+为此，请使用 `mount` 方法。 它将更新 `isMounted` 信号属性。
 
 ::: code-group
 
@@ -75,7 +74,6 @@ isSettingsButtonMounted(); // false
 ## 展示与隐藏
 
 要更改按钮的可见性，请使用 `hide()` 和 `show()` 方法。 这些方法会更新
-`isVisible` 信号属性值。 这些方法会更新
 `isVisible` 信号属性值。
 
 ::: code-group

@@ -6,7 +6,7 @@ Mate 是 Telegram Mini Apps
 ## 安装
 
 要开始使用 Mate，需要安装 `@telegram-apps/mate`
-软件包。 开发人员可以在本地和全球范围内进行开发： 开发人员可以在本地和全球范围内进行开发：
+软件包。 开发人员可以在本地和全球范围内进行开发：
 
 :::code-group
 

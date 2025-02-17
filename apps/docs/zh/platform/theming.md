@@ -1,25 +1,20 @@
-# 主题设置
+# 设计
 
 ![主题](/functionality/theming.png)
 
 迷你应用程序是一种网络应用程序，旨在拥有原生外观。 这不仅包括使用模仿本地元素的组件
 ，还包括采用父应用程序的颜色
-方案。 这不仅包括使用模仿本地元素的组件
-，还包括采用父应用程序的颜色
 方案。
 
 迷你应用程序的颜色目前与 Telegram 应用程序中使用的颜色一致。
 迷你应用程序应使用这些颜色，以确保外观的一致性和原生性。
-检索
 
 ## 检索
 
 ### 应用启动参数
 
 Telegram 小应用程序通过名为
-[tgWebAppThemeParams](launch-parameters.md#tgwebappthemeparams) 的应用启动参数提供主题数据。 该
-参数表示一个序列化 JSON 对象，其中包含一系列可选属性，每个
-属性描述一种调色板颜色。 该
+ [tgWebAppThemeParams](launch-parameters.md#tgwebappthemeparams) 的应用启动参数提供主题数据。 该
 参数表示一个序列化 JSON 对象，其中包含一系列可选属性，每个
 属性描述一种调色板颜色。
 
@@ -46,13 +41,13 @@ Telegram 小应用程序通过名为
 
 ### Telegram 迷你应用程序方法
 
-不过，通过应用启动参数检索主题数据并不是唯一的方法。  不过，通过应用启动参数检索主题数据并不是唯一的方法。 Telegram 小应用程序
+不过，通过应用启动参数检索主题数据并不是唯一的方法。 Telegram 小应用程序
 还允许通过名为 [web_app_request_theme](methods.md#web-app-request-theme) 的方法
 获取主题。
 
 调用此方法后，Telegram 将发出名为 [theme_changed](events.md#theme-changed) 的事件
 。 该事件
-的有效载荷包含一个名为 `theme_params` 的属性，其格式如上一节所述。 设计
+的有效载荷包含一个名为 `theme_params` 的属性，其格式如上一节所述。
 
 ## 背景和标题颜色
 

@@ -2,7 +2,7 @@
 
 `BrowserNavigator` 是一个使用浏览器历史 API 实现导航的类。
 导航器对标准导航器进行了扩展，提供了基本的导航功能和专门用于
-浏览器历史记录的逻辑。 当前路径名。 总是以斜线开头。
+浏览器历史记录的逻辑。
 
 ## 构造函数
 
@@ -36,7 +36,7 @@ const n = new BrowserNavigator(['/'], 0, {
 
 ### `hashMode`
 
-`hashMode` 属性允许开发人员设置导航器使用的导航模式。 允许的值有：`classic`（`#pathname`）、`slash`（`#/pathname`）和`null`。 `hashMode` 属性允许开发人员设置导航器使用的导航模式。
+`hashMode` 属性允许开发人员设置导航器使用的导航模式。
 允许的值有：`classic`（`#pathname`）、`slash`（`#/pathname`）和`null`。 传递 `null` 值
 会将导航器从 SPA 模式切换到 MPA 模式，使用整个 `href` 而不是位置的哈希部分
 。
@@ -70,9 +70,7 @@ n.renderPath('/home'); // -> /solidjs-template/home
 为了简化创建 `BrowserNavigator` 的过程，软件包提供了
 `createBrowserNavigatorFromLocation` 方法。 根据所传递的选项（即前面描述的构造函数
 选项），它会解析当前位置并创建
-一个 `BrowserNavigator` 实例。 推送新的历史项目。 该方法用
-推送的条目替换当前条目之后的所有条目。 请注意，传递的项目总是相对的。 如果要将其用作绝对值，请使用
-`/` 前缀。 例如：`/absolute`, `{ pathname: '/absolute' }`.
+一个 `BrowserNavigator` 实例。
 
 ```typescript
 import { createBrowserNavigatorFromLocation } from '@telegram-apps/sdk';
@@ -86,7 +84,6 @@ const navigator = createBrowserNavigatorFromLocation({
 
 `initNavigator` 函数负责使用先前保存的导航器状态创建一个 `BrowserNavigator` 实例
 。 它还会自动将其保存在会话存储
-中，以便将来恢复状态。 它还会自动将其保存在会话存储
 中，以便将来恢复状态。
 
 该函数接受会话存储密钥名称（其中将包含导航器状态）和
@@ -109,8 +106,7 @@ const n = initNavigator('app-navigator-state', {
 浏览器历史记录。 要做到这一点，开发人员应将其附加到系统中。 在此之前，
 导航器只会更新其内部状态，并通知所有订阅者有关更改。 手动
 附件是必要的，以防止出现创建多个此类导航器的情况，即
-每个导航器都试图用其内部状态控制浏览器历史记录。 要做到这一点，开发人员应将其附加到系统中。 在此之前，
-导航器只会更新其内部状态，并通知所有订阅者有关更改。 为了防止多次创建此类型的导航器并且每个导航器都试图通过其内部状态控制浏览器历史记录，必须手动附加。
+每个导航器都试图用其内部状态控制浏览器历史记录。
 
 为了让导航器控制浏览器的历史记录，需要通过
 `attach`方法来附加历史记录：
@@ -158,8 +154,6 @@ navigator.forward();
 按指定的 delta 值更改当前活动的历史项目索引。 如果更新后的索引指向一个不存在的历史项，该方法不会更改
 索引。 在指定 `fit` 参数之前，
 。 如果指定了它，该方法会调整传入的 delta，使
-适合`[0, history.length - 1]`范围。 如果更新后的索引指向一个不存在的历史项，该方法不会更改
-索引。 这发生在指定 `fit` 参数之前。 如果指定了它，该方法会调整传入的 delta，使其
 适合`[0, history.length - 1]`范围。
 
 ```typescript
@@ -247,7 +241,7 @@ navigator.push({ search: '?id=1' });
 
 :::info
 推送带有不同查询参数或缺少查询参数的新路径名将导致当前
-查询参数丢失。 为防止出现这种情况，开发人员应再次通过它们。 为防止出现这种情况，开发人员应再次传入它们。
+查询参数丢失。 为防止出现这种情况，开发人员应再次通过它们。
 :::
 
 #### Hash
@@ -266,7 +260,7 @@ navigator.push({ hash: '#introduction' });
 ### `replace`
 
 `replace` 方法的功能与 [push](#push) 方法类似，但它不会创建新的
-条目。 相反，它取代了当前的版本。 相反，它取代了当前的版本。
+条目。 相反，它取代了当前的版本。
 
 ## 属性
 
@@ -282,7 +276,7 @@ navigator.index; // 0
 ### `id`
 
 当前历史项目标识符。 如果没有明确指定
-id，导航器会自行生成。 转到指定的索引。 如果传递的索引超出范围，该方法将不起任何作用。
+id，导航器会自行生成。
 
 ```typescript
 const navigator = new BrowserNavigator(['/'], 0);
@@ -392,8 +386,6 @@ navigator.state; // 'test'
 
 `BrowserNavigator` 提供了 `on` 和 `off` 方法来管理事件监听器。 目前，可用于监听的
 事件只有 `change`。 `change` 事件的有效载荷是一个对象，包含
-以下属性： 目前，可用于监听的
-事件只有 `change`。 `change` 事件的有效载荷是一个对象，包含
 以下属性：
 
 - `navigator: BrowserNavigator`: 相关导航器实例。
@@ -435,7 +427,7 @@ navigator.off('change', listener);
 ### `renderPath`
 
 `renderPath` 方法将导航器的 `base` 属性与给定的路径数据相结合，并应用
-导航器的导航模式。 该方法以字符串形式返回完全渲染的路径。 该方法以字符串形式返回完全渲染的路径。
+导航器的导航模式。 该方法以字符串形式返回完全渲染的路径。
 
 ```typescript
 const n = new BrowserNavigator(['/'], 0, {
@@ -459,7 +451,7 @@ n3.renderPath('/test'); // '/my-base/test'
 ### `parsePath`
 
 `parsePath` 方法会根据当前导航类型解析所提供的路径，并以对象形式返回
-。 这种方法有助于了解导航器如何解释给定路径。 这种方法有助于了解导航器如何解释给定路径。
+。 这种方法有助于了解导航器如何解释给定路径。
 
 ```typescript
 const n = new BrowserNavigator(['/'], 0);

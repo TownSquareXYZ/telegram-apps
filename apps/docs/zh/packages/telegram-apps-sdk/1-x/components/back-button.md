@@ -15,7 +15,6 @@ const [backButton] = initBackButton();
 ## 展示与隐藏
 
 显示和隐藏 `BackButton` 时，需要使用 `show()` 和 `hide()` 方法。
-更新按钮的 `isVisible` 属性： 这些方法
 更新按钮的 `isVisible` 属性：
 
 ```typescript
@@ -24,13 +23,13 @@ console.log(backButton.isVisible); // true
 
 backButton.hide();
 console.log(backButton.isVisible); // false  
-```
+```  
 
 ## 事件 {#events}
 
 可被 [跟踪](#events) 的事件列表：
 
-| 事件                 | 监听器                        | 触发条件               |
+| 事件                 | 监听函数                         | 触发条件               |
 | ------------------ | -------------------------- | ------------------ |
 | `click`            | `() => void`               | 点击了返回按钮            |
 | `change`           | `() => void`               | 组件中的某些部分发生了变化      |

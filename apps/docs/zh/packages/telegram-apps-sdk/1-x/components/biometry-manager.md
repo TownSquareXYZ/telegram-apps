@@ -74,15 +74,15 @@ bm
 
 可被 [跟踪](#events) 的事件列表：
 
-| 事件                       | 监听器                             | 触发条件                     |
-| ------------------------ | ------------------------------- | ------------------------ |
-| `change:accessGranted`   | `(value: boolean) => void`      | 已更改 `accessGranted` 属性   |
-| `change:accessRequested` | `(value: boolean) => void`      | 更改了 `accessRequested` 属性 |
-| `change:available`       | `(value: boolean) => void`      | 更改了 `available` 属性       |
-| `change:deviceId`        | `(value: string) => void`       | 已更改 `deviceId` 属性        |
-| `change:tokenSaved`      | `(value: boolean) => void`      | 更改了 `tokenSaved` 属性      |
-| `change:token`           | `(value: string) => void`       | 更改了 `token` 属性           |
-| `change:biometryType`    | `(value: BiometryType) => void` | 更改了 `biometryType` 属性    |
+| 事件                                | 监听函数                                               | 触发条件                     |
+| --------------------------------- | ------------------------------------------------ | ------------------------ |
+| `change:accessGranted`              | `(value: boolean) => void`                       | 已更改 `accessGranted` 属性   |
+| `change:accessRequested`            | `(value: boolean) => void`                       | 更改了 `accessRequested` 属性 |
+| `change:available`                  | `(value: boolean) => void`                       | 更改了 `available` 属性       |
+| `change:deviceId`                   | `(value: string) => void`                        | 已更改 `deviceId` 属性        |
+| `change:tokenSaved`                 | `(value: boolean) => void`                       | 更改了 `tokenSaved` 属性      |
+| `change:token`                      | `(value: string) => void`                        | 更改了 `token` 属性           |
+| `change:biometryType`               | `(value: BiometryType) => void`                  | 更改了 `biometryType` 属性    |
 
 ## 方法支持 {#methods-support}
 

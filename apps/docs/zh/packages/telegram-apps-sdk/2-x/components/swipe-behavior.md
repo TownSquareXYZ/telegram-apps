@@ -25,8 +25,8 @@ isSwipeBehaviorSupported(); // boolean
 
 ## 安装
 
-在使用此组件之前，需要将其挂载，以便与正确配置的属性一起工作。
-为此，请使用 `mount` 方法。  它将更新 `isMounted` 信号属性。
+在使用该组件之前，有必要将其安装到正确配置的属性中。
+为此，请使用 `mount` 方法。 它将更新 `isMounted` 信号属性。
 
 ::: code-group
 
@@ -73,7 +73,6 @@ isSwipeBehaviorMounted(); // false
 ## 控制纵向滑动
 
 要启用或禁用垂直轻扫，请使用 `enableVertical` 和 `disableVertical` 方法。
-调用这些方法时，会更新 `isVerticalEnabled` 信号属性值。
 调用这些方法时，会更新 `isVerticalEnabled` 信号属性值。
 
 ::: code-group

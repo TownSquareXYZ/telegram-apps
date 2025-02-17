@@ -13,10 +13,10 @@ import { initInvoice } from '@telegram-apps/sdk';
 const invoice = initInvoice();  
 ```
 
-## 打开支付请求
+## 开发票
 
 要开发票，需要使用 `open` 方法。 这种方法允许使用发票的 URL 或 slug 开发票
-。 该方法允许通过 URL 或 slug 打开支付请求。
+。
 
 在 URL 模式下开发票需要传递等于 `url` 的第二个参数，因此
 方法会将传递的值解释为 URL。
@@ -47,7 +47,7 @@ invoice
 
 ::: info
 
-请注意，slug 是字符串的一部分，位于 `$` 符号之后。 请注意，slug 是字符串的一部分，位于 `$` 符号之后。 因此，在获得 Telegram Bot API 返回的 `$abcdefghi` 值后，必须使用 `abcdefghi` 值或完整的 URL(https://t.me/invoice/abcdefghi or https://t.me/$abcdefghi)调用 `open` 方法。
+请注意，slug 是字符串的一部分，位于 `$` 符号之后。 因此，在获得 Telegram Bot API 返回的 `$abcdefghi` 值后，必须使用 `abcdefghi` 值或完整的 URL(https://t.me/invoice/abcdefghi or https://t.me/$abcdefghi)调用 `open` 方法。
 
 :::
 
@@ -55,10 +55,10 @@ invoice
 
 可被 [跟踪](#events) 的事件列表：
 
-| 事件                | 监听器                        | 触发条件              |
-| ----------------- | -------------------------- | ----------------- |
-| `change`          | `() => void`               | 组件中的某些部分发生了变化     |
-| `change:isOpened` | `(value: boolean) => void` | 更改了 `isOpened` 属性 |
+| 事件                              | 监听器          | 触发条件              |
+| ------------------------------- | -------------------------- | ----------------- |
+| `change`                        | `() => void`               | 组件中的某些部分发生了变化     |
+| `change:isOpened`               | `(value: boolean) => void` | 更改了 `isOpened` 属性 |
 
 ## 方法支持
 
