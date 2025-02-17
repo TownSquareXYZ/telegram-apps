@@ -44,4 +44,4 @@ console.log(parseInitData(new URLSearchParams(initDataString)));
 
 ## Валидация и подпись
 
-Утилиты валидации и подписи были перенесены в отдельный пакет* [@telegram-apps/init-data-node](../../telegram-apps-init-data-node).
+Утилиты валидации и подписи были перенесены в отдельный пакет\* [@telegram-apps/init-data-node](../../telegram-apps-init-data-node).
