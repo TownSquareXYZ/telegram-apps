@@ -1,8 +1,13 @@
 ---
-outline: [ 2, 3 ]
+outline:
+  - 2
+  - 3
 ---
 
 # @telegram-apps/sdk-svelte
+
+> 该辅助工具允许您在应用程序中使用我们的 [signals](./telegram-apps-signals.md)。它
+> 返回一个 Svelte ref，每次信号发生变化时，该 ref 都会更新。
 
 <p style="display: inline-flex; gap: 8px">
   <a href="https://npmjs.com/package/@telegram-apps/sdk-svelte">
@@ -25,7 +30,6 @@ Svelte.js 软件包提供了开发人员在开发微型
 
 在继续之前，假定您已经安装了 `svelte-js` 软件包，因为它是此软件包的同级依赖关系。
 
-
 ::: code-group
 
 ```bash [pnpm]
@@ -43,7 +47,7 @@ yarn add @telegram-apps/sdk-svelte
 :::
 
 > [!INFO]
-> 此软件包完全重新导出了 [@telegram-apps/sdk](./telegram-apps-sdk/2-x) 软件包，因此 
+> 此软件包完全重新导出了 [@telegram-apps/sdk](./telegram-apps-sdk/2-x) 软件包，因此
 > 您无需单独安装它。
 
 ## 用法
@@ -97,8 +101,8 @@ yarn add @telegram-apps/sdk-svelte
 
 ### `useSignal`
 
-该辅助工具允许您在应用程序中使用我们的 [signals](./telegram-apps-signals.md)。它
-返回一个 Svelte ref，每次信号发生变化时，该 ref 都会更新。
+该辅助工具允许您在应用程序中使用我们的 [signals](./telegram-apps-signals.md)。 It
+returns a Svelte ref which updates every time, our signal changes.
 
 ```svelte
 <script>
