@@ -94,6 +94,40 @@ removeListener();
 
 Этот раздел содержит список событий, отправленных из Telegram: их названия, описание и параметры. В названии раздела указана минимальная версия, из которой могут быть отправлены события этого раздела.
 
+### `accelerometer_changed`
+
+Доступно с **версии 6.1**
+
+Accelerometer data changed.
+
+| Поле | Тип      | Описание                                                                  |
+| ---- | -------- | ------------------------------------------------------------------------- |
+| x    | `number` | The current acceleration in the X-axis, measured in m/s². |
+| y    | `number` | The current acceleration in the Y-axis, measured in m/s². |
+| z    | `number` | The current acceleration in the Z-axis, measured in m/s². |
+
+### `accelerometer_failed`
+
+Доступно с **версии 8.0**
+
+Failed to start accelerometer data tracking.
+
+| Поле  | Тип      | Описание                        |
+| ----- | -------- | ------------------------------- |
+| error | `string` | Occurred error. |
+
+### `accelerometer_started`
+
+Доступно с **версии 7.2**
+
+Accelerometer data tracking started.
+
+### `accelerometer_stopped`
+
+Доступно с **версии 8.0**
+
+Accelerometer data tracking stopped.
+
 ### `back_button_pressed`
 
 Доступно с **версии 6.1**
@@ -131,7 +165,7 @@ removeListener();
 
 ### `biometry_token_updated`
 
-Доступно с **версии 7.2**
+Доступно с **версии 6.9**
 
 Биометрический токен был обновлен.
 
@@ -141,7 +175,7 @@ removeListener();
 
 ### `clipboard_text_received`
 
-Доступно с **версии 6.4**
+Доступно с **версии 8.0**
 
 Приложение Telegram пыталось извлечь текст из буфера обмена.
 
@@ -179,6 +213,41 @@ removeListener();
 | result                      | `unknown` | _Опционально_. Результат вызова метода.  |
 | error                       | `string`  | _Опционально_. Код ошибки вызова метода. |
 
+### `device_orientation_changed`
+
+Доступно с **версии 8.0**
+
+Device orientation data changed.
+
+| Поле     | Тип       | Описание                                                                                                                                      |
+| -------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| absolute | `boolean` | _Опционально_.  A boolean that indicates whether the device is providing orientation data in absolute values. |
+| alpha    | `number`  | The rotation around the Z-axis, measured in radians.                                                                          |
+| beta     | `number`  | The rotation around the X-axis, measured in radians.                                                                          |
+| gamma    | `number`  | The rotation around the Y-axis, measured in radians.                                                                          |
+
+### `device_orientation_failed`
+
+Доступно с **версии 8.0**
+
+Device orientation data tracking failed to start.
+
+| Поле  | Тип      | Описание                        |
+| ----- | -------- | ------------------------------- |
+| error | `string` | Occurred error. |
+
+### `device_orientation_started`
+
+Доступно с **версии 8.0**
+
+Device orientation data tracking started.
+
+### `device_orientation_stopped`
+
+Доступно с **версии 8.0**
+
+Device orientation data tracking stopped.
+
 ### `emoji_status_access_requested`
 
 Доступно с **версии 8.0**
@@ -205,9 +274,17 @@ removeListener();
 
 Пользовательский эмодзи статус установлен.
 
+### `file_download_requested`
+
+Available since: **v8.0**
+
+| Поле   | Тип      | Описание                                                                                     |
+| ------ | -------- | -------------------------------------------------------------------------------------------- |
+| status | `string` | Статус запроса. Может быть только `allowed` или `cancelled`. |
+
 ### `fullscreen_changed`
 
-Доступно с **версии 8.0**
+Доступно с **версии 6.4**
 
 Происходит каждый раз, когда мини-приложение входит в полноэкранный режим или выходит из него.
 
@@ -217,7 +294,7 @@ removeListener();
 
 ### `fullscreen_failed`
 
-Доступно с **версии 8.0**
+Available since: **v8.0**
 
 Происходит всякий раз, когда мини-приложение переходит в полноэкранный режим или выходит из него.
 
@@ -225,19 +302,53 @@ removeListener();
 | ----- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | error | `string` | Ошибка состояния полноэкранного режима. Возможные значения: `UNSUPPORTED` или `ALREADY_FULLSCREEN`. |
 
+### `gyroscope_changed`
+
+Available since: **v8.0**
+
+Gyroscope data changed.
+
+| Поле | Тип      | Описание                                                                        |
+| ---- | -------- | ------------------------------------------------------------------------------- |
+| x    | `number` | The current rotation rate around the X-axis, measured in rad/s. |
+| y    | `number` | The current rotation rate around the Y-axis, measured in rad/s. |
+| z    | `number` | The current rotation rate around the Z-axis, measured in rad/s. |
+
+### `gyroscope_failed`
+
+Available since: **v8.0**
+
+Gyroscope data tracking failed to run.
+
+| Поле  | Тип      | Описание                        |
+| ----- | -------- | ------------------------------- |
+| error | `string` | Occurred error. |
+
+### `gyroscope_started`
+
+Available since: **v8.0**
+
+Gyroscope data tracking started.
+
+### `gyroscope_stopped`
+
+Доступно с **версии 6.1**
+
+Gyroscope data tracking stopped.
+
 ### `home_screen_added`
 
-Доступно с **версии 8.0**
+Available since: **v8.0**
 
 Мини-приложение было добавлено на главный экран устройства.
 
 ### `home_screen_checked`
 
-Доступно с **версии 8.0**
+Available since: **v8.0**
 
 Проверен статус мини-приложения, добавляемого на главный экран.
 
-| Поле   | Тип      | Описание                                                                                                                                                |
+| Field  | Тип      | Описание                                                                                                                                                |
 | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | status | `string` | Статус мини-приложения, добавляемого на главный экран. Возможные значения: `unsupported`, `unknown`, `added` и `missed` |
 
@@ -249,7 +360,7 @@ removeListener();
 
 ### `home_screen_failed`
 
-Доступно с **версии 8.0**
+Available since: **v8.0**
 
 Пользователь отклонил запрос на добавление текущего мини-приложения на главный экран устройства.
 
@@ -262,6 +373,37 @@ removeListener();
 | slug   | `string` | Передаваемое во время вызова метода [web_app_open_invoice](methods.md#web-app-open-invoice) значение `slug`. |
 | status | `string` | Статус инвойса. Возможные значения: `paid`, `failed`, `pending` или `cancelled`.                                                            |
 
+### `location_checked`
+
+Available since: **v8.0**
+
+Location-related functionality availability status was retrieved.
+
+| Поле                                  | Тип       | Описание                                                                          |
+| ------------------------------------- | --------- | --------------------------------------------------------------------------------- |
+| available                             | `boolean` | Shows whether location tracking is available.                     |
+| access_requested | `boolean` | Shows whether permission to location tracking has been requested. |
+| access_granted   | `boolean` | Shows whether permission to location tracking has been granted.   |
+
+### `location_requested`
+
+Available since: **v8.0**
+
+The application received the information about the current user location.
+
+| Field                                    | Type      | Description                                                                                                                                           |
+| ---------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| available                                | `boolean` | Shows whether location tracking is available.                                                                                         |
+| latitude                                 | `number`  | Latitude in degrees. Set only if `available` is True.                                                                 |
+| longitude                                | `number`  | Longitude in degrees. Set only if `available` is True.                                                                |
+| altitude                                 | `number`  | _Опционально_. Altitude above sea level in meters. Set only if `available` is True.                   |
+| course                                   | `number`  | _Опционально_. The direction the device is moving in degrees. Set only if `available` is True.        |
+| speed                                    | `number`  | _Optional_. The speed of the device in m/s. Set only if `available` is True.                          |
+| horizontal_accuracy | `number`  | _Optional_. Accuracy of the latitude and longitude values in meters. Set only if `available` is True. |
+| vertical_accuracy   | `number`  | _Optional_. Accuracy of the altitude value in meters. Set only if `available` is True.                |
+| course_accuracy     | `number`  | _Optional_. Accuracy of the course value in degrees. Set only if `available` is True.                 |
+| speed_accuracy      | `number`  | _Optional_. Accuracy of the speed value in m/s. Set only if `available` is True.                      |
+
 ### `main_button_pressed`
 
 Пользователь кликнул по [Главной кнопке](main-button.md).
@@ -272,7 +414,7 @@ removeListener();
 
 Приложение получило статус запроса доступа к телефону.
 
-| Поле   | Тип      | Описание                                                                                           |
+| Field  | Type     | Description                                                                                        |
 | ------ | -------- | -------------------------------------------------------------------------------------------------- |
 | status | `string` | Статус запроса. Значения могут быть только `sent` или `cancelled`. |
 
@@ -280,9 +422,25 @@ removeListener();
 
 [Всплывающее окно](popup.md) было закрыто.
 
-| Поле                           | Тип      | Описание                                                                                                                                                                                   |
-| ------------------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| button_id | `string` | _Опционально_. Идентификатор нажатой кнопки. Если всплывающее окно было закрыто без нажатия какой-либо кнопки, это свойство будет опущено. |
+| Field                          | Type     | Description                                                                                                                                                                             |
+| ------------------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| button_id | `string` | _Optional_. Идентификатор нажатой кнопки. Если всплывающее окно было закрыто без нажатия какой-либо кнопки, это свойство будет опущено. |
+
+### `prepared_message_failed`
+
+Available since: **v8.0**
+
+Failed to send a prepared message.
+
+| Поле  | Type     | Description                     |
+| ----- | -------- | ------------------------------- |
+| error | `string` | Occurred error. |
+
+### `prepared_message_sent`
+
+Available since: **v8.0**
+
+A prepared message was sent.
 
 ### `qr_text_received`
 
@@ -290,9 +448,9 @@ removeListener();
 
 QR-сканер отсканировал несколько QR-кодов и получил их содержимое.
 
-| Поле | Тип      | Описание                                                                 |
-| ---- | -------- | ------------------------------------------------------------------------ |
-| data | `string` | _Опционально_. Данные, полученные из QR. |
+| Field | Type     | Description                                                           |
+| ----- | -------- | --------------------------------------------------------------------- |
+| data  | `string` | _Optional_. Данные, полученные из QR. |
 
 ### `reload_iframe`
 
@@ -300,13 +458,13 @@ QR-сканер отсканировал несколько QR-кодов и п�
 
 ### `safe_area_changed`
 
-Доступно с **версии 8.0**
+Available since: **v8.0**
 
 Это событие происходит каждый раз, когда в приложении Telegram пользователя изменяется безопасная зона, например, когда пользователь переключается на альбомную ориентацию.
 
 **Безопасная зона** предотвращает наложение контента на элементы пользовательского интерфейса системы, такие как выемки или панели навигации.
 
-| Поле   | Тип      | Описание                                                                                             |
+| Field  | Type     | Description                                                                                          |
 | ------ | -------- | ---------------------------------------------------------------------------------------------------- |
 | top    | `number` | Верхний инсет в пикселях, обозначающий пространство, которое следует избегать в верхней части экрана |
 | bottom | `number` | Нижний инсет в пикселях, обозначающий пространство, которое следует избегать в нижней части экрана   |
@@ -341,7 +499,7 @@ html, который разработчик может использовать.
 
 Это событие происходит каждый раз при изменении [темы](theming.md) в приложении Telegram (включая переключение на ночной режим).
 
-| Поле                              | Тип                      | Описание                                                                                                                     |
+| Field                             | Type                     | Description                                                                                                                  |
 | --------------------------------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
 | theme_params | `Record<string, string>` | Карта, в которой ключ - это ключ таблицы стилей темы, а значение - соответствующий цвет в формате `#RRGGBB`. |
 
@@ -350,10 +508,10 @@ html, который разработчик может использовать.
 Происходит всякий раз, когда [область просмотра](viewport.md) была изменена. Например, когда пользователь
 начал перетаскивать приложение или вызвал метод расширения.
 
-| Поле                                                      | Тип       | Описание                                                                                                            |
+| Field                                                     | Type      | Description                                                                                                         |
 | --------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------- |
 | height                                                    | `number`  | Высота области просмотра (viewport).                                             |
-| width                                                     | `number`  | _Опционально_. Ширина области просмотра.                                            |
+| width                                                     | `number`  | _Optional_. Ширина области просмотра.                                               |
 | is_expanded                          | `boolean` | Расширена ли в данный момент область просмотра.                                                     |
 | is_state_stable | `boolean` | Является ли текущее состояние области просмотра стабильным и не изменится ли оно в ближайшее время. |
 
@@ -362,12 +520,12 @@ html, который разработчик может использовать.
 
 ### `visibility_changed`
 
-Доступно с **версии 8.0**
+Available since: **v8.0**
 
 Активное состояние предполагает, что собственный клиент Telegram в данный момент работает с текущим мини-приложением. Важно отметить, что это связано не с
 видимостью мини-приложения, а скорее с его выделением среди других открытых в данный момент мини-приложений.
 
-| Поле                            | Тип       | Описание                                                          |
+| Field                           | Type      | Description                                                       |
 | ------------------------------- | --------- | ----------------------------------------------------------------- |
 | is_visible | `boolean` | Указывает, активно ли приложение в данный момент. |
 
@@ -377,6 +535,6 @@ html, который разработчик может использовать.
 
 Приложение получило статус запроса на доступ к записи.
 
-| Поле   | Тип      | Описание                                                                                     |
+| Field  | Type     | Description                                                                                  |
 | ------ | -------- | -------------------------------------------------------------------------------------------- |
 | status | `string` | Статус запроса. Может быть только `allowed` или `cancelled`. |
