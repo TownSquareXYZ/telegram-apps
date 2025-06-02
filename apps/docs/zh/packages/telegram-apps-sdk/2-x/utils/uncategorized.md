@@ -1,10 +1,35 @@
 # 未分类
 
+## `getCurrentTime`
+
+To retrieve the current Telegram server time, use the `getCurrentTime` function. It returns
+a JavaScript `Date` object.
+
+::: code-group
+
+```ts [Using isAvailable]
+import { getCurrentTime } from '@telegram-apps/sdk';
+
+if (getCurrentTime.isAvailable()) {
+  const time = await getCurrentTime(); // Date
+}
+```
+
+```ts [Using ifAvailable]
+import { getCurrentTime } from '@telegram-apps/sdk';
+
+const time = await getCurrentTime.ifAvailable(); // Date | undefined
+```
+
+:::
+
 ## `readTextFromClipboard`
 
 要从剪贴板读取文本，请使用`readTextFromClipboard`函数。
 
-```ts
+::: code-group
+
+```ts [Using isAvailable]
 import { readTextFromClipboard } from '@telegram-apps/sdk';
 
 if (readTextFromClipboard.isSupported()) {
@@ -12,13 +37,24 @@ if (readTextFromClipboard.isSupported()) {
 }
 ```
 
+```ts [Using ifAvailable]
+[!WARNING]
+此功能仅适用于通过键盘按钮启动的迷你应用程序。 更多详情，请参阅
+[Message](https://core.telegram.org/bots/api#message) 类中的 `web_app_data` 字段
+。
+```
+
+:::
+
 ## `shareStory`
 
 `shareStory` 方法会打开本地故事编辑器。
 
 它有一个必填参数：将用作故事背景的媒体 URL。
 
-```ts
+::: code-group
+
+```ts [Using isAvailable]
 import { shareStory } from '@telegram-apps/sdk';
 
 if (shareStory.isSupported()) {
@@ -26,13 +62,20 @@ if (shareStory.isSupported()) {
 }
 ```
 
+```ts [Using ifAvailable]
+`widgetLink?: object` - 用于在故事中加入 widget 链接的对象。
+  只有 [高级用户](https://telegram.org/faq_premium#telegram-premium) 才能发布带有链接的故事
+  。
+```
+
+:::
+
 该函数可选择接受一个包含附加选项的对象：
 
 - `text?: string` - 要添加到媒体中的标题，普通
   用户的限制为 0-200 个字符，[高级用户](https://telegram.org/faq_premium#telegram-premium) 的限制为 0-2048 个字符
   。
-- `widgetLink?: object` - 用于在故事中加入 widget 链接的对象。
-  只有 [高级用户](https://telegram.org/faq_premium#telegram-premium) 才能发布带有链接的故事
+- `widgetLink?: object` - 用于在故事中加入 widget 链接的对象。只有 [高级用户](https://telegram.org/faq_premium#telegram-premium) 才能发布带有链接的故事
   。
   - `url: string` - 要包含在故事中的 URL。
   - `name?: string` - widget 链接的显示名称（0-48 个字符）。
@@ -49,31 +92,42 @@ shareStory('https://my.media/background.png', {
 
 ## `sendData`
 
-要向机器人发送数据，请使用 `sendData` 函数。 此功能将向
+要向机器人发送数据，请使用 `sendData` 函数。 要向机器人发送数据，请使用 `sendData` 函数。 此功能将向
 机器人发送服务消息，并关闭 Mini App。
 
-```ts
+::: code-group
+
+```ts [Using isAvailable]
+要向机器人发送数据，请使用 `sendData` 函数。 此功能将向
+机器人发送服务消息，并关闭 Mini App。
+```
+
+```ts [Using ifAvailable]
 import { sendData } from '@telegram-apps/sdk';
 
 sendData('my-data-goes-here');
 ```
+
+:::
 
 > [!TIP]
 > 该功能可向机器人发送多达 4096 字节的数据，适用于通过
 > 键盘按钮启动的迷你应用程序。
 
 > [!WARNING]
-> 此功能仅适用于通过键盘按钮启动的迷你应用程序。 更多详情，请参阅
+> 此功能仅适用于通过键盘按钮启动的小程序。 更多详情，请参阅
 > [Message](https://core.telegram.org/bots/api#message) 类中的 `web_app_data` 字段
 > 。
 
 ## `switchInlineQuery`
 
 要创建以机器人用户名和特定文本为前缀的消息，并在另一个
-聊天工具中共享，请使用 `switchInlineQuery` 方法。 您可以使用第二个可选参数来指定可以选择哪些
+聊天工具中共享，请使用 `switchInlineQuery` 方法。  您可以使用第二个可选参数来指定可以选择哪些
 聊天类型来发送信息。
 
-```ts
+::: code-group
+
+```ts [Using isAvailable]
 import { switchInlineQuery } from '@telegram-apps/sdk';
 
 if (switchInlineQuery.isSupported()) {
@@ -85,3 +139,11 @@ if (switchInlineQuery.isSupported()) {
   ]);
 }
 ```
+
+```ts [Using ifAvailable]
+要创建以机器人用户名和特定文本为前缀的消息，并在另一个
+聊天工具中共享，请使用 `switchInlineQuery` 方法。 您可以使用第二个可选参数来指定可以选择哪些
+聊天类型来发送信息。
+```
+
+:::
