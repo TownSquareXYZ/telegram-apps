@@ -3,10 +3,17 @@
 ## `openLink`
 
 要在外部浏览器或使用 [Instant View](https://instantview.telegram.org/) 打开链接，
+使用 `openLink` 方法。  您还可以传递一个可选的第二个参数，一个包含可选属性的对象：`tryBrowser: OpenLinkBrowser (string)` 和 `tryInstantView: boolean`。
+
+::: code-group
+
+```ts [Using isAvailable]
+要在外部浏览器或使用 [Instant View](https://instantview.telegram.org/) 打开链接，
 使用 `openLink` 方法。 您还可以传递一个可选的第二个参数，即一个带有可选
 属性 `tryBrowser: OpenLinkBrowser (string)` 和 `tryInstantView: boolean` 的对象。
+```
 
-```ts
+```ts [Using ifAvailable]
 import { openLink } from '@telegram-apps/sdk';
 
 openLink('https://telegram.org', {
@@ -15,24 +22,49 @@ openLink('https://telegram.org', {
 });
 ```
 
+:::
+
 ## `openTelegramLink`
 
-要使用预定义行为打开 Telegram 链接，请使用 `openTelegramLink` 方法。 此方法
+要使用预定义行为打开 Telegram 链接，请使用 `openTelegramLink` 方法。  此方法
 允许您应用
 [Deep Links](https://core.telegram.org/api/links) 文档中描述的本地行为。
 
-```ts
+::: code-group
+
+```ts [Using isAvailable]
+要使用预定义行为打开 Telegram 链接，请使用 `openTelegramLink` 方法。 此方法
+允许您应用
+[Deep Links](https://core.telegram.org/api/links) 文档中描述的本地行为。
+```
+
+```ts [Using ifAvailable]
 import { openTelegramLink } from '@telegram-apps/sdk';
 
 openTelegramLink('https://t.me/heyqbnk');
 ```
 
+:::
+
 ## `shareURL`
 
 要与其他用户、频道或组共享 URL，请使用 `shareURL` 方法。
 
-```ts
+::: code-group
+
+```ts [Using isAvailable]
 import { shareURL } from '@telegram-apps/sdk';
 
 shareURL('https://t.me/heyqbnk', 'Check out this cool group!');
 ```
+
+```ts [Using ifAvailable]
+import { shareURL } from '@telegram-apps/sdk';
+
+shareURL.ifAvailable(
+  'https://t.me/heyqbnk', 
+  'Check out this cool group!',
+);
+```
+
+:::
