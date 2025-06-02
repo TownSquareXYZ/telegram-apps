@@ -6,6 +6,9 @@ outline:
 
 # @telegram-apps/init-data-node
 
+> [!TIP] Newer version available
+> `@telegram-apps/init-data-node@2.x` is [out](./telegram-apps-init-data-node/2-x)!
+
 <p style="display: flex; gap: 8px; min-height: 20px">
   <a href="https://npmjs.com/package/@telegram-apps/init-data-node">
     <img src="https://img.shields.io/npm/v/@telegram-apps/init-data-node?logo=npm"/>
