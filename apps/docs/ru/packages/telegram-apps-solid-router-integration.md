@@ -70,3 +70,4 @@ function App() {
 
 Вы можете узнать больше о том, как использовать его в реальных приложениях, используя
 наш [шаблон Solid](https://github.com/Telegram-Mini-Apps/solidjs-template).
+
