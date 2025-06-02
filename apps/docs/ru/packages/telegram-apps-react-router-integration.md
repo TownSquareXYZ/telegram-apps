@@ -74,3 +74,4 @@ function App() {
 ```
 
 Вы можете узнать больше о том, как использовать его в реальных приложениях, используя наш [шаблон React](https://github.com/Telegram-Mini-Apps/reactjs-template).
+
