@@ -1,8 +1,13 @@
 ---
-outline: [ 2, 3 ]
+outline:
+  - 2
+  - 3
 ---
 
 # @telegram-apps/sdk-vue
+
+> 该辅助工具允许您在应用程序中使用我们的 [signals](./telegram-apps-signals.md)。它
+> 返回一个 Vue ref，每次我们的信号发生变化时，它都会更新。
 
 <p style="display: inline-flex; gap: 8px">
   <a href="https://npmjs.com/package/@telegram-apps/sdk-vue">
@@ -42,7 +47,7 @@ yarn add @telegram-apps/sdk-vue
 :::
 
 > [!INFO]
-> 此软件包完全重新导出了 [@telegram-apps/sdk](./telegram-apps-sdk/2-x) 软件包，因此 
+> 此软件包完全重新导出了 [@telegram-apps/sdk](./telegram-apps-sdk/2-x) 软件包，因此
 > 您无需单独安装它。
 
 ## 用法
@@ -51,7 +56,7 @@ yarn add @telegram-apps/sdk-vue
 
 :::code-group
 
-```tsx [index.tsx]
+```ts [index.ts]
 import { createApp } from 'vue';
 import { init, backButton } from '@telegram-apps/sdk-vue';
 
@@ -69,7 +74,42 @@ backButton.mount();
 app.mount('#root');
 ```
 
-```vue [BackButton.vue]
+```vue [PopupButton.vue]
+<script setup lang="ts">
+/**
+ * Component which opens native Telegram Popup.
+ */
+import { popup } from '@telegram-apps/sdk-vue'
+
+const props = defineProps<{ title: string, message: string }>()
+
+function open() {
+  if (popup.isSupported()) {
+    popup.open(props);
+    return;
+  }
+
+  // Open fallback HTML dialog...
+}
+</script>
+
+<template>
+  <button aria-haspopup="dialog" @click="open">
+    Open popup
+  </button>
+</template>
+```
+
+:::
+
+## Hooks
+
+### `useSignal`
+
+该辅助工具允许您在应用程序中使用我们的 [signals](./telegram-apps-signals.md)。 It
+returns a Vue ref which updates every time, our signal changes.
+
+```ts [useMainButton.vue]
 /**
  * Component which controls the Back Button visibility.
  */
@@ -95,43 +135,11 @@ onUnmounted(() => {
 <template></template>
 ```
 
-:::
-
-## Hooks
-
-### `useSignal`
-
-该辅助工具允许您在应用程序中使用我们的 [signals](./telegram-apps-signals.md)。它
-返回一个 Vue ref，每次我们的信号发生变化时，它都会更新。
-
-```vue
-<script setup lang="ts">
-import { watchEffect, onMounted, onUnmounted } from 'vue';
-import { backButton, useSignal } from '@telegram-apps/sdk-vue';
-
-const isVisible = useSignal(backButton.isVisible);
-
-watchEffect(() => {
-  console.log('The button is', isVisible.value ? 'visible' : 'invisible');
-});
-
-onMounted(() => {
-  backButton.show();
-});
-
-onUnmounted(() => {
-  backButton.hide();
-});
-</script>
-
-<template></template>
-```
-
 ### `useLaunchParams`
 
-返回迷你应用程序启动参数的函数。
+返回迷你应用程序启动参数的函数。 For Vue.js it's just `retrieveLaunchParams` function from `@telegram-apps/sdk`.
 
-```vue
+```ts [useInitApp.ts]
 <script setup lang="ts">
 import { useLaunchParams } from '@telegram-apps/sdk-vue';
 
@@ -141,4 +149,21 @@ const lp = useLaunchParams();
 <template>
   <div>Start param: {{ lp.startParam }}</div>
 </template>
+```
+
+## Vue Router integration
+
+Telegram application uses URL's hash to transmit launch parameters into TMA, see [that article](https://docs.telegram-mini-apps.com/platform/launch-parameters#transmission-method) for more details.
+
+Therefore, [Vue router](https://router.vuejs.org/) should use [HTML5 mode](https://router.vuejs.org/guide/essentials/history-mode.html#HTML5-Mode):
+
+```ts [router.ts]
+import { createRouter, createWebHistory } from 'vue-router'
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    //...
+  ],
+})
 ```
