@@ -6,6 +6,9 @@ outline:
 
 # @telegram-apps/sdk-svelte
 
+> [!TIP] Newer version available
+> `@telegram-apps/sdk-svelte@2.x` is [out](./telegram-apps-sdk-svelte/2-x)!
+
 <p style="display: inline-flex; gap: 8px">
   <a href="https://npmjs.com/package/@telegram-apps/sdk-svelte">
     <img src="https://img.shields.io/npm/v/@telegram-apps/sdk-svelte?logo=npm"/>
@@ -18,8 +21,7 @@ outline:
 
 Пакет Svelte.js, предоставляющий утилиты, которые могут оказаться полезными разработчикам при разработке мини-приложений.
 
-> [СОВЕТ!]
-> Поскольку этот пакет предлагает утилиты, расширяющие функциональность [@telegram-apps/sdk](./telegram-apps-sdk/2-x.md), рекомендуется сначала ознакомиться с документацией пакета SDK.
+> [СОВЕТ!] Поскольку этот пакет предлагает утилиты, расширяющие функциональность [@telegram-apps/sdk](./telegram-apps-sdk/2-x.md), рекомендуется сначала ознакомиться с документацией пакета SDK.
 
 ## Установка
 
@@ -41,8 +43,7 @@ yarn add @telegram-apps/sdk-svelte
 
 :::
 
-> [ИНФОРМАЦИЯ!]
-> Этот пакет полностью реэкспортирует пакет [@telegram-apps/sdk](./telegram-apps-sdk/2-x), поэтому вам не нужно устанавливать его отдельно.
+> [ИНФОРМАЦИЯ!] Этот пакет полностью реэкспортирует пакет [@telegram-apps/sdk](./telegram-apps-sdk/2-x), поэтому вам не нужно устанавливать его отдельно.
 
 ## Использование
 
