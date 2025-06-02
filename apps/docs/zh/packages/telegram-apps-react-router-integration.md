@@ -76,3 +76,4 @@ function App() {
 
 您可以通过
 我们的 [React 模板](https://github.com/Telegram-Mini-Apps/reactjs-template) 了解更多关于如何使用它的实际应用。
+
