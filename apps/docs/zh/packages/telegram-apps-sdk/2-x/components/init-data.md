@@ -1,5 +1,7 @@
 ---
-outline: [ 2, 3 ]
+outline:
+  - 2
+  - 3
 ---
 
 # 初始数据
@@ -164,7 +166,7 @@ initDataChat();
 
 返回类型：`string | undefined`
 
-打开迷你应用程序的聊天类型。 值：
+打开迷你应用程序的聊天类型。 值： 值：
 
 - `sender`
 - `private`
@@ -236,7 +238,7 @@ initDataHash(); // 'sgbbc62g3bvdhg3djsaasd'
 
 返回类型：`string | undefined`
 
-迷你应用程序的唯一会话 ID。 在
+小程序的唯一会话 ID。 迷你应用程序的唯一会话 ID。 在
 通过
 方法 [answerWebAppQuery](https://core.telegram.org/bots/api#answerwebappquery) 发送信息的过程中使用。
 
