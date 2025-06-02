@@ -1,17 +1,19 @@
 ---
-outline: [ 2, 3 ]
+outline:
+  - 2
+  - 3
 ---
 
 # 方法 - Methods {#Methods}
 
-Telegram 迷你应用程序方法是事件，可执行某些预定义的操作。 它们总是被迷你应用程序调用。
+Telegram 小程序方法是事件，可执行某些预定义的操作。  它们总是被小程序调用。
 
 ## 网页版 {#web}
 
 由于 Telegram 的网页版是在 `<iframe/>` 标签中显示前端应用程序，因此
 使用两个 iframe 之间的默认通信方式--通过 `window.parent.postMessage` 函数发送信息。
 
-第一个参数是一个 JSON 对象，**转换为字符串**。 该对象应
+第一个参数是一个 JSON 对象，**转换为字符串**。  该对象应
 具有此接口：
 
 ```typescript
@@ -21,12 +23,14 @@ interface MessageJSON {
 }
 ```
 
-第二个参数是 `targetOrigin` - 允许的父 iframe 起源。 我们建议在不安全的情况下避免使用通配符 `*`，因为您的应用程序可能不是被 Telegram 插入，而是被另一个 iframe 插入，而后者仍能与您的应用程序通信并接收一些数据。
+第二个参数是 `targetOrigin` - 允许的父 iframe 源。  我们建议在不安全的情况下避免使用通配符 `*`* 因为您的应用程序可能不是被
+  Telegram 插入，而是被另一个 iframe 插入，而后者仍能与您的应用程序通信并接收
+  的一些数据。
 
 作为默认值，您可以使用 `https://web.telegram.org`。
 
 因此，正如你所看到的，每个方法都有自己的名称，由 `eventType` 表示，参数存储在
-的 `eventData` 属性中。 下面是使用示例：
+的 `eventData` 属性中。  下面是使用示例：
 
 ```typescript
 const data = JSON.stringify({
@@ -43,10 +47,11 @@ window.parent.postMessage(data, 'https://web.telegram.org');
 
 ## 桌面和移动 {#Desktop and Mobile}
 
-与网络不同，桌面和移动应用程序使用的方法调用方式更为特殊。
+与网页端不同，桌面和移动应用程序使用的方法调用方式更为特殊。 与网络不同，桌面和移动应用程序使用的方法调用方式更为特殊。
 都将创建一个全局函数 `window.TelegramWebviewProxy.postEvent`。
 
 作为第一个参数，该函数接受事件名称。 第二个是参数对象，
+转换为字符串。 具体操作如下： 第二个是参数对象，
 转换为字符串。 具体操作如下：
 
 ```typescript
@@ -60,6 +65,7 @@ window
 ## Windows Phone
 
 Telegram Windows Phone 应用程序提供 `window.external.notify` 功能。 它接受与网络版相同的
+参数： 它接受与网络版相同的
 参数：
 
 ```typescript
@@ -73,7 +79,7 @@ window.external.notify(data);
 
 ## 调用方法 {#Calling Methods}
 
-为开发人员的应用程序处理所有可能的环境是一项挑战。 为了简化
+为开发人员的应用程序处理所有可能的环境是一项挑战。 为开发人员的应用程序处理所有可能的环境是一项挑战。 为了简化
 这一过程，社区开发了 [@telegram-apps/sdk](../packages/telegram-apps-sdk/2-x)
 软件包，大大简化了集成工作。
 
@@ -91,74 +97,89 @@ postEvent('web_app_set_header_color', { color_key: 'bg_color' });
 ## 可用方法 {#Available Methods}
 
 本节列出了可调用的可用方法及其名称、说明和
-参数。 如果迷你应用程序不满足最低方法版本要求，
- 只要内部没有定义
-，本地应用程序就不知道应该调用哪个方法。
+参数。 如果小程序不满足最低方法版本要求，则不会发生任何事情。 本地应用程序只是不知道应该调用哪个方法，除非它在内部定义了。
 
 ### `iframe_ready`
 
-通知父 iframe 当前帧已准备就绪。 此方法仅在 Telegram 的网络版
-中使用。 因此，Mini App 将收到 [set_custom_style](events.md#set-custom-style)
+通知父 iframe 当前frame已准备就绪。 此方法仅在 Telegram 的网络版
+中使用。 通知父 iframe 当前帧已准备就绪。 此方法仅在 Telegram 的网络版
+中使用。 因此，小程序将收到 [set_custom_style](events.md#set-custom-style)
 事件。
 
-| 字段   | 类型 | 说明                              |
-| ---- | -- | ------------------------------- |
-| reload_supported | `boolean` | _可选_。 如果当前迷你应用程序支持本地重载，则为 True。 |
+| 字段                                    | 类型        | 说明                                 |
+| ------------------------------------- | --------- | ---------------------------------- |
+| reload_supported | `boolean` | _可选_。 _可选_。 如果当前小程序支持本地重载，则为 True。 |
 
 ### `iframe_will_reload`
 
 通知父 iframe 当前 iframe 将重新加载。
 
+### `web_app_add_to_home_screen`
+
+启用版本: **v7.2**
+
+Prompts the user to add the Mini App to the home screen. Note that if the device cannot
+determine the installation status, the event may not be received even if the icon has
+been added.
+
 ### `web_app_biometry_get_info`
 
-启用版本: **v7.2** 
+启用版本: **v7.2**
 
 请求当前的生物测量设置。
 
 ### `web_app_biometry_open_settings`
 
-启用版本: **v7.2** 
+<i>可选</i>。 是否应启用该按钮。
 
 打开机器人的生物识别访问设置。 在需要请求生物识别
 访问尚未授权的用户时非常有用。
 
-::: info
-
-该方法只能在用户与迷你
-App 界面交互（如点击迷你 App 内部或主按钮）时调用
-
-:::
+> Telegram 迷你应用程序方法是事件，可执行某些预定义的操作。 它们总是被迷你应用程序调用。
 
 ### `web_app_biometry_request_access`
 
-启用版本: **v7.2** 
+启用版本: **v7.2**
 
-请求允许使用生物识别技术。
+Requests permission to use biometrics.
 
-| 字段 | 类型  | 说明                                                 |
-| -- | --- | -------------------------------------------------- |
-| reason | `string` | _可选_。 在弹出窗口中显示给用户的文字，说明机器人需要访问生物识别信息的原因，0-128 个字符。 |
+| 字段     | 类型       | 说明                                                                       |
+| ------ | -------- | ------------------------------------------------------------------------ |
+| reason | `string` | _Optional_. 在弹出窗口中显示给用户的文字，说明机器人需要访问生物识别信息的原因，0-128 个字符。 |
 
 ### `web_app_biometry_request_auth`
 
-启用版本: **v7.2** 
+启用版本: **v7.2**
 
 使用生物识别技术验证用户身份。
 
-| 字段 | 类型  | 说明                                                             |
-| -- | --- | -------------------------------------------------------------- |
-| reason | `string` | _可选_。 在弹出窗口中显示给用户的文字，说明要求用户进行身份验证的原因，以及根据身份验证将采取的操作，0-128 个字符。 |
+| 字段     | 类型       | 说明                                                                                   |
+| ------ | -------- | ------------------------------------------------------------------------------------ |
+| reason | `string` | _Optional_. 在弹出窗口中显示给用户的文字，说明要求用户进行身份验证的原因，以及根据身份验证将采取的操作，0-128 个字符。 |
 
 ### `web_app_biometry_update_token`
 
-启用版本: **v7.2** 
+启用版本: **v7.2**
 
-更新设备安全存储中的生物识别令牌。 要删除标记，请输入一个空的
-字符串。
+Updates the biometric token in secure storage on the device. To remove the token, pass an empty
+string.
 
-| 字段  | 类型  | 说明                      |
-| --- | --- | ----------------------- |
-| token | `string` | 要存储的令牌。 最大长度为 1024 个符号。 |
+| 字段    | 类型       | 说明                                                      |
+| ----- | -------- | ------------------------------------------------------- |
+| token | `string` | Token to store. 要存储的令牌。 最大长度为 1024 个符号。 |
+
+### `web_app_check_home_screen`
+
+<i>可选</i>。 按钮背景颜色，格式为<code>#RRGGBB</code>。
+
+Sends a request to the native Telegram application to check if the current mini
+application is added to the device's home screen.
+
+### `web_app_check_location`
+
+_可选_。 QR 扫描仪中要显示的文本。
+
+Requests location-related functionality availability state.
 
 ### `web_app_close`
 
@@ -168,20 +189,26 @@ App 界面交互（如点击迷你 App 内部或主按钮）时调用
 
 启用版本: **v6.4**
 
-关闭 QR 扫描仪。 Telegram 应用程序会创建
+Closes a QR scanner. 关闭 QR 扫描仪。 Telegram 应用程序会创建
 [scan_qr_popup_closed](events.md#scan-qr-popup-closed) 事件。
 
 ### `web_app_data_send`
 
-向机器人发送数据。 调用该方法时，会向机器人发送一条服务消息，其中包含
-长度不超过 4096 字节的数据。 然后，迷你应用程序将关闭。
+Sends data to the bot. When this method is called, a service message is sent to the bot containing
+the data of the length up to 4096 bytes. Then, Mini App will be closed.
 
 要获取更多信息，请查看
 class [Message](https://core.telegram.org/bots/api#message) 中的 `web_app_data` 字段。
 
-| 字段 | 类型  | 说明                          |
-| -- | --- | --------------------------- |
-| data | `string` | 要发送给机器人的数据。 大小不应超过 4096 字节。 |
+| 字段   | 类型       | 说明                                                                                                   |
+| ---- | -------- | ---------------------------------------------------------------------------------------------------- |
+| data | `string` | Data to send to a bot. Should not have size of more than 4096 bytes. |
+
+### `web_app_exit_fullscreen`
+
+迷你应用标题颜色键。 可以是 `bg_color` 或 `secondary_bg_color`。
+
+Requests exiting the fullscreen mode for mini app.
 
 ### `web_app_expand`
 
@@ -189,39 +216,49 @@ class [Message](https://core.telegram.org/bots/api#message) 中的 `web_app_data
 
 ### `web_app_invoke_custom_method`
 
-启用版本: **v6.9**
+启用版本: **v6.2**
 
-| 字段                          | 类型  | 说明                |
-| --------------------------- | --- | ----------------- |
-| req_id | `string` | 当前调用的唯一标识符。       |
-| method                          | `string` | 方法名称。             |
-| params                          | `unknown`  | 根据 `method`设置的参数。 |
+| 现场                          | 类型        | _可选_。 描述要包含在故事中的 widget 链接的对象。 请注意，只有 [高级用户](https://telegram.org/faq_premium#telegram-premium) 才能发布带有链接的故事。 |
+| --------------------------- | --------- | ------------------------------------------------------------------------------------------------------------ |
+| req_id | `string`  | 当前调用的唯一标识符。                                                                                                  |
+| method                      | `string`  | 方法名称。                                                                                                        |
+| params                      | `unknown` | 根据 `method`设置的参数。                                                                                            |
 
 ### `web_app_open_invoice`
 
 启用版本: **v6.1**
 
-按指定的标签打开发票。 有关发票的更多信息，请参阅
+按指定的slug打开支付请求。 关支付请求的更多信息，请参阅
 此 [文档](https://core.telegram.org/bots/payments)。
 
-| 字段  | 类型  | 说明       |
-| --- | --- | -------- |
-| slug | `string` | 发票唯一标识符。 |
+| 字段   | 类型       | 要发送给机器人的数据。 大小不应超过 4096 字节。 |
+| ---- | -------- | --------------------------- |
+| slug | `string` | 发票唯一标识符。                    |
 
 ### `web_app_open_link`
 
-在默认浏览器中打开链接。 迷你应用程序不会关闭。
+在默认浏览器中打开链接。 在默认浏览器中打开链接。 迷你应用程序不会关闭。
 
-| 字段  | 类型  | 说明  | 启用版本 |
-| ---------------------------------------------------------- | --- | ----------------------------------------------------------------------- | ------ |
-| url                                                         | `string` | Telegram 应用程序要打开的 URL。 应是采用 `https` 协议的完整路径。                            |        |
-| try_instant_view | `boolean` | _可选_。 如果可能，链接将以 [Instant View](https://instantview.telegram.org/) 模式打开。 | `v6.4` |
+| 字段                                                         | 类型        | 说明                                                                            | 自      |
+| ---------------------------------------------------------- | --------- | ----------------------------------------------------------------------------- | ------ |
+| url                                                        | `string`  | Telegram 应用程序要打开的 URL。 应是采用 `https` 协议的完整路径。 应是采用 `https` 协议的完整路径。            |        |
+| try_instant_view | `boolean` | _可选_。 _可选_。 如果可能，链接将以 [Instant View](https://instantview.telegram.org/) 模式打开。 | `v6.4` |
+
+### `web_app_open_location_settings`
+
+_可选_。 按钮内的文本。
+
+Opens the location access settings for bots. Useful when you need to request location access
+from users who haven't granted it yet.
+
+> 该方法只能在用户与迷你
+> App 界面交互（如点击迷你 App 内部或主按钮）时调用
 
 ### `web_app_open_popup`
 
-启用版本: **v6.2**
+启用版本: **v6.4**
 
-打开一个新的 [弹出窗口](popup.md)。 当用户关闭弹出窗口时，Telegram 会创建
+打开一个新的 [弹出窗口](popup.md)。 打开一个新的 [弹出窗口](popup.md)。 当用户关闭弹出窗口时，Telegram 会创建
 [popup_closed](events.md#popup-closed) 事件。
 
 <table>
@@ -295,7 +332,7 @@ class [Message](https://core.telegram.org/bots/api#message) 中的 `web_app_data
       <code>string</code>
     </td>
     <td>
-      按钮类型。 价值：      
+      按钮类型。 值：      
 <ul>
         <li>
           <code>default</code>，使用默认样式的按钮
@@ -326,6 +363,7 @@ class [Message](https://core.telegram.org/bots/api#message) 中的 `web_app_data
       按钮上要显示的文本，0-64
       字符。 当<code>type</code> 为 <code>ok</code>、<code>close</code>或
       <code>cancel</code>时<i>忽略</i>。
+    
     </td>
   </tr>
   </tbody>
@@ -333,60 +371,111 @@ class [Message](https://core.telegram.org/bots/api#message) 中的 `web_app_data
 
 ### `web_app_open_scan_qr_popup`
 
-启用版本: **v6.4**
+启用版本: **v6.9**
 
 打开 QR 扫描仪。 扫描仪关闭时，Telegram 应用程序会创建
+[scan_qr_popup_closed](events.md#scan-qr-popup-closed) 事件。 打开 QR 扫描仪。 扫描仪关闭时，Telegram 应用程序会创建
 [scan_qr_popup_closed](events.md#scan-qr-popup-closed) 事件。 当扫描仪读取 QR 时，
 Telegram 会创建 [qr_text_received](events.md#qr-text-received) 事件。
 
-| 字段 | 类型  | 说明                   |
-| -- | --- | -------------------- |
-| text | `string` | _可选_。 QR 扫描仪中要显示的文本。 |
+| 字段   | 类型       | 说明                         |
+| ---- | -------- | -------------------------- |
+| text | `string` | _可选_。 _可选_。 QR 扫描仪中要显示的文本。 |
 
 ### `web_app_open_tg_link`
 
 启用版本: **v6.1**
 
 通过路径名和查询参数打开 Telegram 链接。 链接将在
-Telegram 应用程序中打开，迷你应用程序将关闭。
+Telegram 应用程序中打开，迷你应用程序将关闭。 链接将在
+Telegram 应用程序中打开，小程序将关闭。
 
-| 字段                             | 类型  | 说明                                                     |
-| ------------------------------ | --- | ------------------------------------------------------ |
-| path_full | `string` | 应是从以下格式的链接中提取的值：`https://t.me/{path_full}`。 可额外包含查询参数。 |
+| 字段                             | 类型       | 说明                                                                |
+| ------------------------------ | -------- | ----------------------------------------------------------------- |
+| path_full | `string` | 应是从以下格式的链接中提取的值：`https://t.me/{path_full}`。 可额外包含查询参数。 可额外包含查询参数。 |
 
 ### `web_app_read_text_from_clipboard`
 
-启用版本: **v6.4**
+启用版本: **v6.9**
 
-从剪贴板读取文本。 该方法接受一个请求标识符，该标识符用于
+从剪贴板读取文本。 从剪贴板读取文本。 该方法接受一个请求标识符，该标识符用于
 适当检索
 [clipboard_text_received](events.md#clipboard-text-received) 事件中的方法执行结果。
 
-| 字段                          | 类型  | 说明                               |
-| --------------------------- | --- | -------------------------------- |
-| req_id | `string` | 唯一的请求标识符。 应为任何唯一字符串，以便适当处理生成的事件。 |
+| 字段                          | 类型       | 说明                                         |
+| --------------------------- | -------- | ------------------------------------------ |
+| req_id | `string` | 唯一的请求标识符。 唯一的请求标识符。 应为任何唯一字符串，以便适当处理生成的事件。 |
 
 ### `web_app_ready`
 
-通知 Telegram 当前应用程序已准备好显示。 此方法可让 Telegram
+通知 Telegram 当前应用程序已准备好显示。 通知 Telegram 当前应用程序已准备好显示。 此方法可让 Telegram
 删除应用程序加载器并显示迷你应用程序。
+
+### `web_app_request_content_safe_area`
+
+<i>可选</i>。 按钮是否应该有闪亮的效果。
+
+Requests the current content safe area information from Telegram.
+
+As a result, Telegram triggers the
+[**`content_safe_area_changed`**](events.md#content-safe-area-changed) event.
+
+### `web_app_request_emoji_status_access`
+
+<i>可选</i>。 是否应显示按钮。
+
+Shows a native popup requesting permission for the bot to manage user's emoji status.
+
+### `web_app_request_file_download`
+
+_可选_。 按钮文本颜色，格式为 `#RRGGBB`。
+
+Displays a native popup prompting the user to download a file.
+
+| 字段                             | 类型       | 说明                                                          |
+| ------------------------------ | -------- | ----------------------------------------------------------- |
+| url                            | `string` | The HTTPS URL of the file to be downloaded. |
+| file_name | `string` | The suggested name for the downloaded file. |
+
+### `web_app_request_fullscreen`
+
+_可选_。 小部件链接显示的名称，0-48 个字符。
+
+Requests full screen mode for mini app.
+
+### `web_app_request_location`
+
+```
+  <i>可选</i>。 辅助按钮的位置。 只有在主按钮和 
+  副按钮都可见时才适用。 <br/>支持的值：
+```
+
+Requests location data.
 
 ### `web_app_request_phone`
 
-启用版本: **v6.9**
-
-[//]: # (TODO: 检查是否正确。 它可能会请求其他用户的电话。)
+启用版本: **v6.4**
 
 请求访问当前用户的电话。
+
+### `web_app_request_safe_area`
+
+_可选_。 如果当前迷你应用程序支持本地重载，则为 True。
+
+Requests the current safe area information from Telegram.
+
+As a result, Telegram triggers the
+[**`safe_area_changed`**](events.md#safe-area-changed) event.
 
 ### `web_app_request_theme`
 
 请求 Telegram 当前的 [主题](theming.md)。 因此，Telegram 将
+创建 [theme_changed](events.md#theme-changed) 事件。 因此，Telegram 将
 创建 [theme_changed](events.md#theme-changed) 事件。
 
 ### `web_app_request_viewport`
 
-从 Telegram 请求当前 [viewport](viewport.md)信息。 因此，
+Requests the current [viewport](viewport.md) information from Telegram. 从 Telegram 请求当前 [viewport](viewport.md)信息。 因此，
 Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
 
 ### `web_app_request_write_access`
@@ -395,37 +484,60 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
 
 请求对当前用户进行写信息访问。
 
+### `web_app_send_prepared_message`
+
+启用版本: **v7.10**
+
+Opens a dialog allowing the user to share a message provided by the bot.
+
+| 字段 | 类型       | 说明                                                                                                                                                                                                                                                                                     |
+| -- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id | `string` | Identifier of the message ([PreparedInlineMessage](https://core.telegram.org/bots/api#preparedinlinemessage)) previously obtained via the Bot API method [savePreparedInlineMessage](https://core.telegram.org/bots/api#savepreparedinlinemessage). |
+
 ### `web_app_set_background_color`
 
 启用版本: **v6.1**
 
 更新迷你应用程序的 [背景色](theming.md#background-and-header-colors)。
 
-| 字段 | 类型  | 说明                                                                                                                                 |
-| -- | --- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| color | `string` | Mini App 的背景颜色（格式为 `#RRGGBB`），或是以下值中的一个：`bg_color` 或 `secondary_bg_color` |
+| 通知父 iframe 当前帧已准备就绪。 此方法仅在 Telegram 的网络版&#xA;中使用。 因此，Mini App 将收到 [set_custom_style](events.md#set-custom-style)&#xA;事件。 | ```
+  可用于发送信息的聊天类型列表。 可能是空列表。 支持的值：
+``` | 按指定的标签打开发票。 有关发票的更多信息，请参阅&#xA;此 [文档](https://core.telegram.org/bots/payments)。 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------------------------ |
+| color                                                                                                                                                              | `string`                                | Mini App 的背景颜色（格式为 `#RRGGBB`），或是以下值中的一个：`bg_color` 或 `secondary_bg_color`      |
 
 ### `web_app_set_bottom_bar_color`
 
-启用版本: **v7.10**
+<i>可选</i>。 按钮文本颜色，格式为<code>#RRGGBB</code>。
 
 更新迷你应用程序底部栏的背景颜色。
 
-| 字段 | 类型  | 说明      |
-| -- | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 字段    | 类型       | 说明                                                                                              |
+| ----- | -------- | ----------------------------------------------------------------------------------------------- |
 | color | `string` | Mini App 底栏背景颜色（`#RRGGBB` 格式），或是以下值中的一个：`bg_color`、`secondary_bg_color` 或 `bottom_bar_bg_color` |
+
+### `web_app_set_emoji_status`
+
+_可选_。 按钮背景颜色，格式为 `#RRGGBB`。
+
+Opens a dialog allowing the user to set the specified custom emoji as their status.
+
+| 字段                                                        | 类型       | 说明                                                           |
+| --------------------------------------------------------- | -------- | ------------------------------------------------------------ |
+| custom_emoji_id | `string` | Custom emoji identifier to set.              |
+| duration                                                  | #        | _可选_。 The status expiration time in seconds. |
 
 ### `web_app_set_header_color`
 
 启用版本: **v6.1**
 
 更新迷你应用程序[页眉颜色](theming.md#background-and-header-colors)。
-方法应接受 `color_key` 或 `color` 属性。
+方法应接受 `color_key` 或 `color` 属性。 方法应接受 `color_key` 或 `color` 属性。
 
-| 字段                             | 类型  | 说明                                                | 启用版本 |
-| ------------------------------ | --- | ------------------------------------------------- | ------ |
-| color_key | `string` | 迷你应用标题颜色键。 可以是 `bg_color` 或 `secondary_bg_color`。 |        |
-| color     | `string` | RGB 格式的颜色。                                        | `v6.9` |
+| 字段                             | 类型       | 说明                                                         | 自      |
+| ------------------------------ | -------- | ---------------------------------------------------------- | ------ |
+| color_key | `string` | 小程序标题颜色键。 小程序标题颜色键。 可以是 `bg_color` 或 `secondary_bg_color`。 |        |
+| color                          | `string` | RGB 格式的颜色。                                                 | `v6.9` |
 
 ### `web_app_setup_back_button`
 
@@ -433,31 +545,31 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
 
 更新 [返回按钮](back-button.md) 设置。
 
-| 字段                              | 类型 | 说明          |
-| ------------------------------- | --- | ----------- |
+| 字段                              | 类型        | 说明           |
+| ------------------------------- | --------- | ------------ |
 | is_visible | `boolean` | 设置后退按钮是否应该可见 |
 
 ### `web_app_setup_closing_behavior`
 
 更新当前的 [关闭行为](closing-behavior.md)。
 
-| 字段   | 类型 | 说明                  |
-| ---- | --- | ------------------- |
+| 字段                                     | 类型        | 说明                |
+| -------------------------------------- | --------- | ----------------- |
 | need_confirmation | `boolean` | 当应用程序即将关闭，是否会提示用户 |
 
 ### `web_app_setup_main_button`
 
 更新 [主按钮](main-button.md) 设置。
 
-| 字段 | 类型  | 说明   | 启用版本 |
-| ------------------------------------------------------------- | --- | ------------------------------------------------- | ------ |
-| is_visible                               | `boolean`  | _可选_。 是否应显示按钮。                                    |        |
-| is_active                                | `boolean`  | _可选_。 是否应启用该按钮。                                   |        |
-| is_progress_visible | `boolean`  | _可选_。 是否应显示按钮内的加载器。 如果某些操作需要时间，请使用此属性。 该加载器将通知用户。 |        |
-| text                                                            | `string` | _可选_。 按钮内的文本。                                     |        |
-| color              | `string` | _可选_。 按钮背景颜色，格式为 `#RRGGBB`。                       |        |
-| text_color                                                          | `string` | _可选_。 按钮文本颜色，格式为 `#RRGGBB`。                       |        |
-| has_shine_effect                                                        | `boolean`  | _可选_。 按钮是否应该有闪亮的效果。         | `v7.8` |
+| 字段                                                            | 类型        | 说明                                                | 自      |
+| ------------------------------------------------------------- | --------- | ------------------------------------------------- | ------ |
+| is_visible                               | `boolean` | _可选_。 是否应显示按钮。                                    |        |
+| is_active                                | `boolean` | _Optional_. 是否应启用该按钮。             |        |
+| is_progress_visible | `boolean` | _可选_。 是否应显示按钮内的加载器。 如果某些操作需要时间，请使用此属性。 该加载器将通知用户。 |        |
+| text                                                          | `string`  | _可选_。 按钮内的文本。                                     |        |
+| color                                                         | `string`  | _可选_。 _可选_。 按钮背景颜色，格式为 `#RRGGBB`。                 |        |
+| text_color                               | `string`  | _可选_。 _可选_。 按钮文本颜色，格式为 `#RRGGBB`。                 |        |
+| has_shine_effect    | `boolean` | _Optional_. 按钮是否应该有闪亮的效果          | `v7.8` |
 
 ### `web_app_setup_settings_button`
 
@@ -465,8 +577,8 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
 
 更新 [设置按钮](settings-button.md) 的当前状态。
 
-| 字段                              | 类型 | 说明            |
-| ------------------------------- | --- | ------------- |
+| 字段                              | 类型        | 说明            |
+| ------------------------------- | --------- | ------------- |
 | is_visible | `boolean` | 是否显示 "设置 "按钮。 |
 
 ### `web_app_setup_swipe_behavior`
@@ -475,8 +587,8 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
 
 设置新的滑动行为。
 
-| 字段     | 类型 | 说明              |
-| ------ | --- | --------------- |
+| 字段                                                             | 类型        | 说明              |
+| -------------------------------------------------------------- | --------- | --------------- |
 | allow_vertical_swipe | `boolean` | 允许使用垂直轻扫关闭应用程序。 |
 
 ### `web_app_share_to_story`
@@ -485,13 +597,69 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
 
 打开本地故事编辑器的方法。
 
-| 现场    | 类型  | 说明    |
-| ----------------------------------------------------- | --- | ------------------------------------------------------------------------------------------------------------ |
-| media_url   | `string` | 媒体 URL，将用作创建故事的背景。                                                                                           |
-| text        | `string` | _可选_。 要添加到媒体中的标题。 普通用户为 0-200 个字符，[高级用户](https://telegram.org/faq_premium#telegram-premium) 为 0-2048 个字符。    |
-| widget_link                      | `object`  | _可选_。 描述要包含在故事中的 widget 链接的对象。 请注意，只有 [高级用户](https://telegram.org/faq_premium#telegram-premium) 才能发布带有链接的故事。 |
-| widget_link.url  | `string` | 故事中要包含的 URL。                                                                                                 |
-| widget_link.name | `string` | _可选_。 小部件链接显示的名称，0-48 个字符。                                                                                   |
+| 字段                                                    | 类型       | 说明                                                                                                                          |
+| ----------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------- |
+| media_url                        | `string` | 媒体 URL，将用作创建故事的背景。                                                                                                          |
+| text                                                  | `string` | _可选_。 要添加到媒体中的标题。 _可选_。 要添加到媒体中的标题。 普通用户为 0-200 个字符，[高级用户](https://telegram.org/faq_premium#telegram-premium) 为 0-2048 个字符。 |
+| widget_link                      | `object` | _可选_。 描述要包含在故事中的 widget 链接的对象。 请注意，只有 [高级用户](https://telegram.org/faq_premium#telegram-premium) 才能发布带有链接的故事。                |
+| widget_link.url  | `string` | 故事中要包含的 URL。                                                                                                                |
+| widget_link.name | `string` | _Optional_. widget链接显示的名称，0-48 个字符。                                                                         |
+
+### `web_app_start_accelerometer`
+
+_可选_。 如果可能，链接将以 [Instant View](https://instantview.telegram.org/) 模式打开。
+
+Starts tracking accelerometer data.
+
+| 第二个参数是 `targetOrigin` - 允许的父 iframe 起源。 我们建议在不安全的情况下避免使用通配符 `*`，因为您的应用程序可能不是被 Telegram 插入，而是被另一个 iframe 插入，而后者仍能与您的应用程序通信并接收一些数据。 | 类型                                                                                                        | 向机器人发送数据。 调用该方法时，会向机器人发送一条服务消息，其中包含&#xA;长度不超过 4096 字节的数据。 然后，迷你应用程序将关闭。                                                                                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| refresh_rate                                                                                                 | _可选_。 要添加到媒体中的标题。 普通用户为 0-200 个字符，[高级用户](https://telegram.org/faq_premium#telegram-premium) 为 0-2048 个字符。 | The refresh rate in milliseconds, with acceptable values ranging from 20 to 1000. Note that `refresh_rate` may not be supported on all platforms, so the actual tracking frequency may differ from the specified value. |
+
+### `web_app_start_device_orientation`
+
+_可选_。 按钮是否应该有闪亮的效果。
+
+Starts tracking device orientation data.
+
+| 唯一的请求标识符。 应为任何唯一字符串，以便适当处理生成的事件。   | ```
+  按钮上要显示的文本，0-64
+  字符。 当<code>type</code> 为 <code>ok</code>、<code>close</code>或
+  <code>cancel</code>时<i>忽略</i>。
+``` | _可选_。 在弹出窗口中显示给用户的文字，说明机器人需要访问生物识别信息的原因，0-128 个字符。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| refresh_rate  | ```
+  在当前机器人名称之后插入的文本。 最大长度为 
+  <b>256 个</b>符号。
+```                                                                      | The refresh rate in milliseconds, with acceptable values ranging from 20 to 1000. Note that `refresh_rate` may not be supported on all platforms, so the actual tracking frequency may differ from the specified value.                                                                                                                                                                                                                                                                                                |
+| need_absolute | `boolean`                                                                                                                | _Optional_. Pass true to receive absolute orientation data, allowing you to determine the device's attitude relative to magnetic north. Use this option if implementing features like a compass in your app. If relative data is sufficient, pass false. <br/><br/> Keep in mind that some devices may not support absolute orientation data. In such cases, you will receive relative data even if need_absolute=true is passed. |
+
+### `web_app_start_gyroscope`
+
+_可选_。 是否应显示按钮。
+
+Starts tracking gyroscope data.
+
+| 第一个参数是一个 JSON 对象，**转换为字符串**。 该对象应&#xA;具有此接口： | 因此，正如你所看到的，每个方法都有自己的名称，由 `eventType` 表示，参数存储在&#xA;的 `eventData` 属性中。 下面是使用示例： | 请求允许使用生物识别技术。                                                                                                                                                                                                                                           |
+| -------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| refresh_rate            | 要存储的令牌。 最大长度为 1024 个符号。                                                       | The refresh rate in milliseconds, with acceptable values ranging from 20 to 1000. Note that `refresh_rate` may not be supported on all platforms, so the actual tracking frequency may differ from the specified value. |
+
+### `web_app_stop_accelerometer`
+
+_可选_。 是否应启用该按钮。
+
+Stops tracking accelerometer data.
+
+### `web_app_stop_device_orientation`
+
+启用版本
+
+Stops tracking device orientation data.
+
+### `web_app_stop_gyroscope`
+
+启用版本
+
+Stops tracking gyroscope data.
 
 ### `web_app_setup_secondary_button`
 
@@ -503,9 +671,14 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
   <thead>
 
   <tr>
-    <th>字段</th>
-    <th>类型</th>
-    <th>说明</th>
+    <th>TODO: 检查是否正确。 它可能会请求其他用户的电话。</th>
+    <th>
+      当 <code>type</code> 为 <code>notification</code> 时必须填写。 值：      
+</th>
+    <th>本节列出了可调用的可用方法及其名称、说明和
+参数。 如果迷你应用程序不满足最低方法版本要求，
+ 只要内部没有定义
+，本地应用程序就不知道应该调用哪个方法。</th>
   </tr>
 
   </thead>
@@ -531,9 +704,9 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
     <td>is_progress_visible</td>
     <td>
       <code>boolean</code>
-    </td>
+    C</td>
     <td>
-      <i>可选</i>。 是否应显示按钮内的加载器。 如果 
+      <i>Optional</i>. 是否应显示按钮内的加载器。 如果 
       某些操作需要时间，请使用此属性。 该加载器将通知用户。
     </td>
   </tr>
@@ -543,7 +716,7 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
     <td>
       <code>string</code>
     </td>
-    <td><i>可选</i>。 按钮背景颜色，格式为<code>#RRGGBB</code>。</td>
+    <td><i>可选</i>。 <i>可选</i>。 按钮背景颜色，格式为<code>#RRGGBB</code>。</td>
   </tr>
 
   <tr>
@@ -551,7 +724,7 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
     <td>
       <code>string</code>
     </td>
-    <td><i>可选</i>。 按钮文本颜色，格式为<code>#RRGGBB</code>。</td>
+    <td><i>可选</i>。 <i>可选</i>。 按钮文本颜色，格式为<code>#RRGGBB</code>。</td>
   </tr>
 
   <tr>
@@ -594,6 +767,7 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
 启用版本: **v6.7**
 
 在当前聊天的输入框中插入机器人的用户名和指定的内联查询。
+查询可能为空，在这种情况下，只会插入机器人的用户名。 在当前聊天的输入框中插入机器人的用户名和指定的内联查询。
 查询可能为空，在这种情况下，只会插入机器人的用户名。 客户端会提示
 用户选择特定聊天，然后打开该聊天，在输入框中插入机器人的用户名和
 指定的内联查询。
@@ -602,8 +776,11 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
   <thead>
 
   <tr>
-    <th>字段</th>
-    <th>类型</th>
+    <th>更新设备安全存储中的生物识别令牌。 要删除标记，请输入一个空的
+字符串。</th>
+    <th>
+      当 <code>type</code> 为 <code>impact</code> 时必须填写。 值：      
+</th>
     <th>说明</th>
   </tr>
 
@@ -618,6 +795,7 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
     <td>
       在当前机器人名称之后插入的文本。 最大长度为 
       <b>256 个</b>符号。
+    
     </td>
   </tr>
 
@@ -627,8 +805,8 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
       <code>string[]</code>
     </td>
     <td>
-      可用于发送信息的聊天类型列表。 可能是空列表。 支持的值：      
-      <ul>
+      用于发送信息的聊天类型列表。  可能是空列表。 值：      
+<ul>
         <li>
           <code>users</code> 
         </li>
@@ -648,6 +826,20 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
   </tbody>
 </table>
 
+### `web_app_toggle_orientation_lock`
+
+启用版本
+
+Locks the Mini App’s orientation to its current mode (either portrait or landscape). Once locked,
+the orientation remains fixed, regardless of device rotation. This is useful if a stable orientation
+is needed during specific interactions.
+
+| _可选_。 在弹出窗口中显示给用户的文字，说明要求用户进行身份验证的原因，以及根据身份验证将采取的操作，0-128 个字符。 | ```
+  触觉事件类型。 值：
+``` | 说明                                                      |
+| -------------------------------------------------------------- | -------------------- | ------------------------------------------------------- |
+| locked                                                         | `boolean`            | True if the orientation must be locked. |
+
 ### `web_app_trigger_haptic_feedback`
 
 启用版本: **v6.1**
@@ -659,7 +851,9 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
 
   <tr>
     <th>字段</th>
-    <th>类型</th>
+    <th>
+      按钮类型。 价值：      
+</th>
     <th>说明</th>
   </tr>
 
@@ -672,7 +866,7 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
       <code>string</code>
     </td>
     <td>
-      触觉事件类型。 值：      
+      触觉事件类型。  Values:      
 <ul>
         <li>
           <code>impact</code>，当 UI 组件发生碰撞时。
@@ -693,7 +887,7 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
       <code>string</code>
     </td>
     <td>
-      当 <code>type</code> 为 <code>impact</code> 时必须填写。 值：      
+      当 <code>type</code> 为 <code>impact</code> 时必须填写。  值：      
 <ul>
         <li>
           <code>light</code>，表示小型或轻量级用户界面对象之间发生碰撞
@@ -715,12 +909,12 @@ Telegram 将创建 [viewport_changed](events.md#viewport-changed) 事件。
     </td>
   </tr>
   <tr>
-    <td>notification_type</td>
+    <td>notification_typec</td>
     <td>
       <code>string</code>
     </td>
     <td>
-      当 <code>type</code> 为 <code>notification</code> 时必须填写。 值：      
+      当 <code>type</code> 为 <code>notification</code> 时必须填写。  值：      
 <ul>
         <li>
           <code>error</code>，表示任务或操作失败
