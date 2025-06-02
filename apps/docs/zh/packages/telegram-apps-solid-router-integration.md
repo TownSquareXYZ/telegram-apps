@@ -12,7 +12,6 @@
 
 Telegram Mini Apps [Navigator](telegram-apps-sdk/1-x/navigation.md) 和 [@solidjs/router](https://www.npmjs.com/package/@solidjs/router) 的集成 。
 
-
 ## 安装
 
 ::: code-group
@@ -72,3 +71,4 @@ function App() {
 
 您可以通过
 我们的 [Solid 模板](https://github.com/Telegram-Mini-Apps/solidjs-template) 了解更多有关如何使用它的实际应用。
+
