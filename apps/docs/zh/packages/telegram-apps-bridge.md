@@ -1,5 +1,8 @@
 # @telegram-apps/bridge
 
+> [!TIP] Newer version available
+> `@telegram-apps/bridge@2.x` is [out](./telegram-apps-bridge/2-x)!
+
 <p style="display: flex; gap: 8px; min-height: 20px">
   <a href="https://npmjs.com/package/@telegram-apps/bridge">
     <img src="https://img.shields.io/npm/v/@telegram-apps/bridge?logo=npm"/>
@@ -39,6 +42,7 @@ yarn add @telegram-apps/bridge
 ## 使用方法
 
 下面是一个如何使用该软件包的基本示例。 有关详细信息，请参阅
+文档中的后续文章。 有关详细信息，请参阅
 文档中的后续文章。
 
 ```ts
