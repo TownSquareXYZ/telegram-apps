@@ -2,10 +2,17 @@
 
 ## `requestPhoneAccess`
 
-要请求访问用户的电话信息，请使用 `requestPhoneAccess` 方法。 如果用户
+要请求访问用户的电话信息，请使用 `requestPhoneAccess` 方法。  如果用户
 授予访问权限，开发者的机器人就会收到手机详细信息。
 
-```ts
+::: code-group
+
+```ts [Using isAvailable]
+要请求访问用户的电话信息，请使用 `requestPhoneAccess` 方法。 如果用户
+授予访问权限，开发者的机器人就会收到手机详细信息。
+```
+
+```ts [Using ifAvailable]
 import { requestPhoneAccess } from '@telegram-apps/sdk';
 
 if (requestPhoneAccess.isSupported()) {
@@ -14,11 +21,15 @@ if (requestPhoneAccess.isSupported()) {
 }
 ```
 
+:::
+
 ## `requestWriteAccess`
 
 要请求向用户发送消息的权限，请使用 `requestWriteAccess` 方法。
 
-```ts [Functions]
+::: code-group
+
+```ts [Using isAvailable]
 import { requestWriteAccess } from '@telegram-apps/sdk';
 
 if (requestWriteAccess.isSupported()) {
@@ -27,12 +38,22 @@ if (requestWriteAccess.isSupported()) {
 }
 ```
 
+```ts [Using ifAvailable]
+import { requestWriteAccess } from '@telegram-apps/sdk';
+
+const status = await requestWriteAccess.ifAvailable();
+// status will be 'allowed' | string | undefined
+```
+
+:::
 
 ## `requestContact`
 
 要检索用户的联系信息，请使用 `requestContact` 方法。
 
-```ts
+::: code-group
+
+```ts [Using isAvailable]
 import { requestContact } from '@telegram-apps/sdk';
 
 if (requestContact.isSupported()) {
@@ -49,3 +70,25 @@ if (requestContact.isSupported()) {
   // };
 }
 ```
+
+```ts [Using ifAvailable]
+import { requestContact } from '@telegram-apps/sdk';
+
+const contact = await requestContact.ifAvailable();
+// {
+//   contact: {
+//     userId: 1,
+//     phoneNumber: '+987654321',
+//     firstName: 'Vladislav',
+//     lastName: 'Kibenko'
+//   },
+//   authDate: Date(12345678),
+//   hash: 'abcdefgh'
+// } | undefined;
+```
+
+:::
+
+
+
+
