@@ -2,7 +2,9 @@
 
 术语**视口**描述了迷你应用程序的**可见部分**。 由于迷你应用程序在不同平台上的显示方式可能
 不同，因此可以使用视口信息来确保迷你应用程序的显示
-正确。
+正确。 Since Mini Apps can appear
+differently across various platforms, viewport information is used to ensure the Mini App is
+displayed correctly.
 
 视口数据通过四个属性进行描述：
 
@@ -11,42 +13,60 @@
   该标志就等于 `true`。
 - `expansion` 属性也是一个标志，当迷你应用程序达到
   的最大高度时，该标志等于 `true`。
-
-## Views
-
-打开应用程序的方式多种多样，每种方式都可能呈现出不同的视
-图。
-
-例如，通过菜单按钮打开的应用程序将在界面下方
-显示一个输入框。 同时，使用直接链接打开应用程序将导致
-用户看不到界面中的任何其他元素。
-
-<img
-  src="/components/viewport/views.png"
-  srcset="/components/viewport/views.png, /components/viewport/views@2x.png 2x"
-  class="guides-image"
-/>
+- **`fullscreen`**: A boolean flag indicating whether the application is displayed in fullscreen
+  mode.
+- **`safe area`**: An information describing the viewport content safe area and insets.
 
 ## 扩展
 
-如果在 Telegram 的移动版本（Android 和 iOS）中打开应用程序，则会在名为 `BottomSheet` 的本地组件中显示
-。 它表示可从底部拖动到顶部的
-块，可扩展到整个屏幕大小。 要做到这一点，用户可以将其拖动到
-屏幕的上限，但开发人员也可以通过编程实现。
+When an application is opened in the mobile version of Telegram (on both Android and iOS), it is
+displayed within a native component called **`BottomSheet`**. This is a draggable block that appears
+at the bottom of the screen and can be expanded to cover the entire screen. Users can expand it by
+dragging it to the top edge of the screen, but developers can also trigger this programmatically.
 
 默认情况下，应用程序处于最小化（未展开）状态，允许的高度也最小。 要通过代码扩展
 应用程序，开发人员应
-调用 [web_app_expand](methods.md#web-app-expand) 方法。
+调用 [web_app_expand](methods.md#web-app-expand) 方法。 To expand
+the application via code, developers can call the [**`web_app_expand`**](methods.md#web-app-expand)
+method.
 
 <img
-  src="/components/viewport/expansion.png"
-  srcset="/components/viewport/expansion.png, /components/viewport/expansion@2x.png 2x"
-  class="guides-image"
+src="/components/viewport/views.png"
+srcset="/components/viewport/views.png, /components/viewport/views@2x.png 2x"
+class="guides-image"
 />
 
-在拖动过程中，视口被认为是不稳定的。 对于开发人员来说，这意味着只要视口尺寸可能在下一
-刻发生变化，他
-可能就不应该进行任何大小调整或类似操作。
+While the **`BottomSheet`** is being dragged, the viewport is considered unstable. For developers,
+this means avoiding any resizing actions or similar operations, as viewport dimensions may change
+momentarily.
 
 其他平台打开的 Mini App 已在中等大小窗口中最大化，调用
-of [web_app_expand](methods.md#web-app-expand) 方法不会有任何效果。
+of [web_app_expand](methods.md#web-app-expand) 方法不会有任何效果。 In these
+cases, calling the [web_app_expand](methods.md#web-app-expand) method will have no effect.
+
+## Fullscreen
+
+![Full screen](/functionality/full-screen.png)
+
+Mini apps can be launched in **fullscreen mode**, which expands the application to cover the entire
+device screen, removing both the top and bottom bars of Telegram.
+
+This mode is particularly suitable for games and media-focused applications.
+
+To control fullscreen mode, Telegram Mini Apps provides such methods
+as [web_app_request_fullscreen](methods.md#web_app_request_fullscreen)
+and [web_app_exit_fullscreen](methods.md#web_app_exit_fullscreen).
+
+[//]: # "TODO: Learn more and write this section"
+[//]: # "## Safe Area"
+[//]: #
+[//]: # "In mini apps, the **safe area** refers to the portion of the screen that is free from"
+[//]: # "obstructions like notches, status bars, navigation bars, or rounded screen edges. It ensures that"
+[//]: # "essential content is displayed properly and not hidden or truncated."
+[//]: #
+[//]: # "Using the safe area is crucial for delivering a seamless user experience, especially on devices with"
+[//]: # "modern screen designs (e.g., iPhones with notches or Android devices with rounded corners)."
+[//]: # "Developers typically use CSS properties or platform-specific guidelines"
+[//]: # "(e.g., `env(safe-area-inset-*)` in CSS) to adjust the layout within the safe area boundaries, but"
+[//]: # "in Telegram Mini Apps, these values are passed manually from the Telegram application."
+
