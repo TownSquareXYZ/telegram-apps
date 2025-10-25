@@ -1,11 +1,10 @@
-# Biometry
+# Биометрия
 
-The 💠[component](../scopes.md) responsible for biometry functionality for Telegram Mini Apps.
+Компонент 💠[component](../scopes.md), отвечающий за функциональность биометрии для мини-приложений Telegram.
 
-## Checking Support
+## Проверка поддержки
 
-To check if biometry is supported by the current Telegram Mini Apps version, use the `isSupported`
-method:
+Чтобы проверить, поддерживается ли биометрия в текущей версии Telegram Mini Apps, используйте метод `isSupported`:
 
 ::: code-group
 
@@ -23,16 +22,15 @@ isBiometrySupported(); // boolean
 
 :::
 
-## Mounting
+## Монтирование
 
-Before using the component, it must be mounted.
+Прежде чем использовать компонент, его необходимо установить.
 
-This process is asynchronous, as biometry data needs to be requested from the Telegram application.
-The `isMounting` signal will be set to `true` during the process and updated to `false` when
-complete.
+Этот процесс является асинхронным, поскольку данные биометрии должны быть запрошены у приложения Telegram.
+Сигнал `isMounting` будет установлен в `true` во время процесса и обновлен до `false` по его завершении.
 
-If mounting is successful, the `isMounted` signal will be set to `true`. If errors occur,
-the `mountError` signal will reflect the error.
+Если монтирование прошло успешно, сигнал `isMounted` будет установлен в `true`. Если возникают ошибки,
+сигнал `mountError` будет отражать ошибку.
 
 ::: code-group
 
@@ -77,7 +75,7 @@ if (mountBiometry.isAvailable()) {
 
 :::
 
-To unmount, use the `unmount` method:
+Чтобы размонтировать, используйте метод `unmount`:
 
 ::: code-group
 
@@ -95,10 +93,10 @@ isBiometryMounted(); // false
 
 :::
 
-## Requesting Biometry Access
+## Запрос на доступ к биометрии
 
-To request biometry access, use the `requestAccess` method. It returns a promise with boolean
-value indicating whether access was granted by the user.
+Чтобы запросить доступ к биометрии, используйте метод `requestAccess`. Он возвращает обещание с булевым
+указывающим, был ли доступ предоставлен пользователем.
 
 ::: code-group
 
@@ -118,16 +116,16 @@ if (requestBiometryAccess.isAvailable()) {
 
 :::
 
-## Authenticating
+## Аутентификация
 
-To authenticate a user and retrieve a previously saved token, use the `authenticate` method.
+Чтобы аутентифицировать пользователя и получить сохраненный ранее токен, используйте метод `authenticate`.
 
-It optionally accepts an object with the following properties:
+В качестве опции он принимает объект со следующими свойствами:
 
-- `reason?: string`: a reason for authentication to display to the user.
+- `reason?: string`: причина аутентификации для отображения пользователю.
 
-The method returns an object with `status` (`'failed'` or `'authorized'`) and, if successful,
-a `token: string`.
+Метод возвращает объект со `статусом` (`не удалось` или `авторизован`) и, в случае успеха,
+`token: string`.
 
 ::: code-group
 
@@ -163,14 +161,13 @@ if (authenticateBiometry.isAvailable()) {
 
 :::
 
-## Updating Token
+## Обновление токена
 
-To update the token stored in local secure storage, use the `updateToken` method.
+Чтобы обновить токен, хранящийся в локальном безопасном хранилище, используйте метод `updateToken`.
 
-The method accepts an optional object with the `reason` and `token` properties. If no token is
-provided, the existing token will be deleted.
+Метод принимает необязательный объект со свойствами `reason` и `token`. Если токен не указан, существующий токен будет удален.
 
-It returns a promise with boolean indicating if any changes were made.
+Он возвращает промис со значением boolean, указывающим, были ли внесены какие-либо изменения.
 
 ::: code-group
 
@@ -204,10 +201,10 @@ if (updateBiometryToken.isAvailable()) {
 
 :::
 
-## Opening Settings
+## Открытие настроек
 
-To open the biometry-related settings modal, use the `openSettings` method. This method can only be
-triggered in response to user interaction.
+Чтобы открыть всплывающее окно настроек, связанных с биометрией, используйте метод `openSettings`. Этот метод может быть запущен только
+в ответ на взаимодействие пользователя.
 
 ::: code-group
 
