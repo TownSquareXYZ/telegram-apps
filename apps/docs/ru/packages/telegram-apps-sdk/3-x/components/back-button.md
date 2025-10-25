@@ -1,12 +1,11 @@
-# Back Button
+# Кнопка "Назад"
 
-The 💠[component](../scopes.md) responsible for the Telegram Mini
-Apps [back button](../../../../platform/back-button.md).
+💠[Компонент](../scopes.md), отвечающий за работу Telegram Mini
+Приложения [кнопка назад](../../../../../platform/back-button.md).
 
-## Checking Support
+## Проверка поддержки
 
-To check if the back button is supported by the current Telegram Mini Apps version, use the
-`isSupported` method:
+Чтобы проверить, поддерживается ли кнопка "Назад" текущей версией Telegram Mini Apps, используйте метод `isSupported`:
 
 ::: code-group
 
@@ -24,10 +23,9 @@ isBackButtonSupported(); // boolean
 
 :::
 
-## Mounting
+## Монтирование
 
-Before using this component, it is necessary to mount it to work with properly configured
-properties. To do so, use the `mount` method. It will update the `isMounted` signal property.
+Прежде чем использовать этот компонент, необходимо смонтировать его для работы с правильно настроенными свойствами. Для этого используйте метод `mount`. Это приведет к обновлению свойства сигнала `isMounted`.
 
 ::: code-group
 
@@ -51,7 +49,7 @@ if (mountBackButton.isAvailable()) {
 
 :::
 
-To unmount, use the `unmount` method:
+Чтобы размонтировать, используйте метод `unmount`:
 
 ::: code-group
 
@@ -69,10 +67,10 @@ isBackButtonMounted(); // false
 
 :::
 
-## Showing and Hiding
+## Отображение и скрытие
 
-To change the button's visibility, use the `hide()` and `show()` methods. These methods update
-the `isVisible` signal property value.
+Чтобы изменить видимость кнопки, используйте методы `hide()` и `show()`. Эти методы обновляют
+значение сигнального свойства `isVisible`.
 
 ::: code-group
 
@@ -108,10 +106,9 @@ if (hideBackButton.isAvailable()) {
 
 :::
 
-## Tracking Click
+## Отслеживание нажатий
 
-To add a button click listener, use the `onClick` method. It returns a function to remove the bound
-listener. Alternatively, you can use the `offClick` method.
+Чтобы добавить слушателя событий нажатия на кнопку, используйте метод `onClick`. Он возвращает функцию для удаления связанного слушателя. В качестве альтернативы можно использовать метод `offClick`.
 
 ::: code-group
 
