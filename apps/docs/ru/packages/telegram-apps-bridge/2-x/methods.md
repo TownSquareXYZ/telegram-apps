@@ -1,11 +1,10 @@
-# Methods
+# Методы
 
-This article covers topics related to [apps communication](../../platform/apps-communication.md)
-methods.
+В этой статье рассматриваются темы, связанные с [общением с приложениями](../../platform/apps-communication.md) методы.
 
-## Calling Methods
+## Вызов методов
 
-To call Telegram Mini Apps methods, developers should use the `postEvent` function:
+Для вызова методов Telegram Mini Apps разработчики должны использовать функцию `postEvent`:
 
 ```typescript
 import { postEvent } from '@telegram-apps/bridge';
@@ -13,15 +12,14 @@ import { postEvent } from '@telegram-apps/bridge';
 postEvent('web_app_setup_back_button', { is_visible: true });
 ```
 
-This function automatically determines the correct way to send the event based on the current
-environment. It identifies the Telegram app type and selects the appropriate flow.
+Эта функция автоматически определяет правильный способ отправки события в зависимости от текущей обстановки окружения. Он определяет тип приложения Telegram и выбирает соответствующий поток.
 
-## Checking Method Support
+## Проверка метода поддержки
 
-By default, the `postEvent` function does not check if the specified method is supported by the
-current Telegram app. To do this, the `supports` function is used.
+По умолчанию функция `postEvent` не проверяет, поддерживается ли указанный метод
+текущее приложение Telegram. Для этого используется функция `supports`.
 
-It accepts a Mini Apps method name and the current platform version:
+Он принимает имя метода Mini Apps и текущую версию платформы:
 
 ```typescript
 import { supports } from '@telegram-apps/bridge';
@@ -30,8 +28,7 @@ supports('web_app_trigger_haptic_feedback', '6.0'); // false
 supports('web_app_trigger_haptic_feedback', '6.1'); // true
 ```
 
-The `supports` function also allows checking if a specific parameter in the method parameters is
-supported:
+Функция `supports` также позволяет проверить, поддерживается ли конкретный параметр в параметрах метода:
 
 ```typescript
 import { supports } from '@telegram-apps/bridge';
@@ -40,33 +37,29 @@ supports('web_app_open_link', 'try_instant_view', '6.0'); // false
 supports('web_app_open_link', 'try_instant_view', '6.7'); // true
 ```
 
-> [!TIP]
-> It is recommended to use this function before calling Mini Apps methods to prevent apps from
-> stalling or encountering unexpected behavior.
+> [!СОВЕТ]
+> Рекомендуется использовать эту функцию перед вызовом методов Mini Apps, чтобы предотвратить остановку или неожиданное поведение.
 
-## Creating Safer `postEvent`
+## Создание безопасной функции `postEvent`
 
-This package includes a function named `createPostEvent` that takes the current Mini Apps version as
-input.
+Этот пакет включает функцию `createPostEvent`, которая принимает текущую версию Mini Apps в качестве входных данных.
 
-It returns a new `postEvent` function, which internally checks if the passed method and
-parameters are supported.
+Возвращает новую функцию `postEvent`, которая внутренне проверяет, поддерживаются ли переданные метод и параметры.
 
 ```typescript
 import { createPostEvent } from '@telegram-apps/bridge';
 
 const postEvent = createPostEvent('6.5');
 
-// Will work fine.
+// Будет работать хорошо.
 postEvent('web_app_read_text_from_clipboard');
 
-// Will throw an error, this method is not supported 
-// in Mini Apps version 6.5.
+// Выбросит ошибку, этот метод не поддерживается 
+// в Mini Apps версии 6.5.
 postEvent('web_app_request_phone');
 ```
 
-As a second optional argument, the function accepts a callback that is called if the method or
-parameter is unsupported.
+В качестве 2-го необязательного аргумента функция принимает обратный вызов, который вызывается, если метод или параметр не поддерживается.
 
 ```ts
 createPostEvent('6.0', data => {
@@ -82,16 +75,16 @@ createPostEvent('6.0', data => {
 });
 ```
 
-Despite the fact, that it is not recommended, to log warnings instead of throwing errors,
-the `'non-strict'` value can be passed:
+Несмотря на то, что не рекомендуется выводить предупреждения вместо ошибок,
+можно передать значение `non-strict`:
 
 ```ts
 const postEvent = createPostEvent('6.5', 'non-strict');
 
-// Will work fine.
+// Будет работать хорошо.
 postEvent('web_app_read_text_from_clipboard');
 
-// Will show a warning in the console, stating that specified
-// method is unsupported in version 6.5. Nothing else will happen.
+// Выведет в консоль предупреждение о том, что указанный
+// метод не поддерживается в версии 6.5. Больше ничего не произойдет.
 postEvent('web_app_request_phone');
 ```
