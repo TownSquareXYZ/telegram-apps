@@ -60,26 +60,21 @@ if (await isTMA('complete', { timeout: 50 })) {
 
 Параметры запуска для использования в макете. Он может быть представлен в виде списка параметров запроса (строка или экземпляр `URLSearchParams`), описанного в [этой](../../../platform/launch-parameters) статье, или объекта, подобного параметрам запуска, с отсутствующим свойством `tgWebAppData`, или представлен в виде списка параметров запроса, описанного в [этой](../../../platform/init-data#parameters-list) статье.
 
-> [!TIP]
-> Don't be afraid, this value will be validated, and the package will let you know that something is
-> off.
+> [!СОВЕТ].
+> Не бойтесь, это значение будет проверено, и пакет сообщит вам, что что-то не работает.
 
 ### `onEvent`
 
-Function that will be called in case any Mini Apps method was called by your
-application. It allows a developer to define a custom handling behavior if needed.
+Функция, которая будет вызвана в случае, если какой-либо метод Mini Apps был вызван вашим приложением. Это позволяет разработчику определить пользовательское поведение обработки (если это необходимо).
 
-The function receives a tuple, containing the method name as the first argument, and its payload as
-the second one.
+Функция принимает кортеж, содержащий имя метода в качестве 1-го аргумента и его полезную нагрузку в качестве 2-го.
 
-As the second argument, it accepts a function that attempts to call the native `postEvent`
-function usually defined by the Telegram client. So, the `mockTelegramEnv` function may be used
-even inside Telegram Mini Apps environment to intercept all methods' calls and pass them further
-if needed.
+В качестве 2-го аргумента он принимает функцию, которая пытается вызвать нативную функцию `postEvent`, обычно определяемую клиентом Telegram. Таким образом, функция `mockTelegramEnv` может использоваться
+даже внутри среды Telegram Mini Apps для перехвата всех вызовов методов и их дальнейшей передачи при необходимости.
 
-### Example
+### Пример
 
-Here is the complete example you may use in your application:
+Вот полный пример, который вы можете использовать в своем приложении:
 
 ```ts
 import { mockTelegramEnv, emitEvent } from '@telegram-apps/bridge';
