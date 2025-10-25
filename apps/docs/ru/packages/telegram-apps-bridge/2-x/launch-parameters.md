@@ -1,14 +1,12 @@
-# Launch Parameters
+# Параметры запуска
 
-Launch parameters are essential to the mini application lifecycle. To learn more about what launch
-parameters are and their importance, it is worth reading [this](../../../platform/launch-parameters)
-article.
+Параметры запуска очень важны для жизненного цикла мини-приложения. Чтобы узнать больше о том, что такое параметры запуска
+Параметры запуска и их важность, стоит прочитать [эту](../../../platform/launch-parameters)
+статью.
 
-## Retrieving Launch Parameters
+## Получение параметров запуска
 
-This package allows a developer to extract launch parameters from the current environment using
-the `retrieveLaunchParams` function. It tries to retrieve them from all possible sources, and if it
-fails, an error will be thrown.
+Этот пакет позволяет разработчику извлекать параметры запуска из текущего окружения с помощью функции `retrieveLaunchParams`. Он пытается получить их из всех возможных источников, и если это не удается, будет выдана ошибка.
 
 ```typescript
 import { retrieveLaunchParams } from '@telegram-apps/bridge';
@@ -26,8 +24,7 @@ retrieveLaunchParams();
 // };
 ```
 
-To retrieve launch params deeply converted to camel case, pass the `true` value as the first
-argument:
+Чтобы извлечь параметры запуска, глубоко преобразованные в camel-case, передайте значение `true` 1-ым аргументом:
 
 ```ts
 retrieveLaunchParams(true);
@@ -45,8 +42,7 @@ retrieveLaunchParams(true);
 
 ### Raw
 
-To retrieve launch parameters in their initial format—as query parameters, use
-the `retrieveRawLaunchParams` function:
+Чтобы получить параметры запуска в их исходном формате — в качестве параметров запроса, используйте функцию `retrieveRawLaunchParams`:
 
 ```ts
 import { retrieveRawLaunchParams } from '@telegram-apps/bridge';
@@ -55,12 +51,10 @@ retrieveRawLaunchParams();
 // tgWebAppBotInline=0&tgWebAppData=%7B%22user%22%3A%7B%7D%2C%22auth_date%22%3A1787367222%2C%22query_id%22%3A%22abc%22%7D...&...
 ```
 
-## Retrieving Raw Init Data
+## Получение необработанных исходных данных
 
-It is a rather common case when the application requires extracting init data in its raw format
-to send to a backend server then. You must not use the `retrieveLaunchParams` function and then
-manipulate the `tgWebAppData` value, but utilize the `retrieveRawInitData` function designed for
-this purpose:
+Довольно часто приложение требует извлечения данных инициализации в исходном формате,
+чтобы затем отправить их на backend-сервер. Не следует использовать функцию `retrieveLaunchParams`, а затем манипулировать значением `tgWebAppData`, а использовать функцию `retrieveRawInitData`, предназначенную для этой цели:
 
 ```ts
 import { retrieveRawInitData } from '@telegram-apps/bridge';
@@ -69,6 +63,4 @@ retrieveRawInitData();
 // '{"user":...,"auth_date":...,"query_id":...,...}'
 ```
 
-The reason is using something else rather than this function, there is no guarantee that the init
-data will not become malformed. This is the only function which guarantees that the returned
-value will be returned unmodified, as it was passed by the Telegram client.
+Причина в том, что при использовании чего-то другого, а не этой функции, нет никакой гарантии, что данные init не будут искажены. Это единственная функция, которая гарантирует, что возвращаемое значение будет возвращено в неизменном виде, как оно было передано клиентом Telegram.
