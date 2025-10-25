@@ -1,50 +1,48 @@
-# Events
+# События
 
-This article covers topics related to [apps communication](../../platform/apps-communication.md)
-events.
+В этой статье рассматриваются темы, связанные с [общение с приложениями](../../platform/apps-communication.md) события.
 
-## Tracking Events
+## Отслеживание событий
 
-To start tracking events, use the `on`. It returns a new function, removing the bound event
-listener.
+Чтобы начать отслеживать события, используйте `on`. Возвращает новую функцию, удаляя связанный слушатель событий.
 
 ```typescript
 import { on } from '@telegram-apps/bridge';
 
-// Start listening to the "viewport_changed" event. The returned value
-// is a function that removes this event listener.
-const removeListener = on('viewport_changed', (payload) => {
+// Начните прослушивать событие "viewport_changed". Возвращаемое значение
+// является функцией, которая удаляет этот слушатель события.
+ const removeListener = on('viewport_changed', (payload) => {
   console.log('Viewport changed:', payload);
-  // Remove this event listener.
+  // Удалите этот слушатель событий.
   removeListener();
 });
 ```
 
-Alternatively, to stop listening to the event, a developer can use the `off` function:
+В качестве альтернативы, чтобы прекратить прослушивание события, разработчик может использовать функцию `off`:
 
 ```typescript
 import { on, off, type EventListener } from '@telegram-apps/bridge';
 
 const listener: EventListener<'viewport_changed'> = (payload) => {
   console.log('Viewport changed:', payload);
-  // Remove the event listener.
+  // Удалите слушатель событий.
   off('viewport_changed', listener);
 };
 
-// Start listening to the event.
+// Начните прослушивание события.
 on('viewport_changed', listener);
 
 ```
 
-### One-Time Listener
+### Одноразовый слушатель
 
-To call the listener only once and remove it after, the third boolean argument is used:
+Чтобы вызвать слушателя только один раз и удалить его после этого, используется 3-ий аргумент boolean:
 
 ```typescript
 import { on } from '@telegram-apps/bridge';
 
-// the listener will automatically be removed after the first 
-// its execution.
+// слушатель будет автоматически удален после первого 
+// его выполнения.
 on('viewport_changed', payload => {
   console.log('Viewport changed:', payload);
 }, true);
@@ -52,8 +50,7 @@ on('viewport_changed', payload => {
 
 ### Wildcard Listener
 
-In case, it is required to track all events, pass the `*` value as the first argument. In this case,
-the listener will receive a tuple containing two elements: the event name and its payload.
+Если требуется отслеживать все события, передайте в качестве 1-го аргумента значение `*`. В этом случае слушатель получит кортеж, содержащий 2 элемента: имя события и его полезную нагрузку.
 
 ```ts
 import { on } from '@telegram-apps/bridge';
@@ -67,5 +64,5 @@ on('*', event => {
 });
 ```
 
-> [!TIP] Why tuple?
-> The listener receives a tuple for better typing when using TypeScript.
+> [!СОВЕТ] Почему именно кортеж?
+> Слушатель получает кортеж для лучшей типизации при использовании TypeScript.
