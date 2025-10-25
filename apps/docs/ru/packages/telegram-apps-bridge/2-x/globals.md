@@ -1,11 +1,11 @@
-# Globals
+# Глобальные значения
 
-By globals, we mean global values used across methods in the package.
+Под глобальными значениями мы понимаем глобальные значения, используемые во всех методах пакета.
 
-## Enabling Debug Mode
+## Включение режима отладки
 
-Enabling debug mode will lead to showing additional useful logs. To enable or disable it,
-use the `setDebug` function:
+Включение режима отладки приведет к отображению дополнительных полезных журналов. Чтобы включить или отключить ее,
+воспользуйтесь функцией `setDebug`:
 
 ```typescript
 import { setDebug } from '@telegram-apps/bridge';
@@ -13,14 +13,12 @@ import { setDebug } from '@telegram-apps/bridge';
 setDebug(true);
 ```
 
-After setting it to `true`, you will see logs when calling the `postEvent` function or receiving
-Mini Apps events.
+Установив значение `true`, вы будете видеть журналы при вызове функции `postEvent` или при получении событий Mini Apps.
 
 ## `targetOrigin`
 
-If the package is used in a browser environment (iframe), it employs the `window.parent.postMessage`
-function. This function requires specifying the target origin to ensure events are only sent to
-trusted parent iframes. By default, the package uses `https://web.telegram.org` as the origin.
+Если пакет используется в браузерной среде (iframe), он использует функцию `window.parent.postMessage`. Эта функция требует указания исходного источника, чтобы события отправлялись только в
+доверительные родительские iframe. По умолчанию пакет использует `https://web.telegram.org` в качестве источника.
 
 ```typescript
 import { targetOrigin } from '@telegram-apps/bridge';
@@ -28,6 +26,6 @@ import { targetOrigin } from '@telegram-apps/bridge';
 targetOrigin.set('https://i-know-what-i-am.doing');
 ```
 
-> [!WARNING]
-> It is strongly recommended not to override this value, as it could lead to security issues.
-> Specify this value only when you are certain of its impact.
+> [!ВНИМАНИЕ]
+> Настоятельно рекомендуется не переопределять это значение, так как это может привести к проблемам с безопасностью.
+> Указывайте это значение только в том случае, если вы уверены в его влиянии.
