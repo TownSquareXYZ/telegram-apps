@@ -1,24 +1,22 @@
-# Environment
+# Переменные среды
 
-This package is designed to be used only inside the Telegram application. Since non-Telegram
-environments lack Telegram-specific traits, calling methods such
-as [retrieveLaunchParams](launch-parameters.md) or [postEvent](methods.md#postevent) will lead to
-errors.
+Этот пакет предназначен для использования только внутри приложения Telegram. Поскольку в средах, не относящихся к Telegram
+окружении отсутствуют специфические для Telegram черты, вызов таких методов, как
+как [retrieveLaunchParams](launch-parameters.md) или [postEvent](methods.md#postevent), приведет к ошибкам.
 
-Nevertheless, the package provides utilities that help developers either develop the application
-outside of Telegram or determine if the current environment is not a Telegram Mini App at all.
+Тем не менее, пакет предоставляет утилиты, которые помогут разработчикам либо создать приложение вне Telegram, либо определить, не является ли текущая среда Telegram Mini App вообще.
 
-## Validating Current Environment
+## Проверка текущей среды
 
-To check if the current environment is Telegram Mini Apps, a developer can use the `isTMA` function.
-It works in two modes: **simple** and **complete**.
+Чтобы проверить, является ли текущее окружение Telegram Mini Apps, разработчик может использовать функцию `isTMA`.
+Он работает в двух режимах: **простой** и **полный**.
 
-### Simple
+### Простой
 
-In this mode, the function attempts to retrieve launch parameters from the environment.
+В этом режиме функция пытается получить параметры запуска из переменной среды.
 
-If the extraction is successful, the environment is considered Telegram Mini Apps.
-Simple mode is synchronous and returns a boolean value.
+Если извлечение прошло успешно, среда считается Telegram Mini Apps.
+Простой режим является синхронным и возвращает логическое значение.
 
 ```ts
 import { isTMA } from '@telegram-apps/bridge';
@@ -28,13 +26,12 @@ if (isTMA()) {
 }
 ```
 
-This mode is somewhat superficial but may still be sufficient for most applications. For a more
-reliable check, use the [complete](#complete) mode.
+Этот режим является несколько поверхностным, но для большинства приложений может быть достаточным. Для более надежной проверки используйте режим [полный](#complete).
 
-### Complete
+### Полный
 
-In this mode, the function calls a Telegram Mini Apps-specific method and waits for a
-method-specific event to occur.
+В этом режиме функция вызывает метод, специфичный для Telegram Mini Apps, и ожидает
+события, характерного для метода.
 
 ```ts
 import { isTMA } from '@telegram-apps/bridge';
@@ -44,9 +41,7 @@ if (await isTMA('complete')) {
 }
 ```
 
-The function waits for an event for 100 milliseconds and most of the time it is enough, but a
-developer can change this behavior by passing an object as the second argument with
-the `timeout: number` property.
+Функция ожидает событие в течение 100 миллисекунд, и в большинстве случаев этого достаточно, но разработчик может изменить это поведение, передавая объект в качестве второго аргумента со свойством `timeout: number`.
 
 ```ts
 if (await isTMA('complete', { timeout: 50 })) {
@@ -54,22 +49,16 @@ if (await isTMA('complete', { timeout: 50 })) {
 }
 ```
 
-## Mocking Environment
+## Среда для тестирования
 
-The package provides the `mockTelegramEnv` function, which imitates the environment provided by
-Telegram. It helps developers start building applications even without creating a mini app record in
-[BotFather](https://t.me/botfather).
+Пакет предоставляет функцию `mockTelegramEnv`, которая имитирует окружение, предоставляемое Telegram. Он помогает разработчикам начать создавать приложения даже без создания mini app в [BotFather](https://t.me/botfather).
 
-This function optionally accepts an object with two optional properties—**launchParams** and
+Эта функция принимает объект с двумя необязательными свойствами - **launchParams** и
 **onEvent**.
 
 ### `launchParams`
 
-Launch parameters to use in the mock. It can be presented as a query parameters
-list (a string or a `URLSearchParams` instance) described
-in [this](../../../platform/launch-parameters) article, or launch parameters-like object with the
-`tgWebAppData` property missing, or presented as a query parameters list described
-in [this](../../../platform/init-data#parameters-list) article.
+Параметры запуска для использования в макете. Он может быть представлен в виде списка параметров запроса (строка или экземпляр `URLSearchParams`), описанного в [этой](../../../platform/launch-parameters) статье, или объекта, подобного параметрам запуска, с отсутствующим свойством `tgWebAppData`, или представлен в виде списка параметров запроса, описанного в [этой](../../../platform/init-data#parameters-list) статье.
 
 > [!TIP]
 > Don't be afraid, this value will be validated, and the package will let you know that something is
