@@ -1,15 +1,14 @@
-# Advanced
+# Расширенные функции
 
-This article covers advanced usage of the bridge.
+В этой статье рассказывается о расширенном использовании моста.
 
-## Calling Method, Receiving Event
+## Метод вызова, событие получения
 
-The `request` function should be used when a developer needs to call a Telegram Mini Apps method and
-receive a specific event.
+Функцию `request` следует использовать, когда разработчику необходимо вызвать метод Telegram Mini Apps и получить определенное событие.
 
-For example, to call
-the [web_app_request_viewport](../../../platform/methods.md#web-app-request-viewport) method and catch
-the [viewport_changed](../../../platform/events.md#viewport-changed) event for actual viewport data:
+Например, чтобы вызвать
+метод [web_app_request_viewport](../../../platform/methods.md#web-app-request-viewport) и поймать
+событие [viewport_changed](../../../platform/events.md#viewport-changed) для получения фактических данных об области просмотра:
 
 ```typescript
 import { request } from '@telegram-apps/bridge';
@@ -22,8 +21,8 @@ await request('web_app_request_viewport', 'viewport_changed');
 // };
 ```
 
-If the Telegram Mini Apps method accepts parameters, they should be passed in the `params` property
-of the third argument:
+Если метод Telegram Mini Apps принимает параметры, их следует передать в свойстве `params`
+третьего аргумента:
 
 ```typescript
 const { button_id } = await request('web_app_open_popup', 'popup_closed', {
@@ -38,7 +37,7 @@ const { button_id } = await request('web_app_open_popup', 'popup_closed', {
 });
 ```
 
-It is also allowed to track several events at the same time:
+Также можно отслеживать несколько событий одновременно:
 
 ```typescript
 await request(
@@ -46,17 +45,15 @@ await request(
   ['qr_text_received', 'scan_qr_popup_closed'],
 );
 
-// The result will either be the qr_text_received 
-// or scan_qr_popup_closed event payload.
+// Результатом будет либо qr_text_received 
+// или полезная нагрузка события scan_qr_popup_closed.
 ```
 
-This function allows passing additional options such as `postEvent`, `abortSignal`, `timeout`,
-and `capture`.
+Эта функция позволяет передавать дополнительные параметры, такие как `postEvent`, `abortSignal`, `timeout`, и `capture`.
 
 ### `postEvent`
 
-The `postEvent` option allows a developer to override the method used to call the Telegram Mini Apps
-method.
+Опция `postEvent` позволяет разработчику переопределить метод, используемый для вызова метода Telegram Mini Apps метод.
 
 ```typescript
 request('web_app_request_viewport', 'viewport_changed', {
@@ -68,7 +65,7 @@ request('web_app_request_viewport', 'viewport_changed', {
 
 ### `abortSignal`
 
-To abort the returned promise externally, the `abortSignal` option is used.
+Чтобы прервать выполнение возвращаемого обещания извне, используется опция `abortSignal`.
 
 ```ts
 const controller = new AbortController();
@@ -84,7 +81,7 @@ setTimeout(() => {
 
 ### `timeout`
 
-The `timeout` option assigns a timeout to the request.
+Опция `timeout` назначает тайм-аут для запроса.
 
 ```typescript
 import { request } from '@telegram-apps/bridge';
@@ -103,14 +100,13 @@ try {
     },
   );
 } catch (e) {
-  console.error(e); // e.name will be 'TimeoutError'
+  console.error(e); // e.name будет 'TimeoutError'
 }
 ```
 
 #### `capture`
 
-The `capture` property is a function that allows developers to determine if an occurred Mini Apps
-event should be captured and returned from the `request` function:
+Свойство `capture` - это функция, которая позволяет разработчикам определить, должно ли произошедшее событие Mini Apps должно быть захвачено и возвращено из функции `request`:
 
 ```typescript
 const slug = 'jjKSJnm1k23lodd';
@@ -123,24 +119,22 @@ request('web_app_open_invoice', 'invoice_closed', {
 });
 ```
 
-By default, the `request` function captures the first event with the required name. In this case,
-the function will capture the event only if it has the expected slug, specific for the
-[invoice_closed](../../../platform/events.md#invoice-closed) event.
+По умолчанию функция `request` перехватывает первое событие с требуемым именем. В данном случае,
+функция перехватит событие только в том случае, если оно имеет ожидаемое промежуточное значение, характерный для события [invoice_closed](../../../platform/events.md#invoice-closed) событие.
 
-When passing an array of events, the `capture` function will receive an object with
-the `event: EventName` and `payload?: EventPayload` properties.
+При передаче массива событий функция `capture` получит объект с параметром
+параметрами `event: EventName` и `payload? EventPayload`.
 
-## Invoking Custom Methods
+## Вызов пользовательских методов
 
-Custom methods are those methods which can be used with
-the [web_app_invoke_custom_method](../../../platform/methods.md#web-app-invoke-custom-method) Mini
-Apps
-method.
+Пользовательские методы — это методы, которые можно использовать с методом
+[web_app_invoke_custom_method](../../../platform/methods.md#web-app-invoke-custom-method)
+Mini
+Apps.
 
-The `invokeCustomMethod` function simplifies the usage of such methods by reusing the `request`
-function.
+Функция `invokeCustomMethod` упрощает использование таких методов за счет повторного использования функции `request` функцию.
 
-Here’s an example without using this function:
+Вот пример без использования этой функции:
 
 ```typescript
 const reqId = 'ABC';
@@ -166,7 +160,7 @@ request('web_app_invoke_custom_method', 'custom_method_invoked', {
   });
 ```
 
-Now, rewritten using the `invokeCustomMethod` function:
+Теперь переписано с использованием функции `invokeCustomMethod`:
 
 ```typescript
 import { invokeCustomMethod } from '@telegram-apps/bridge';
@@ -177,9 +171,7 @@ invokeCustomMethod('deleteStorageValues', { keys: ['a'] }, 'ABC')
   });
 ```
 
-Internally, it just encapsulates a specific logic related to the methods, so a developer shouldn't
-do it.
+Внутри он просто инкапсулирует специфическую логику, связанную с методами, поэтому разработчику не следует делать этого.
 
-Unlike the `request` function, the `invokeCustomMethod` function parses the result and checks if it
-contains the `error` property. If it does, the function throws the corresponding error; otherwise,
-the `result` property is returned.
+В отличие от функции `request`, функция `invokeCustomMethod` анализирует результат и проверяет, содержит ли он свойство `error`. Если это так, функция выбрасывает соответствующую ошибку; в противном случае,
+возвращается свойство `result`.
