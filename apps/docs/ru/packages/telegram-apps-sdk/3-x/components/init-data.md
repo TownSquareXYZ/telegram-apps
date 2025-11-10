@@ -1,17 +1,15 @@
 ---
-outline:
-  - 2
-  - 3
+outline: [ 2, 3 ]
 ---
 
-# Init Data
+# Инициализация данных
 
-The 💠[component](../scopes.md) responsible for the Telegram Mini
+💠[Компонент](../scopes.md), отвечающий за Telegram Mini
 Apps [init data](../../../../platform/init-data.md).
 
-## Restoring
+## Восстановление
 
-To restore the component state, use the `restore` method.
+Чтобы восстановить состояние компонента, используйте метод `restore`.
 
 ::: code-group
 
@@ -29,9 +27,9 @@ restoreInitData();
 
 :::
 
-## Parsing
+## Анализ
 
-To parse the value as init data, use the `parseInitData` function.
+Чтобы проанализировать значение как данные инициализации, используйте функцию `parseInitData`.
 
 ```ts
 import { parseInitData } from '@telegram-apps/sdk';
@@ -55,18 +53,18 @@ const initData = parseInitData('auth_date=123&query_id=anQQ231vs&...');
 // };
 ```
 
-The function returns the [init data](../../../../platform/init-data.md#parameters-list) object
-with deeply camel-cased properties.
+Функция возвращает объект [инициализации данных](../../../../platform/init-data.md#parameters-list)
+со свойствами в camel регистре.
 
-## Signals
+## Сигналы
 
-This section provides a complete list of signals related to the init data.
+В этом разделе приведен полный список сигналов, связанных с данными инициализации.
 
 ### `authDate`
 
-Return type: `Date | undefined`
+Тип возвращаемого значения: `Date | undefined`
 
-The date the initialization data was created.
+Дата создания данных инициализации.
 
 ::: code-group
 
@@ -84,10 +82,10 @@ initDataAuthDate(); // Date(1727368894000)
 
 ### `canSendAfter`
 
-Return type: `number | undefined`
+Тип возвращаемого значения: `number | undefined`
 
-The number of seconds after which a message can be sent via the
-method [answerWebAppQuery](https://core.telegram.org/bots/api#answerwebappquery).
+Количество секунд, по истечении которых сообщение может быть отправлено с помощью метода
+[answerWebAppQuery](https://core.telegram.org/bots/api#answerwebappquery).
 
 ::: code-group
 
@@ -105,9 +103,9 @@ initDataAuthDate(); // 3600
 
 ### `canSendAfterDate`
 
-Return type: `Date | undefined`
+Тип возвращаемого значения: `Date | undefined`
 
-[canSendAfter](#cansendafter) but as a Date.
+[canSendAfter](#cansendafter), но в виде даты.
 
 ::: code-group
 
@@ -125,14 +123,12 @@ initDataCanSendAfterDate(); // Date(1727368897600)
 
 ### `chat`
 
-Return type: `undefined` or [`Chat`](../../../../platform/init-data.md#chat) with camel-cased
-properties.
+Тип возвращаемого значения: `undefined` или [`Chat`](../../../../platform/init-data.md#chat) со свойствами, написанными в верблюжьем регистре.
 
-An object containing data about the chat where the bot was launched via the attachment menu.
+Объект, содержащий данные о чате, в котором бот был запущен через меню вложений.
 
-> [!NOTE]
-> Returned for supergroups, channels and group chats – only for Mini Apps launched via the
-> attachment menu.
+> [!ПРИМЕЧАНИЕ]
+> Возвращается для супергрупп, каналов и групповых чатов — только для мини-приложений, запущенных через меню вложений.
 
 ::: code-group
 
@@ -164,9 +160,9 @@ initDataChat();
 
 ### `chatType`
 
-Return type: `string | undefined`
+Тип возвращаемого значения: `string | undefined`
 
-The type of chat from which the Mini Apps was opened. Values:
+Тип чата, из которого были открыты мини-приложения. Значения:
 
 - `sender`
 - `private`
@@ -174,8 +170,8 @@ The type of chat from which the Mini Apps was opened. Values:
 - `supergroup`
 - `channel`
 
-> [!NOTE]
-> Returned only for applications opened by direct link.
+> [!ПРИМЕЧАНИЕ]
+> Возвращается только для приложений, открытых по прямой ссылке.
 
 ::: code-group
 
@@ -193,12 +189,12 @@ initDataChatType(); // 'group'
 
 ### `chatInstance`
 
-Return type: `string | undefined`
+Тип возврата: `string | undefined`
 
-A global identifier indicating the chat from which the Mini Apps was opened.
+Глобальный идентификатор, указывающий чат, из которого было открыто мини-приложение.
 
-> [!WARNING]
-> Returned only for applications opened by direct link.
+> [!ПРЕДУПРЕЖДЕНИЕ]
+> Возвращается только для приложений, открытых по прямой ссылке.
 
 ::: code-group
 
