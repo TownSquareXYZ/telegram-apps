@@ -1,11 +1,11 @@
-# Cloud Storage
+# Облачное хранилище
 
-The 💠[component](../scopes.md) responsible for managing the cloud storage in Telegram Mini Apps.
+💠[Компонент](../scopes.md), отвечающий за управление облачным хранилищем в Telegram Mini Apps.
 
-## Checking Support
+## Проверка поддержки
 
-To check if the cloud storage is supported by the current Telegram Mini Apps version, the
-`isSupported` method is used:
+Чтобы проверить, поддерживается ли облачное хранилище текущей версией Telegram Mini Apps, используется метод
+`isSupported`:
 
 ::: code-group
 
@@ -23,9 +23,9 @@ isCloudStorageSupported(); // boolean
 
 :::
 
-## Setting Items
+## Настройка элементов
 
-To set a key value, use the `setItem` method.
+Чтобы установить значение ключа, используйте метод `setItem`.
 
 ::: code-group
 
@@ -45,9 +45,9 @@ if (setCloudStorageItem.isAvailable()) {
 
 :::
 
-## Getting Keys
+## Получение ключей
 
-To retrieve a list of all existing keys, use the `getKeys` method.
+Чтобы получить список всех существующих ключей, используйте метод `getKeys`.
 
 ::: code-group
 
@@ -67,7 +67,7 @@ if (getCloudStorageKeys.isAvailable()) {
 
 :::
 
-To get the value of a specific key or multiple keys, use the `getItem` method.
+Чтобы получить значение определенного ключа или нескольких ключей, используйте метод `getItem`.
 
 ::: code-group
 
@@ -113,9 +113,9 @@ if (getCloudStorageItem.isAvailable()) {
 
 :::
 
-## Deleting Items
+## Удаление элементов
 
-To delete a key or a list of keys, use the `deleteItem` method.
+Чтобы удалить ключ или список ключей, используйте метод `deleteItem`.
 
 ::: code-group
 
