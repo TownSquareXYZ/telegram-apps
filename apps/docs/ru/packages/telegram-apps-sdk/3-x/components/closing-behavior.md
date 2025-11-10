@@ -1,12 +1,11 @@
-# Closing Behavior
+# Поведение при закрытии
 
-The 💠[component](../scopes.md) responsible for the Telegram Mini
-Apps [closing behavior](../../../../platform/closing-behavior.md).
+💠[Компонент](../scopes.md), отвечающий за 💠[поведение закрытия](../../../../platform/closing-behavior.md) мини-приложений Telegram.
 
-## Mounting
+## Монтирование
 
-Before using this component, it is necessary to mount it to work with properly configured
-properties. To do so, use the `mount` method. It will update the `isMounted` signal property.
+Перед использованием данного компонента необходимо его смонтировать для работы с правильно настроенными
+свойствами. Для этого используйте метод `mount`. Это обновит свойство сигнала `isMounted`.
 
 ::: code-group
 
@@ -33,7 +32,7 @@ if (mountClosingBehavior.isAvailable()) {
 
 :::
 
-To unmount, use the `unmount` method:
+Чтобы размонтировать, используйте метод `unmount`:
 
 ::: code-group
 
@@ -54,11 +53,10 @@ isClosingBehaviorMounted(); //  false
 
 :::
 
-## Closing Confirmation
+## Подтверждение закрытия
 
-To change the closing confirmation behavior, use the `enableConfirmation()`
-and `disableConfirmation()` methods. These methods update the `isConfirmationEnabled` signal
-property value.
+Чтобы изменить поведение подтверждения закрытия, используйте методы `enableConfirmation()`
+и `disableConfirmation()`. Эти методы обновляют значение свойства сигнала `isConfirmationEnabled`.
 
 ::: code-group
 
