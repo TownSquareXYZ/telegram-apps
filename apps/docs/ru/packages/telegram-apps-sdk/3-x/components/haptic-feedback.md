@@ -1,12 +1,11 @@
-# Haptic Feedback
+# Тактильный отклик
 
-The 💠[component](../scopes.md) responsible for the Telegram Mini
-Apps [haptic feedback](../../../../platform/haptic-feedback.md).
+💠[Компонент](../scopes.md), отвечает за [тактильный отклик](../../../../platform/haptic-feedback.md) мини-приложения Telegram.
 
-## Checking Support
+## Проверка поддержки
 
-To check if the haptic feedback is supported by the current Telegram Mini Apps version, the
-`isSupported` method is used:
+Чтобы проверить, поддерживается ли тактильная обратная связь в текущей версии Telegram Mini Apps, используется метод
+`isSupported`:
 
 ::: code-group
 
@@ -24,10 +23,9 @@ isHapticFeedbackSupported(); // boolean
 
 :::
 
-## Impact Occurred
+## Произошло воздействие
 
-`impactOccurred` is the method that signals an impact event. The Telegram app may play the
-appropriate haptic feedback based on the style value passed.
+`impactOccurred` — метод, который сигнализирует о событии воздействия. Приложение Telegram может воспроизвести соответствующую тактильный отклик на основе переданного значения стиля.
 
 ::: code-group
 
@@ -47,19 +45,18 @@ if (hapticFeedbackImpactOccurred.isAvailable()) {
 
 :::
 
-The available styles for the impact haptic event are:
+Доступные стили для тактильного отклика:
 
-- `light`: indicates a collision between small or lightweight UI objects.
-- `medium`: indicates a collision between medium-sized or medium-weight UI objects.
-- `heavy`: indicates a collision between large or heavyweight UI objects.
-- `rigid`: indicates a collision between hard or inflexible UI objects.
-- `soft`: indicates a collision between soft or flexible UI objects.
+- `light`: указывает на столкновение между небольшими или легкими объектами пользовательского интерфейса.
+- `medium`: указывает на столкновение между средними или средними по весу объектами пользовательского интерфейса.
+- `heavy`: указывает на столкновение между большими или тяжелыми объектами пользовательского интерфейса.
+- `rigid`: указывает на столкновение между жесткими или несгибательными объектами пользовательского интерфейса.
+- `soft`: указывает на столкновение между мягкими или гибкими объектами пользовательского интерфейса.
 
-## Notification Occurred
+## Произошло уведомление
 
-`notificationOccurred` is the method that signals a task or action has succeeded, failed, or
-triggered a warning. The Telegram app may play the appropriate haptic feedback based on the type
-value passed.
+`notificationOccurred` — это метод, который сигнализирует об успешном выполнении, сбое или
+вызове предупреждения задачи или действия. Приложение Telegram может воспроизводить соответствующий тактильный отклик на основе переданного значения типа.
 
 ::: code-group
 
@@ -79,18 +76,17 @@ if (hapticFeedbackNotificationOccurred.isAvailable()) {
 
 :::
 
-The types of notification events are:
+Типы событий уведомления:
 
-- `error`: indicates that a task or action has failed.
-- `success`: indicates that a task or action has been completed successfully.
-- `warning`: indicates that a task or action has triggered a warning.
+- `error`: указывает, что задача или действие завершились с ошибкой.
+- `success`: указывает, что задача или действие были успешно выполнены.
+- `warning`: указывает, что задача или действие вызвало предупреждение.
 
-## Selection Changed
+## Выбор изменен
 
-`selectionChanged` is the method that signals a user has changed a selection. The Telegram app may
-play the appropriate haptic feedback.
+`selectionChanged` — это метод, который сигнализирует о том, что пользователь изменил выбор. Приложение Telegram может воспроизводить соответствующий тактильный отклик.
 
-Use this feedback only when the selection changes, not when a selection is made or confirmed.
+Используйте эту обратную связь только при изменении выбора, а не при выборе или подтверждении выбора.
 
 ::: code-group
 
