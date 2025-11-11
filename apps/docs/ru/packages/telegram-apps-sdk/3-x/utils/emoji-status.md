@@ -1,8 +1,8 @@
-# Emoji Status
+# Эмодзи статус
 
 ## `requestEmojiStatusAccess`
 
-To request access to user emoji status update, use the `requestEmojiStatusAccess` function:
+Чтобы запросить доступ к обновлению статуса пользователя с помощью эмодзи, используйте функцию `requestEmojiStatusAccess`:
 
 ::: code-group
 
@@ -24,10 +24,9 @@ const status = await requestEmojiStatusAccess.ifAvailable();
 
 ## `setEmojiStatus`
 
-To set an emoji status on user's behalf, use the `setEmojiStatus` function.
+Чтобы установить эмодзи статус от имени пользователя, используйте функцию `setEmojiStatus`.
 
-As the first argument, it accepts a custom emoji id. Optionally, you can pass the second
-argument determining for how many seconds the status must be set.
+В качестве первого аргумента, функция принимает идентификатор пользовательского эмодзи. При необходимости вы можете передать второй аргумент, который определяет, на сколько секунд должен быть установлен статус.
 
 ::: code-group
 
