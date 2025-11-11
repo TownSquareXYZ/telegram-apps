@@ -212,9 +212,9 @@ initDataChatInstance(); // '899667289674387257'
 
 ### `hash`
 
-Return type: `string | undefined`
+Тип возврата: `string | undefined`
 
-Initialization data signature.
+Подпись данных инициализации.
 
 ::: code-group
 
@@ -232,11 +232,11 @@ initDataHash(); // 'sgbbc62g3bvdhg3djsaasd'
 
 ### `queryId`
 
-Return type: `string | undefined`
+Тип возврата: `string | undefined`
 
-The unique session ID of the Mini App. Used in the process of
-sending a message via the
-method [answerWebAppQuery](https://core.telegram.org/bots/api#answerwebappquery).
+Уникальный идентификатор сеанса мини-приложения. Используется в процессе
+отправки сообщения с помощью метода
+[answerWebAppQuery](https://core.telegram.org/bots/api#answerwebappquery).
 
 ::: code-group
 
@@ -254,9 +254,9 @@ initDataQueryId(); // 'ssVXZ231ger'
 
 ### `raw`
 
-Return type: `string | undefined`
+Тип возвращаемого значения: `string | undefined`
 
-A raw string representation of the initialization data.
+Сырое строковое представление данных инициализации.
 
 ::: code-group
 
@@ -274,14 +274,12 @@ initDataRaw(); // 'user=...&chat=...&...'
 
 ### `receiver`
 
-Return type: `undefined` or [`User`](../../../../platform/init-data.md#user) with camel-cased
-properties.
+Тип возвращаемого значения: `undefined` или [`User`](../../../../platform/init-data.md#user) со свойствами, написанными с заглавной буквы каждого слова.
 
-An object containing data about the chat partner of the current user in
-the chat where the bot was launched via the attachment menu.
+Объект, содержащий данные о собеседнике текущего пользователя в чате, в котором бот был запущен через меню вложений.
 
-> [!NOTE]
-> Returned only for private chats and only for Mini Apps launched via the attachment menu.
+> [!ПРИМЕЧАНИЕ]
+> Возвращается только для приватных чатов и только для мини-приложений, запущенных через меню вложений.
 
 ::: code-group
 
@@ -323,10 +321,10 @@ initDataUser();
 
 ### `state`
 
-Return type: `undefined` or [`InitData`](../../../../platform/init-data.md#parameters-list) with
-deeply camel-cased properties.
+Тип возвращаемого значения: `undefined` или [`InitData`](../../../../platform/init-data.md#parameters-list) с
+свойствами, написанными в формате deep camel case.
 
-An object containing the initialization data in object format.
+Объект, содержащий данные инициализации в формате объекта.
 
 ::: code-group
 
@@ -344,9 +342,9 @@ initDataState();
 
 ### `startParam`
 
-Return type: `string | undefined`
+Тип возврата: `string | undefined`
 
-The value of the `startattach` or `startapp` query parameter specified in the link.
+Значение параметра запроса `startattach` или `startapp`, указанного в ссылке.
 
 ::: code-group
 
@@ -364,10 +362,9 @@ initDataStartParam(); // 'my-value'
 
 ### `user`
 
-Return type: `undefined` or [`User`](../../../../platform/init-data.md#user) with camel-cased
-properties.
+Тип возвращаемого значения: `undefined` или [`User`](../../../../platform/init-data.md#user) со свойствами, написанными с заглавной буквы каждого слова.
 
-An object containing information about the current user.
+Объект, содержащий информацию о текущем пользователе.
 
 ::: code-group
 
