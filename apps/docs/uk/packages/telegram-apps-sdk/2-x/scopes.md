@@ -1,7 +1,5 @@
 ---
-outline:
-  - 2
-  - 3
+outline: [ 2, 3 ]
 ---
 
 # Scopes
@@ -66,7 +64,7 @@ bundled, slightly increasing the final bundle size (though not by much).
 Each SDK method related to 💠components or ⚙️utilities has at least two requirements:
 
 1. **The SDK must be [initialized](./initializing.md)**. This ensures that you are using valid
-  global dependencies (such as `postEvent`).
+   global dependencies (such as `postEvent`).
 
 ```ts
 import { init } from '@telegram-apps/sdk';
@@ -75,12 +73,12 @@ init();
 ```
 
 2. **The method must be run inside Telegram Mini Apps**. Calling the method outside Telegram Mini
-  Apps will not produce the expected behavior.
+   Apps will not produce the expected behavior.
 
 For component-related methods, there is an additional requirement:
 
 3. **The parent component must be mounted**. This ensures that you are using a properly configured
-  component.
+   component.
 
 ```ts
 import { init, backButton } from '@telegram-apps/sdk';
