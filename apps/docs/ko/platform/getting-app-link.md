@@ -1,7 +1,5 @@
 ---
-outline:
-  - 2
-  - 4
+outline: [ 2, 4 ]
 ---
 
 # Getting App Link
@@ -28,9 +26,9 @@ Before you dive into this guide, it is important to understand why you need some
 time, we need application links for one of the following purposes:
 
 1. **For development**: These links are temporary and used only to display an application via a
-  development server. They can also be used to share with other users to show current progress.
+   development server. They can also be used to share with other users to show current progress.
 2. **For production**: These links are used in production mode to open a production-ready
-  application, typically accessed by common users.
+   application, typically accessed by common users.
 
 This guide covers both cases. You can find real link generation and usage in
 the [template for React.js](https://github.com/telegram-mini-apps/reactjs-template).
