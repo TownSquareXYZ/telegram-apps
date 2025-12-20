@@ -1,7 +1,5 @@
 ---
-outline:
-  - 2
-  - 4
+outline: [ 2, 4 ]
 ---
 
 # Init Data
@@ -98,14 +96,14 @@ Knowing that init data is presented as query parameters list, to validate
 them, developer should follow the steps:
 
 1. Iterate over all key-value pairs and create an array of string values in
-  format `{key}={value}`. Key `hash` should be excluded, but memoized. It
-  represents the init data sign and will be used in the final step of the validation process.
+   format `{key}={value}`. Key `hash` should be excluded, but memoized. It
+   represents the init data sign and will be used in the final step of the validation process.
 2. Sort the computed array in the alphabetical order.
 3. Create HMAC-SHA256 using key `WebAppData` and apply it to the Telegram Bot
-  token, that is bound to your Mini App.
+   token, that is bound to your Mini App.
 4. Create HMAC-SHA256 using the result of the previous step as a key. Apply
-  it to the pairs array joined with linebreak (`\n`) received in the 2-nd step
-  and present the result as hex symbols sequence.
+   it to the pairs array joined with linebreak (`\n`) received in the 2-nd step
+   and present the result as hex symbols sequence.
 5. Compare the `hash` value received in the 1-st step with the result of the 4-th step.
 6. If these values are equal, passed init data can be trusted.
 
@@ -159,7 +157,7 @@ HMAC-SHA256(
 ) = a5c609aa52f63cb5e6d8ceb6e4138726ea82bbc36bb786d64482d445ea38ee5f
 ```
 
-> [!WARNING]\
+> [!WARNING]  
 > The received value must not be transformed into a hexadecimal sequence, as shown above. In the
 > next step, use it as-is (an array of bytes), but you can use the hexadecimal value to check if
 > your
@@ -197,14 +195,14 @@ At the moment, there are 2 Ed25519 public keys Telegram provides:
 To perform this kind of validation (called third-party validation), follow these steps:
 
 1. Iterate over all key-value pairs and create an array of string values in
-  format `{key}={value}`. Key `hash` should be excluded. The `signature` key should also be
-  excluded, but memoized. It represents the init data sign and will be used in the final step of
-  the validation process.
+   format `{key}={value}`. Key `hash` should be excluded. The `signature` key should also be
+   excluded, but memoized. It represents the init data sign and will be used in the final step of
+   the validation process.
 2. Sort the computed array in the alphabetical order.
 3. Concatenate Telegram Bot identifier issued the init data with the `WebAppData` string using the
-  semicolon (`:`) and append a linebreak (`\n`).
+   semicolon (`:`) and append a linebreak (`\n`).
 4. Join the pairs from the 2-nd step with the linebreak (`\n`) and append the final value to the
-  value from the 3-rd step.
+   value from the 3-rd step.
 5. Verify Ed25519 signature using the value from the `signature` init data key.
 6. If verification is successful, the init data can be trusted.
 
@@ -246,7 +244,7 @@ zL-ucjNyREiHDE8aihFwpfR9aggP2xiAo3NSpfe-p7IbCisNlDKlo7Kb6G4D0Ao2mBrSgEk4maLSdv6M
 Nevertheless, in the future steps, we should convert it to a bytes array, assuming that this value
 is base64-encoded.
 
-> [!DANGER]\
+> [!DANGER]  
 > At the moment, Telegram sends an invalid signature. Some programming languages (e.g., Go) consider
 > the signature as an invalid base64 value, as long as it doesn't fully comply with the standard.
 > When using the signature, remember to add paddings (`=` signs) at the end of the value in case
