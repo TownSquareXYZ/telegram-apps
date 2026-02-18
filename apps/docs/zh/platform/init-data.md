@@ -1,7 +1,5 @@
 ---
-outline:
-  - 2
-  - 4
+outline: [ 2, 4 ]
 ---
 
 # 初始数据 {#Init Data}
@@ -101,14 +99,14 @@ and used in the future code execution.
 ，开发人员应遵循以下步骤：
 
 1. 遍历所有键值对，并以
-  格式创建字符串值数组 `{key}={value}`。 `hash` 应排除在外，但要记下来。
-  代表初始数据符号，将用于验证过程的最后一步。 `hash` 应排除在外，但要记下来。 它代表初始数据符号，将用于验证过程的最后一步。
+   格式创建字符串值数组 `{key}={value}`。 `hash` 应排除在外，但要记下来。
+   代表初始数据符号，将用于验证过程的最后一步。 `hash` 应排除在外，但要记下来。 它代表初始数据符号，将用于验证过程的最后一步。
 2. 最后，让我们使用
-  第 2 步收到的排序对和第 3 步的值来计算初始数据符号：
+   第 2 步收到的排序对和第 3 步的值来计算初始数据符号：
 3. 使用密钥 `WebAppData` 创建 HMAC-SHA256，并将其应用于绑定到迷你应用程序的 Telegram Bot
-  令牌。
+   令牌。
 4. Create HMAC-SHA256 using the result of the previous step as a key. <i>可选</i>。 聊天照片链接。 照片可以是<code>.jpeg</code>和 <code>.svg</code>格式。 只有通过附件
-  菜单打开的小程序才会返回。
+   菜单打开的小程序才会返回。
 5. 将第 1 步收到的 `hash` 值与第 4 步的结果进行比较。
 6. 如果这些值相等，则传递的初始数据是可信的。
 
@@ -161,7 +159,7 @@ HMAC-SHA256(
 ) = "aa492a44bdf019c759defb1698c1d77690189973945491a756051cdc1207a449"
 ```
 
-> [!WARNING]\
+> [!WARNING]  
 > The received value must not be transformed into a hexadecimal sequence, as shown above. In the
 > next step, use it as-is (an array of bytes), but you can use the hexadecimal value to check if
 > your
@@ -199,15 +197,15 @@ At the moment, there are 2 Ed25519 public keys Telegram provides:
 To perform this kind of validation (called third-party validation), follow these steps:
 
 1. 遍历所有键值对，并以
-  格式创建字符串值数组 `{key}={value}`。 `hash` 应排除在外，但要记下来。
-  代表初始数据符号，将用于验证过程的最后一步。 Key `hash` should be excluded. The `signature` key should also be
-  excluded, but memoized. It represents the init data sign and will be used in the final step of
-  the validation process.
+   格式创建字符串值数组 `{key}={value}`。 `hash` 应排除在外，但要记下来。
+   代表初始数据符号，将用于验证过程的最后一步。 Key `hash` should be excluded. The `signature` key should also be
+   excluded, but memoized. It represents the init data sign and will be used in the final step of
+   the validation process.
 2. 将计算出的数组按字母顺序排序。
 3. Concatenate Telegram Bot identifier issued the init data with the `WebAppData` string using the
-  semicolon (`:`) and append a linebreak (`\n`).
+   semicolon (`:`) and append a linebreak (`\n`).
 4. Join the pairs from the 2-nd step with the linebreak (`\n`) and append the final value to the
-  value from the 3-rd step.
+   value from the 3-rd step.
 5. Verify Ed25519 signature using the value from the `signature` init data key.
 6. If verification is successful, the init data can be trusted.
 
@@ -258,7 +256,7 @@ zL-ucjNyREiHDE8aihFwpfR9aggP2xiAo3NSpfe-p7IbCisNlDKlo7Kb6G4D0Ao2mBrSgEk4maLSdv6M
 Nevertheless, in the future steps, we should convert it to a bytes array, assuming that this value
 is base64-encoded.
 
-> [!DANGER]\
+> [!DANGER]  
 > At the moment, Telegram sends an invalid signature. Some programming languages (e.g., Go) consider
 > the signature as an invalid base64 value, as long as it doesn't fully comply with the standard.
 > When using the signature, remember to add paddings (`=` signs) at the end of the value in case
