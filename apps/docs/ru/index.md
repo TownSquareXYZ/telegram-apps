@@ -1,10 +1,13 @@
 ---
+# https://vitepress.dev/reference/default-theme-home-page
 layout: home
+
 title: Главная
 description: Домашняя страница документации.
+
 hero:
-  name: Мини-приложения Telegram
-  text: Полноценные веб-приложения внутри Telegram
+  name: "Мини-приложения Telegram"
+  text: "Полноценные веб-приложения внутри Telegram"
   tagline: Простые, гибкие, нативные веб-приложения для улучшения пользовательского опыта
   actions:
     - theme: brand
@@ -13,6 +16,7 @@ hero:
     - theme: alt
       text: Пакеты
       link: /ru/packages/telegram-apps-create-mini-app
+
 features:
   - icon: 💻
     title: Мультиплатформенность
