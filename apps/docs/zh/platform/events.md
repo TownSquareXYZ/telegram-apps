@@ -1,7 +1,5 @@
 ---
-outline:
-  - 2
-  - 3
+outline: [ 2, 3 ]
 ---
 
 # 事件 - Events {#Events}
