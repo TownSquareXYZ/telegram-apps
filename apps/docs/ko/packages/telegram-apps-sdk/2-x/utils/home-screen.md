@@ -48,7 +48,7 @@ onAddToHomeScreenFailed(onFailed);
 offAddToHomeScreenFailed(onFailed);
 ```
 
-> [!NOTE]\
+> [!NOTE]  
 > If the device cannot determine the installation status, the corresponding event may not be
 > received even if the icon has been added.
 
