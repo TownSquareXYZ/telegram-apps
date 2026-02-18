@@ -1,10 +1,13 @@
 ---
+# https://vitepress.dev/reference/default-theme-home-page
 layout: home
+
 title: Home
 description: 文档主页。
+
 hero:
-  name: Telegram 迷你应用程序
-  text: Telegram 内成熟的网络应用程序
+  name: "Telegram 迷你应用程序"
+  text: "Telegram 内成熟的网络应用程序"
   tagline: 简单、灵活、类似本机的网络应用程序，提升用户体验
   actions:
     - theme: brand
@@ -13,6 +16,7 @@ hero:
     - theme: alt
       text: 包
       link: /zh/packages/telegram-apps-create-mini-app
+
 features:
   - icon: 💻
     title: 多平台
