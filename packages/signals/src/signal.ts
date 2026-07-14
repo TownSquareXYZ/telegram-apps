@@ -1,5 +1,5 @@
-import { collectSignal } from './computed.js';
 import { runInBatchMode } from './batch.js';
+import { collectSignal } from './computed.js';
 
 export type SubscribeListenerFn<T> = (current: T, previous: T) => void;
 export type RemoveListenerFn = () => void;
@@ -107,7 +107,7 @@ export function signal<T>(
 
   let listeners: [
     listener: SubscribeListenerFn<T | undefined>,
-    options: Required<SubOptions>
+    options: Required<SubOptions>,
   ][] = [];
   let value: ReturnType<CurrentSignal> = initialValue;
 

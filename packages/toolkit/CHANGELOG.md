@@ -1,19 +1,25 @@
-# @telegram-apps/toolkit
+# @tma.js/toolkit
 
-## 2.0.0
-
-### Major Changes
-
-- 5f755c7: Completely rework the packages.
-
-## 1.1.1
+## 1.0.4
 
 ### Patch Changes
 
-- 68e4a6d: Remove src and tsconfig files from distributive
+- 805c0fa: Simplify usage of fp-ts to potentially avoid building problems in some applications.
 
-## 1.1.0
+## 1.0.3
 
-### Minor Changes
+### Patch Changes
 
-- 3a93d64: Set name for the TypedError class.
+- 22eed1e: Add side-effect free markers for functions and errors.
+
+## 1.0.2
+
+### Patch Changes
+
+- 4570643: Update package.json actualizing all paths.
+
+## 1.0.1
+
+### Patch Changes
+
+- fe883d3: Set a proper return type for eitherFnToSimple.

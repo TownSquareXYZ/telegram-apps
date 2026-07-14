@@ -10,7 +10,7 @@ export default defineConfig({
     emptyOutDir: true,
     sourcemap: true,
     rollupOptions: {
-      external: ['vue'],
+      external: ['vue', '@tma.js/sdk'],
     },
     lib: {
       entry: 'src/index.ts',

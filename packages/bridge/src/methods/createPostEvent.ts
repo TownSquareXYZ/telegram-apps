@@ -1,24 +1,25 @@
+import type { Version } from '@tma.js/types';
 import { any, is, looseObject } from 'valibot';
-import type { Version } from '@telegram-apps/types';
 
-import { supports } from '@/methods/supports.js';
+import { MethodParameterUnsupportedError, MethodUnsupportedError } from '@/errors.js';
+import { logger } from '@/globals.js';
 import { type PostEventFn, postEvent } from '@/methods/postEvent.js';
+import { supports } from '@/methods/supports.js';
 import type {
   MethodName,
   MethodNameWithVersionedParams,
   MethodVersionedParams,
 } from '@/methods/types/index.js';
-import { MethodParameterUnsupportedError, MethodUnsupportedError } from '@/errors.js';
 
 export type OnUnsupportedFn = (
   data: { version: Version } & (
     | { method: MethodName }
     | {
-    [M in MethodNameWithVersionedParams]: {
-      method: M;
-      param: MethodVersionedParams<M>;
-    };
-  }[MethodNameWithVersionedParams]),
+      [M in MethodNameWithVersionedParams]: {
+        method: M;
+        param: MethodVersionedParams<M>;
+      };
+    }[MethodNameWithVersionedParams]),
 ) => void;
 
 export type CreatePostEventMode = 'strict' | 'non-strict';
@@ -40,9 +41,8 @@ export type CreatePostEventMode = 'strict' | 'non-strict';
  */
 export function createPostEvent(
   version: Version,
-  onUnsupportedOrMode?: OnUnsupportedFn | CreatePostEventMode,
+  onUnsupportedOrMode: OnUnsupportedFn | CreatePostEventMode = 'strict',
 ): PostEventFn {
-  onUnsupportedOrMode ||= 'strict';
   const onUnsupported: OnUnsupportedFn = typeof onUnsupportedOrMode === 'function'
     ? onUnsupportedOrMode
     : data => {
@@ -54,7 +54,7 @@ export function createPostEvent(
       if (onUnsupportedOrMode === 'strict') {
         throw error;
       }
-      return console.warn(error.message);
+      return logger().forceWarn(error.message);
     };
 
   return ((method: any, params: any) => {
@@ -71,6 +71,13 @@ export function createPostEvent(
       && !supports(method, 'color', version)
     ) {
       return onUnsupported({ version, method, param: 'color' });
+    }
+    if (
+      (method === 'web_app_setup_main_button' || method === 'web_app_setup_secondary_button')
+      && is(looseObject({ icon_custom_emoji_id: any() }), params)
+      && !supports(method, 'icon_custom_emoji_id', version)
+    ) {
+      return onUnsupported({ version, method, param: 'icon_custom_emoji_id' });
     }
 
     return postEvent(method, params);

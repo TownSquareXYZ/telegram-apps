@@ -1,19 +1,26 @@
-import type { RGB } from '@telegram-apps/types';
+import type { If, IsNever, Maybe } from '@tma.js/toolkit';
+import type { RGB } from '@tma.js/types';
 
 import type {
-  PhoneRequestedStatus,
-  InvoiceStatus,
-  WriteAccessRequestedStatus,
   BiometryAuthRequestStatus,
-  BiometryType,
   BiometryTokenUpdateStatus,
-  SafeAreaInsets,
-  FullScreenErrorStatus,
+  BiometryType,
   EmojiStatusAccessRequestedStatus,
   EmojiStatusFailedError,
+  FullScreenErrorStatus,
   HomeScreenStatus,
+  InvoiceStatus,
+  PhoneRequestedStatus,
+  SafeAreaInsets,
+  WriteAccessRequestedStatus,
 } from './misc.js';
-import type { If, IsNever, Maybe } from '@telegram-apps/toolkit';
+
+type WithReqId<T = {}> = T & {
+  /**
+   * Unique request identifier.
+   */
+  req_id: string;
+};
 
 /**
  * Map where key is known event name, and value is its listener.
@@ -94,20 +101,20 @@ export interface Events {
      * If true, indicates that biometric authentication is available on the
      * current device.
      */
-    available: false;
-  }
+      available: false;
+    }
     | {
     /**
      * If true, indicates that biometric authentication is available on the
      * current device.
      */
-    available: true;
-    /**
+      available: true;
+      /**
      * Indicates whether the app has previously requested permission to use
      * biometrics.
      */
-    access_requested: boolean;
-    /**
+      access_requested: boolean;
+      /**
      * Indicates whether the user has granted the app permission to use
      * biometrics.
      *
@@ -121,21 +128,21 @@ export interface Events {
      * case the app should open a prompt notifying the user that the biometric
      * settings must be changed to use biometrics.
      */
-    access_granted: boolean;
-    /**
+      access_granted: boolean;
+      /**
      * A unique device identifier that can be used to match the token to the
      * device.
      */
-    device_id: string;
-    /**
+      device_id: string;
+      /**
      * Show whether a token was safely stored on-device.
      */
-    token_saved: boolean;
-    /**
+      token_saved: boolean;
+      /**
      * The type of biometrics currently available on the device.
      */
-    type: BiometryType;
-  };
+      type: BiometryType;
+    };
   /**
    * Biometry token was updated.
    * @since 7.2
@@ -158,18 +165,13 @@ export interface Events {
    * @since v6.4
    * @see https://docs.telegram-mini-apps.com/platform/events#clipboard-text-received
    */
-  clipboard_text_received: {
-    /**
-     * Passed during the `web_app_read_text_from_clipboard` method invocation
-     * `req_id` value.
-     */
-    req_id: string;
+  clipboard_text_received: WithReqId<{
     /**
      * Data extracted from the clipboard. The returned value will have the type
      * `string` only in the case, application has access to the clipboard.
      */
     data?: string | null;
-  };
+  }>;
   /**
    * Occurs when the safe area for content changes
    * (e.g., due to orientation change or screen adjustments).
@@ -182,11 +184,7 @@ export interface Events {
    * @since v6.9
    * @see https://docs.telegram-mini-apps.com/platform/events#custom-method-invoked
    */
-  custom_method_invoked: {
-    /**
-     * Unique identifier of this invocation.
-     */
-    req_id: string;
+  custom_method_invoked: WithReqId<{
     /**
      * Method invocation successful result.
      */
@@ -195,7 +193,7 @@ export interface Events {
      * Method invocation error code.
      */
     error?: string;
-  };
+  }>;
   /**
    * Device orientation data changed.
    * @since 8.0
@@ -243,6 +241,40 @@ export interface Events {
    * @see https://docs.telegram-mini-apps.com/platform/events#device-orientation-stopped
    */
   device_orientation_stopped: never;
+  /**
+   * Device's local storage was cleared.
+   * @since v9.0
+   * @see https://docs.telegram-mini-apps.com/platform/events#device-storage-cleared
+   */
+  device_storage_cleared: WithReqId;
+  /**
+   * An error occurred while working with the device's local storage.
+   * @since v9.0
+   * @see https://docs.telegram-mini-apps.com/platform/events#device-storage-failed
+   */
+  device_storage_failed: WithReqId<{
+    /**
+     * An occurred error.
+     */
+    error?: string;
+  }>;
+  /**
+   * A value from the device's local storage was retrieved.
+   * @since v9.0
+   * @see https://docs.telegram-mini-apps.com/platform/events#device-storage-key-received
+   */
+  device_storage_key_received: WithReqId<{
+    /**
+     * A retrieved value.
+     */
+    value: string | null;
+  }>;
+  /**
+   * A value in the device's local storage was saved.
+   * @since v9.0
+   * @see https://docs.telegram-mini-apps.com/platform/events#device-storage-key-saved
+   */
+  device_storage_key_saved: WithReqId;
   /**
    * Request to set custom emoji status was requested.
    * @see https://docs.telegram-mini-apps.com/platform/events#emoji-status-access-requested
@@ -356,8 +388,8 @@ export interface Events {
      * The status of the mini application being added to the home screen.
      *
      * Possible values:
-     * - `unsupported` – the feature is not supported, and it is not possible to add the icon to the home
-     *   screen,
+     * - `unsupported` – the feature is not supported, and it is not possible to add the icon to
+     * the home screen,
      * - `unknown` – the feature is supported, and the icon can be added, but it is not possible to
      *   determine if the icon has already been added,
      * - `added` – the icon has already been added to the home screen,
@@ -393,10 +425,10 @@ export interface Events {
   location_checked:
     | { available: false }
     | {
-    available: true;
-    access_requested?: Maybe<boolean>;
-    access_granted?: Maybe<boolean>;
-  };
+      available: true;
+      access_requested?: Maybe<boolean>;
+      access_granted?: Maybe<boolean>;
+    };
   /**
    * Location-related functionality availability status was retrieved.
    * @since 8.0
@@ -405,44 +437,44 @@ export interface Events {
   location_requested:
     | { available: false }
     | {
-    available: true;
-    /**
+      available: true;
+      /**
      * Latitude in degrees.
      */
-    latitude: number;
-    /**
+      latitude: number;
+      /**
      * Longitude in degrees.
      */
-    longitude: number;
-    /**
+      longitude: number;
+      /**
      * Altitude above sea level in meters.
      */
-    altitude?: Maybe<number>;
-    /**
+      altitude?: Maybe<number>;
+      /**
      * The direction the device is moving in degrees.
      */
-    course?: Maybe<number>;
-    /**
+      course?: Maybe<number>;
+      /**
      * The speed of the device in m/s.
      */
-    speed?: Maybe<number>;
-    /**
+      speed?: Maybe<number>;
+      /**
      * Accuracy of the latitude and longitude values in meters.
      */
-    horizontal_accuracy?: Maybe<number>;
-    /**
+      horizontal_accuracy?: Maybe<number>;
+      /**
      * Accuracy of the altitude value in meters.
      */
-    vertical_accuracy?: Maybe<number>;
-    /**
+      vertical_accuracy?: Maybe<number>;
+      /**
      * Accuracy of the course value in degrees.
      */
-    course_accuracy?: Maybe<number>;
-    /**
+      course_accuracy?: Maybe<number>;
+      /**
      * Accuracy of the speed value in m/s.
      */
-    speed_accuracy?: Maybe<number>;
-  };
+      speed_accuracy?: Maybe<number>;
+    };
   /**
    * A user clicked the Main Button.
    * @see https://docs.telegram-mini-apps.com/platform/events#main-button-pressed
@@ -473,19 +505,18 @@ export interface Events {
   /**
    * Failed to send a prepared message.
    * @since 8.0
-   * @see https://docs.telegram-mini-apps.com/platform/events#prepare-message-failed
+   * @see https://docs.telegram-mini-apps.com/platform/events#prepared-message-failed
    */
   prepared_message_failed: {
     /**
      * Occurred error.
      */
-    error: string;
+    error: 'USER_DECLINED' | string;
   };
-
   /**
    * A prepared message was sent.
    * @since 8.0
-   * @see https://docs.telegram-mini-apps.com/platform/events#prepare-message-sent
+   * @see https://docs.telegram-mini-apps.com/platform/events#prepared-message-sent
    */
   prepared_message_sent: never;
   /**
@@ -525,6 +556,55 @@ export interface Events {
    */
   secondary_button_pressed: never;
   /**
+   * Device's secure storage was cleared.
+   * @since v9.0
+   * @see https://docs.telegram-mini-apps.com/platform/events#secure-storage-cleared
+   */
+  secure_storage_cleared: WithReqId;
+  /**
+   * An error occurred while working with the device's secure storage.
+   * @since v9.0
+   * @see https://docs.telegram-mini-apps.com/platform/events#secure-storage-failed
+   */
+  secure_storage_failed: WithReqId<{
+    /**
+     * An occurred error.
+     */
+    error?: string;
+  }>;
+  /**
+   * A value from the device's secure storage was retrieved.
+   * @since v9.0
+   * @see https://docs.telegram-mini-apps.com/platform/events#secure-storage-key-received
+   */
+  secure_storage_key_received: WithReqId<{
+    /**
+     * A retrieved value.
+     */
+    value: string | null;
+    /**
+     * True if this value can be restored.
+     */
+    can_restore?: boolean;
+  }>;
+  /**
+   * A value from the device's secure storage was restored.
+   * @since v9.0
+   * @see https://docs.telegram-mini-apps.com/platform/events#secure-storage-key-restored
+   */
+  secure_storage_key_restored: WithReqId<{
+    /**
+     * A restored value.
+     */
+    value: string | null;
+  }>;
+  /**
+   * A value in the device's secure storage was saved.
+   * @since v9.0
+   * @see https://docs.telegram-mini-apps.com/platform/events#secure-storage-key-saved
+   */
+  secure_storage_key_saved: WithReqId;
+  /**
    * The event which is usually sent by the Telegram web application. Its
    * payload represents
    * `<style/>` tag html content, a developer could use. The stylesheet
@@ -546,7 +626,7 @@ export interface Events {
    */
   theme_changed: {
     /**
-     * Map where the key is a theme stylesheet key and value is  the
+     * Map where the key is a theme stylesheet key and value is the
      * corresponding color in
      * `#RRGGBB` format.
      */
@@ -586,7 +666,8 @@ export interface Events {
        */
       subtitle_text_color?: RGB;
       text_color?: RGB;
-      [key: string]: RGB | undefined; // Future unknown palette keys.
+      // Future unknown palette keys.
+      [key: string]: RGB | undefined;
     };
   };
   /**

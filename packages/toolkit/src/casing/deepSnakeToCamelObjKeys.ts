@@ -1,17 +1,17 @@
-import { snakeToCamelObjKeys } from '@/casing/snakeToCamelObjKeys.js';
 import type { SnakeToCamelCase } from '@/casing/snakeToCamel.js';
+import { snakeToCamelObjKeys } from '@/casing/snakeToCamelObjKeys.js';
 
 export type DeepConvertSnakeKeysToCamelCase<T> = T extends infer U
-    ? U extends object
-      ? U extends Date
-        ? U
-        : U extends (infer Item)[]
-          ? DeepConvertSnakeKeysToCamelCase<Item>[]
-          : {
-            [K in keyof U as SnakeToCamelCase<string & K>]: DeepConvertSnakeKeysToCamelCase<U[K]>
-          } & {}
-      : U
-    : T;
+  ? U extends object
+    ? U extends Date
+      ? U
+      : U extends (infer Item)[]
+        ? DeepConvertSnakeKeysToCamelCase<Item>[]
+        : {
+          [K in keyof U as SnakeToCamelCase<string & K>]: DeepConvertSnakeKeysToCamelCase<U[K]>
+        } & {}
+    : U
+  : T;
 
 /**
  * Deeply converts object keys from snake to camel case.

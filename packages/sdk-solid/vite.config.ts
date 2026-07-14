@@ -12,7 +12,7 @@ export default defineConfig({
     emptyOutDir: true,
     sourcemap: true,
     rollupOptions: {
-      external: ['solid-js'],
+      external: ['solid-js', '@tma.js/sdk'],
     },
     lib: {
       entry: 'src/index.ts',

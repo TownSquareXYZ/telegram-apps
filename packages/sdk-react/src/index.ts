@@ -1,2 +1,2 @@
-export { useSignal } from './useSignal.js';
-export * from '@telegram-apps/sdk';
+export * from './hooks.js';
+export * from '@tma.js/sdk';

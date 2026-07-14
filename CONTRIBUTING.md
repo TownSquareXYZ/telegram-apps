@@ -12,14 +12,14 @@ can clone the repository using the Git command:
 
 ```bash
 # Via SSH.
-git clone git@github.com:Telegram-Mini-Apps/telegram-apps.git
+git clone git@github.com:Telegram-Mini-Apps/tma.js.git
 ```
 
 or
 
 ```bash
 # Via HTTPS.
-git clone https://github.com/Telegram-Mini-Apps/telegram-apps.git
+git clone https://github.com/Telegram-Mini-Apps/tma.js.git
 ```
 
 Once the repository is fetched, install project dependencies via [pnpm](https://pnpm.io/) (pnpm
@@ -29,9 +29,53 @@ only, as long as the current repository is a pnpm monorepo):
 pnpm i
 ```
 
+## Philosophy
+
+Before diving deep into the code, it's important to understand the philosophy behind our repositories' development.
+
+The first thing to know here is we don't really like handling errors using `try-catch` construction.
+This approach often requires you to read the source code of a function to know what specific errors it might throw.
+Instead, we use the `Either` abstraction from [fp-ts](https://www.npmjs.com/package/fp-ts). This provides a clear and
+explicit way to see whether a function executed successfully or failed.
+
+However, we recognize that many developers may be more comfortable with a traditional `try-catch` approach. To
+accommodate this, all functions that can fail must return an `Either`. Additionally, you must provide a "throwing"
+alternative that wraps the `Either` and throws the error for those who prefer that style.
+
+When writing your code, ensure that if a function can throw an error, it always returns an `Either` and has a throwing
+counterpart.
+
+Here is an example:
+
+```typescript
+import * as E from 'fp-ts/Either';
+import { pipe } from 'fp-ts/function';
+
+class MyError extends Error {
+}
+
+function nonThrowing(): E.Either<MyError, string> {
+  return Math.random() < 0.5
+    ? E.left(new MyError())
+    : E.right('just some string');
+}
+
+function throwing(): string {
+  return pipe(nonThrowing(), E.match(
+    e => {
+      throw e;
+    },
+    result => result
+  ))
+}
+```
+
+The second and final principle is **the simpler, the better**. We strive to write code that is as understandable and
+intuitive as possible. Please think twice before implementing a complex solution.
+
 ## Trying Your Code
 
-This project contains an already configured application that can use any `@telegram-apps` package located
+This project contains an already configured application that can use any `@tma.js` package located
 in the [packages](packages) folder. The application uses local versions of packages, not remote ones
 presented in some registry. The local playground represents almost the default Vite TypeScript
 application template with some additional tsconfig configuration, allowing the resolution of
@@ -40,6 +84,10 @@ packages from the corresponding folder.
 To run the local playground, use the following commands:
 
 ```bash
+# Build packages as long as the playground may 
+# the built versions.
+pnpm run packages:build
+
 # Go to the application folder.
 cd apps/local-playground
 
@@ -53,7 +101,7 @@ automatically transpiled by Vite and executed by the browser.
 
 As the local playground refers to the actual code, you can make any changes in the packages
 directory to see the changes instantly. This will help you understand how the code you are going to
-change in `@telegram-apps` packages will work after your proposed changes.
+change in `@tma.js` packages will work after your proposed changes.
 
 ## After Changes Done
 

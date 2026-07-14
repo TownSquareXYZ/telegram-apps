@@ -1,7 +1,7 @@
 /**
  * Message log level.
  */
-export type LogLevel = 'log' | 'error';
+export type LogLevel = 'log' | 'error' | 'warn';
 
 export interface LoggerOptions {
   bgColor?: string;
@@ -13,26 +13,52 @@ export interface LoggerOptions {
   shouldLog?: boolean | (() => boolean);
 }
 
-/*@__NO_SIDE_EFFECTS__*/
-export function createLogger(scope: string, options?: LoggerOptions): [
-  /**
-   * Prints a log message into the console.
-   * @param force - should `shouldLog` value be ignored.
-   * @param args - items to log.
-   */
-  log: (force: boolean, ...args: any[]) => void,
+export type LoggerFn = (...args: any[]) => void;
+export type LoggerForceFn = (...args: any[]) => void;
+
+export interface Logger {
   /**
    * Prints an error message into the console.
-   * @param force - should `shouldLog` value be ignored.
    * @param args - items to log.
    */
-  error: (force: boolean, ...args: any[]) => void,
-] {
+  error: LoggerFn;
+  /**
+   * Prints an error message into the console ignoring the `shouldLog`
+   * constructor option.
+   * @param args - items to log.
+   */
+  forceError: LoggerForceFn;
+  /**
+   * Prints a log message into the console ignoring the `shouldLog` constructor
+   * option.
+   * @param args - items to log.
+   */
+  forceLog: LoggerForceFn;
+  /**
+   * Prints a warning message into the console ignoring the `shouldLog`
+   * constructor option.
+   * @param args - items to log.
+   */
+  forceWarn: LoggerForceFn;
+  /**
+   * Prints a log message into the console.
+   * @param args - items to log.
+   */
+  log: LoggerFn;
+  /**
+   * Prints a warning message into the console.
+   * @param args - items to log.
+   */
+  warn: LoggerFn;
+}
+
+/* @__NO_SIDE_EFFECTS__*/
+export function createLogger(scope: string, options?: LoggerOptions): Logger {
   options ||= {};
   const {
     textColor,
     bgColor,
-    shouldLog: optionsShouldLog
+    shouldLog: optionsShouldLog,
   } = options;
   const shouldLogValue = optionsShouldLog === undefined ? true : optionsShouldLog;
   const shouldLog = typeof shouldLogValue === 'boolean'
@@ -45,11 +71,16 @@ export function createLogger(scope: string, options?: LoggerOptions): [
    * @param force - should `shouldLog` value be ignored.
    * @param args - arguments.
    */
-  function print(level: LogLevel, force: boolean, ...args: any[]): void {
+  const print = (level: LogLevel, force: boolean, ...args: any[]): void => {
     if (force || shouldLog()) {
-      const commonCss = 'font-weight:bold;padding:0 5px;border-radius:5px';
+      const commonCss = 'font-weight:bold;padding:0 5px;border-radius:100px';
+      const [timeBgColor, timeTextColor, prefix] = {
+        log: ['#0089c3', 'white', 'INFO'],
+        error: ['#ff0000F0', 'white', 'ERR'],
+        warn: ['#D38E15', 'white', 'WARN'],
+      }[level];
       console[level](
-        `%c${
+        `%c${prefix} ${
           Intl
             .DateTimeFormat('en-GB', {
               hour: '2-digit',
@@ -59,14 +90,22 @@ export function createLogger(scope: string, options?: LoggerOptions): [
               timeZone: 'UTC',
             })
             .format(new Date())
-        }%c / %c${scope}`,
-        `${commonCss};background-color: lightblue;color:black`,
+        }%c %c${scope}`,
+        `${commonCss};background-color:${timeBgColor};color:${timeTextColor}`,
         '',
         `${commonCss};${textColor ? `color:${textColor};` : ''}${bgColor ? `background-color:${bgColor}` : ''}`,
         ...args,
       );
     }
-  }
+  };
 
-  return [print.bind(undefined, 'log'), print.bind(undefined, 'error')];
+  return ([
+    ['log', 'forceLog'],
+    ['warn', 'forceWarn'],
+    ['error', 'forceError'],
+  ] as const).reduce<Logger>((acc, [level, forceMethod]) => {
+    acc[level] = print.bind(undefined, level, false);
+    acc[forceMethod] = print.bind(undefined, level, true);
+    return acc;
+  }, {} as Logger);
 }

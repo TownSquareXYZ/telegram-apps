@@ -8,9 +8,9 @@ import {
 } from '@inquirer/core';
 import figures from 'figures';
 
-import { spaces } from '../utils/spaces.js';
-import { lines } from '../utils/lines.js';
 import type { CustomTheme } from '../types.js';
+import { lines } from '../utils/lines.js';
+import { spaces } from '../utils/spaces.js';
 
 export const input = createPrompt<string, {
   /**
@@ -25,7 +25,7 @@ export const input = createPrompt<string, {
    * Message to insert between the prefix and input.
    */
   message?: string;
-  required?: boolean,
+  required?: boolean;
   theme: CustomTheme;
   /**
    * Validation function.
@@ -71,7 +71,8 @@ export const input = createPrompt<string, {
     }
 
     if (key.name === 'tab' && !value) {
-      rl.clearLine(0); // remove tab
+      // remove tab
+      rl.clearLine(0);
       const v = defaultValue || '';
       rl.write(v);
       setValue(v);
@@ -79,7 +80,7 @@ export const input = createPrompt<string, {
     }
 
     const input = rl.line;
-    setError(input && validate && validate(input) || undefined);
+    setError((input && validate && validate(input)) || undefined);
     setValue(input);
   });
 

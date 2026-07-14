@@ -1,65 +1,49 @@
-# @telegram-apps/transformers
-
-## 2.1.0
-
-### Minor Changes
-
-- cc94a1e: Add `isLaunchParamsQuery` utility.
-
-## 2.0.0
-
-### Major Changes
-
-- 5f755c7: Completely rework the packages.
-
-### Patch Changes
-
-- Updated dependencies [5f755c7]
-  - @telegram-apps/toolkit@2.0.0
-  - @telegram-apps/types@2.0.0
-
-## 1.2.2
-
-### Patch Changes
-
-- 68e4a6d: Remove src and tsconfig files from distributive
-- Updated dependencies [68e4a6d]
-  - @telegram-apps/toolkit@1.1.1
-  - @telegram-apps/types@1.2.1
-
-## 1.2.1
-
-### Patch Changes
-
-- Updated dependencies [3a93d64]
-  - @telegram-apps/toolkit@1.1.0
+# @tma.js/transformers
 
 ## 1.2.0
 
 ### Minor Changes
 
-- 12e0cd1: Add InitData.signature transformer.
+- 279de3a: fix: default tgWebAppThemeParams to empty object when missing from launch params
+
+## 1.1.3
 
 ### Patch Changes
 
-- Updated dependencies [d5e3d90]
-  - @telegram-apps/types@1.2.0
+- 805c0fa: Simplify usage of fp-ts to potentially avoid building problems in some applications.
+- Updated dependencies [805c0fa]
+  - @tma.js/toolkit@1.0.4
+
+## 1.1.2
+
+### Patch Changes
+
+- Updated dependencies [22eed1e]
+  - @tma.js/toolkit@1.0.3
+
+## 1.1.1
+
+### Patch Changes
+
+- 4570643: Update package.json actualizing all paths.
+- Updated dependencies [4570643]
+  - @tma.js/toolkit@1.0.2
+  - @tma.js/types@1.0.2
 
 ## 1.1.0
 
 ### Minor Changes
 
-- 7b2f160: Add `tgWebAppFullscreen` and `tgWebAppDefaultColors` launch parameters and their transformers.
+- e3a2af6: Add more utilities for RGB colors. Deprecate toRGB, use toRGBFull instead. Allow #RRGGBBAA and #RGBA colors in theme params.
 
 ### Patch Changes
 
-- Updated dependencies [6d5c74d]
-- Updated dependencies [7b2f160]
-  - @telegram-apps/types@1.1.0
+- Updated dependencies [dab51c3]
+  - @tma.js/types@1.0.1
 
 ## 1.0.1
 
 ### Patch Changes
 
-- Updated dependencies [b27e6fa]
-  - @telegram-apps/types@1.0.1
+- Updated dependencies [fe883d3]
+  - @tma.js/toolkit@1.0.1

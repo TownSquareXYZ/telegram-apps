@@ -78,13 +78,13 @@ type and assign it to all 3 paths.
 ## Listening to Events
 
 Handling all possible environments for a developer's application can be challenging. To simplify
-this process, the community developed the [@telegram-apps/sdk](../packages/telegram-apps-sdk/2-x)
+this process, the community developed the [@tma.js/sdk](../packages/tma-js-sdk)
 package, which greatly eases integration.
 
 Here's how to use it:
 
 ```ts
-import { on } from '@telegram-apps/sdk';
+import { on } from '@tma.js/sdk';
 
 // Start listening to "viewport_changed" event. Returned value
 // is a function, which removes this event listener.
@@ -97,7 +97,7 @@ removeListener();
 ```
 
 You can learn more about calling methods in the
-package's [documentation](../packages/telegram-apps-bridge/events.md#listening-to-events).
+package's [documentation](../packages/tma-js-bridge/events.md#listening-to-events).
 
 ## Available Events
 
@@ -260,6 +260,48 @@ Available since: **v8.0**
 
 Device orientation data tracking stopped.
 
+### `device_storage_cleared`
+
+Available since: **v9.0**
+
+Device's local storage was cleared.
+
+| Field  | Type     | Description                  |
+|--------|----------|------------------------------|
+| req_id | `string` | A unique request identifier. |
+
+### `device_storage_failed`
+
+Available since: **v9.0**
+
+An error occurred while working with the device's local storage.
+
+| Field  | Type     | Description                  |
+|--------|----------|------------------------------|
+| req_id | `string` | A unique request identifier. |
+| error  | `string` | An occurred error.           |
+
+### `device_storage_key_received`
+
+Available since: **v9.0**
+
+A value from the device's local storage was retrieved.
+
+| Field  | Type             | Description                  |
+|--------|------------------|------------------------------|
+| req_id | `string`         | A unique request identifier. |
+| value  | `string \| null` | A retrieved value.           |
+
+### `device_storage_key_saved`
+
+Available since: **v9.0**
+
+A value in the device's local storage was saved.
+
+| Field  | Type     | Description                  |
+|--------|----------|------------------------------|
+| req_id | `string` | A unique request identifier. |
+
 ### `emoji_status_access_requested`
 
 Available since: **v8.0**
@@ -290,9 +332,9 @@ Custom emoji status set.
 
 Available since: **v8.0**
 
-| Field  | Type     | Description                                                      |
-|--------|----------|------------------------------------------------------------------|
-| status | `string` | Request status. Set to `downloading` if the is being downloaded. |
+| Field  | Type     | Description                                                     |
+|--------|----------|-----------------------------------------------------------------|
+| status | `string` | Request status. Set to `downloading` if a file is being loaded. |
 
 ### `fullscreen_changed`
 
@@ -497,6 +539,60 @@ QR scanner was closed.
 Available since: **v7.10**
 
 A user clicked the Secondary Button.
+
+### `secure_storage_cleared`
+
+Available since: **v9.0**
+
+Device's secure storage was cleared.
+
+| Field  | Type     | Description                  |
+|--------|----------|------------------------------|
+| req_id | `string` | A unique request identifier. |
+
+### `secure_storage_failed`
+
+Available since: **v9.0**
+
+An error occurred while working with the device's secure storage.
+
+| Field  | Type     | Description                    |
+|--------|----------|--------------------------------|
+| req_id | `string` | A unique request identifier.   |
+| error  | `string` | _Optional_. An occurred error. |
+
+### `secure_storage_key_received`
+
+Available since: **v9.0**
+
+A value from the device's secure storage was retrieved.
+
+| Field       | Type             | Description                                     |
+|-------------|------------------|-------------------------------------------------|
+| req_id      | `string`         | A unique request identifier.                    |
+| value       | `string \| null` | A retrieved value.                              |
+| can_restore | `boolean`        | _Optional_. True if this value can be restored. |
+
+### `secure_storage_key_restored`
+
+Available since: **v9.0**
+
+A value from the device's secure storage was restored.
+
+| Field  | Type             | Description                  |
+|--------|------------------|------------------------------|
+| req_id | `string`         | A unique request identifier. |
+| value  | `string \| null` | A restored value.            |
+
+### `secure_storage_key_saved`
+
+Available since: **v9.0**
+
+A value in the device's secure storage was saved.
+
+| Field  | Type             | Description                  |
+|--------|------------------|------------------------------|
+| req_id | `string`         | A unique request identifier. |
 
 ### `set_custom_style`
 

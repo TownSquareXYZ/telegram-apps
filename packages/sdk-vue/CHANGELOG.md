@@ -1,185 +1,158 @@
-# @telegram-apps/sdk-vue
+# @tma.js/sdk-vue
 
-## 2.0.10
-
-### Patch Changes
-
-- Updated dependencies [8e392b4]
-  - @telegram-apps/sdk@3.4.0
-
-## 2.0.9
+## 1.0.23
 
 ### Patch Changes
 
-- Updated dependencies [4b5d4f0]
-  - @telegram-apps/sdk@3.3.2
+- Updated dependencies [f61770a]
+  - @tma.js/sdk@3.3.0
 
-## 2.0.8
-
-### Patch Changes
-
-- Updated dependencies [d035dc5]
-  - @telegram-apps/sdk@3.3.1
-
-## 2.0.7
+## 1.0.22
 
 ### Patch Changes
 
-- Updated dependencies [c36aa39]
-  - @telegram-apps/sdk@3.3.0
+- @tma.js/sdk@3.2.3
 
-## 2.0.6
-
-### Patch Changes
-
-- Updated dependencies [fbcfd81]
-  - @telegram-apps/sdk@3.2.0
-
-## 2.0.5
+## 1.0.21
 
 ### Patch Changes
 
-- Updated dependencies [7825425]
-  - @telegram-apps/sdk@3.1.3
+- @tma.js/sdk@3.2.2
 
-## 2.0.4
-
-### Patch Changes
-
-- Updated dependencies [e356df3]
-  - @telegram-apps/sdk@3.1.2
-
-## 2.0.3
+## 1.0.20
 
 ### Patch Changes
 
-- @telegram-apps/sdk@3.1.1
+- Updated dependencies [b6b3243]
+  - @tma.js/sdk@3.2.1
 
-## 2.0.2
-
-### Patch Changes
-
-- Updated dependencies [c1d3b56]
-  - @telegram-apps/sdk@3.1.0
-
-## 2.0.1
+## 1.0.19
 
 ### Patch Changes
 
-- Updated dependencies [c32ba70]
-  - @telegram-apps/sdk@3.0.0
+- Updated dependencies [2d24b83]
+  - @tma.js/sdk@3.2.0
 
-## 2.0.0
-
-### Major Changes
-
-- f595786: Major update due to the SDK's major update
+## 1.0.18
 
 ### Patch Changes
 
-- Updated dependencies [56cee21]
-  - @telegram-apps/sdk@3.0.0
+- @tma.js/sdk@3.1.9
+
+## 1.0.17
+
+### Patch Changes
+
+- Updated dependencies [e9ea686]
+  - @tma.js/sdk@3.1.8
+
+## 1.0.16
+
+### Patch Changes
+
+- Updated dependencies [8ecc358]
+  - @tma.js/sdk@3.1.7
 
 ## 1.0.15
 
 ### Patch Changes
 
-- @telegram-apps/sdk@2.11.3
+- Updated dependencies [ae53859]
+  - @tma.js/sdk@3.1.6
 
 ## 1.0.14
 
 ### Patch Changes
 
-- Updated dependencies [8ed92d4]
-  - @telegram-apps/sdk@2.11.2
+- Updated dependencies [805c0fa]
+  - @tma.js/sdk@3.1.5
 
 ## 1.0.13
 
 ### Patch Changes
 
-- 68e4a6d: Remove src and tsconfig files from distributive
-- Updated dependencies [68e4a6d]
-  - @telegram-apps/sdk@2.11.1
+- Updated dependencies [3f233d2]
+  - @tma.js/sdk@3.1.4
 
 ## 1.0.12
 
 ### Patch Changes
 
-- Updated dependencies [ea81517]
-  - @telegram-apps/sdk@2.11.0
+- Updated dependencies [22eed1e]
+  - @tma.js/sdk@3.1.3
 
 ## 1.0.11
 
 ### Patch Changes
 
-- Updated dependencies [7d6ec83]
-  - @telegram-apps/sdk@2.10.0
+- Updated dependencies [8199706]
+  - @tma.js/sdk@3.1.2
 
 ## 1.0.10
 
 ### Patch Changes
 
-- @telegram-apps/sdk@2.9.1
+- Updated dependencies [2ff218a]
+  - @tma.js/sdk@3.1.1
 
 ## 1.0.9
 
 ### Patch Changes
 
-- Updated dependencies [554750e]
-  - @telegram-apps/sdk@2.9.0
+- Updated dependencies [6b6218d]
+  - @tma.js/sdk@3.1.0
 
 ## 1.0.8
 
 ### Patch Changes
 
-- Updated dependencies [2250c37]
-  - @telegram-apps/sdk@2.8.1
+- Updated dependencies [7ab459c]
+  - @tma.js/sdk@3.0.8
 
 ## 1.0.7
 
 ### Patch Changes
 
-- Updated dependencies [0de133d]
-  - @telegram-apps/sdk@2.8.0
+- @tma.js/sdk@3.0.7
 
 ## 1.0.6
 
 ### Patch Changes
 
-- Updated dependencies [3e81316]
-  - @telegram-apps/sdk@2.7.1
+- Updated dependencies [bd78481]
+  - @tma.js/sdk@3.0.6
 
 ## 1.0.5
 
 ### Patch Changes
 
-- Updated dependencies [1d3a1e9]
-  - @telegram-apps/sdk@2.7.0
+- Updated dependencies [95ae14e]
+  - @tma.js/sdk@3.0.5
 
 ## 1.0.4
 
 ### Patch Changes
 
-- Updated dependencies [78508aa]
-  - @telegram-apps/sdk@2.6.2
+- Updated dependencies [c6d9303]
+  - @tma.js/sdk@3.0.4
 
 ## 1.0.3
 
 ### Patch Changes
 
-- Updated dependencies [9683cd7]
-  - @telegram-apps/sdk@2.6.1
+- @tma.js/sdk@3.0.3
 
 ## 1.0.2
 
 ### Patch Changes
 
-- Updated dependencies [11c839c]
-  - @telegram-apps/sdk@2.6.0
+- Updated dependencies [58793e3]
+  - @tma.js/sdk@3.0.2
 
 ## 1.0.1
 
 ### Patch Changes
 
-- Updated dependencies [0ed8e95]
-  - @telegram-apps/sdk@2.5.2
+- 4570643: Update package.json actualizing all paths.
+- Updated dependencies [4570643]
+  - @tma.js/sdk@3.0.1

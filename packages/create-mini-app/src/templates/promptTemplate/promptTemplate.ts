@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/line-comment-position */
 import {
   createPrompt,
   isDownKey,
@@ -13,17 +14,15 @@ import ansiEscapes from 'ansi-escapes';
 import chalk from 'chalk';
 import figures from 'figures';
 
-import { lines } from '../../utils/lines.js';
-import { findTemplate } from '../templates.js';
-import { spaces } from '../../utils/spaces.js';
-import type { Template } from '../types.js';
-import type { CustomTheme } from '../../types.js';
-
 import { findTitleByNameAndValue, sections } from './sections.js';
 import type { Cell, SelectedChoices } from './types.js';
+import type { CustomTheme } from '../../types.js';
+import { lines } from '../../utils/lines.js';
+import { spaces } from '../../utils/spaces.js';
+import { findTemplate } from '../templates.js';
+import type { Template } from '../types.js';
 
 //#region Table settings.
-
 const CORNER_TOP_LEFT = figures.lineDownBoldRightBold; // ┌
 const CORNER_TOP_RIGHT = figures.lineDownBoldLeftBold; // ┐
 const CORNER_BOTTOM_LEFT = figures.lineUpBoldRightBold; // └
@@ -34,7 +33,6 @@ const LINE_HOR = figures.lineBold; // ┃
 const LINE_VER = figures.lineVerticalBold; // ━
 const PADDING_HOR_LEFT = 1;
 const PADDING_HOR_RIGHT = 3;
-
 //#endregion
 
 export const promptTemplate = createPrompt<Template, { theme: CustomTheme }>(
@@ -49,18 +47,14 @@ export const promptTemplate = createPrompt<Template, { theme: CustomTheme }>(
     const [selected, setSelected] = useState<SelectedChoices>(
       useMemo(() => {
         return sections.reduce<SelectedChoices>((acc, section) => {
-          section.choices.forEach((item) => {
+          section.choices.forEach(item => {
             if (item.defaultChecked) {
               (acc as any)[section.name] = item.value;
             }
           });
 
           return acc;
-        }, {
-          framework: 'react',
-          sdk: 'telegramApps',
-          language: 'ts',
-        });
+        }, { framework: 'react', sdk: 'tmajs', language: 'ts' });
       }, []),
     );
 
@@ -154,7 +148,7 @@ export const promptTemplate = createPrompt<Template, { theme: CustomTheme }>(
       );
     }
 
-    useKeypress((key) => {
+    useKeypress(key => {
       if (isSpaceKey(key)) {
         const section = sections[x];
         return setSelected({
@@ -239,7 +233,9 @@ export const promptTemplate = createPrompt<Template, { theme: CustomTheme }>(
 
       // Selection status.
       template
-        ? style.success(`A template using these technologies was discovered. Press ${style.key('enter')} to proceed.`)
+        ? style.success(`A template using these technologies was discovered. Press ${style.key(
+          'enter',
+        )} to proceed.`)
         : style.error('Unable to find a template using these technologies'),
 
       style.help(

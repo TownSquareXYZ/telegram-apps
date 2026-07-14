@@ -79,19 +79,19 @@ window.external.notify(data);
 ## Calling Methods
 
 Handling all possible environments for a developer's application can be challenging. To simplify
-this process, the community developed the [@telegram-apps/sdk](../packages/telegram-apps-sdk/2-x)
+this process, the community developed the [@tma.js/sdk](../packages/tma-js-sdk)
 package, which greatly eases integration.
 
 Here's how to use it:
 
 ```ts
-import { postEvent } from '@telegram-apps/sdk';
+import { postEvent } from '@tma.js/sdk';
 
 postEvent('web_app_set_header_color', { color_key: 'bg_color' });
 ```
 
 You can learn more about calling methods in the
-package's [documentation](../packages/telegram-apps-bridge/events.md#calling-methods).
+package's [documentation](../packages/tma-js-bridge/events.md#calling-methods).
 
 ## Available Methods
 
@@ -206,6 +206,42 @@ class [Message](https://core.telegram.org/bots/api#message).
 |-------|----------|----------------------------------------------------------------------|
 | data  | `string` | Data to send to a bot. Should not have size of more than 4096 bytes. |
 
+> [!WARNING]
+> This method only works when the mini app was opened via [KeyboardButton](https://core.telegram.org/bots/webapps#keyboard-button-mini-apps).
+
+### `web_app_device_storage_clear`
+
+Available since: **v9.0**
+
+Clears all keys previously stored by the bot in the device's local storage.
+
+| Field  | Type     | Description                                                                                         |
+|--------|----------|-----------------------------------------------------------------------------------------------------|
+| req_id | `string` | Unique request identifier. Should be any unique string to handle the generated event appropriately. |
+
+### `web_app_device_storage_get_key`
+
+Available since: **v9.0**
+
+Receives a value from the device's local storage using the specified key.
+
+| Field  | Type     | Description                                                                                         |
+|--------|----------|-----------------------------------------------------------------------------------------------------|
+| req_id | `string` | Unique request identifier. Should be any unique string to handle the generated event appropriately. |
+| key    | `string` | A key name to retrieve.                                                                             |
+
+### `web_app_device_storage_save_key`
+
+Available since: **v9.0**
+
+Stores a value in the device's local storage using the specified key.
+
+| Field  | Type             | Description                                                                                         |
+|--------|------------------|-----------------------------------------------------------------------------------------------------|
+| req_id | `string`         | Unique request identifier. Should be any unique string to handle the generated event appropriately. |
+| key    | `string`         | A key to use to store the value.                                                                    |
+| value  | `string \| null` | A value to store for the specified key. Passing `null` will lead to the key removal.                |
+
 ### `web_app_exit_fullscreen`
 
 Available since: **v8.0**
@@ -215,6 +251,12 @@ Requests exiting the fullscreen mode for mini app.
 ### `web_app_expand`
 
 [Expands](viewport.md) the Mini App.
+
+### `web_app_hide_keyboard`
+
+Available since: **v9.1**
+
+Hides the on-screen keyboard, if it is currently visible. Does nothing if the keyboard is not active.
 
 ### `web_app_invoke_custom_method`
 
@@ -432,6 +474,8 @@ Available since: **v8.0**
 
 Displays a native popup prompting the user to download a file.
 
+In turn, the Telegram client emits the [file_download_requested](./events.md#file_download_requested) event.
+
 | Field     | Type     | Description                                 |
 |-----------|----------|---------------------------------------------|
 | url       | `string` | The HTTPS URL of the file to be downloaded. |
@@ -479,6 +523,51 @@ Telegram will create [viewport_changed](events.md#viewport-changed) event.
 Available since: **v6.9**
 
 Requests write message access to current user.
+
+### `web_app_secure_storage_clear`
+
+Available since: **v9.0**
+
+Clears all keys previously stored by the bot in the device's secure storage.
+
+| Field  | Type     | Description                                                                                         |
+|--------|----------|-----------------------------------------------------------------------------------------------------|
+| req_id | `string` | Unique request identifier. Should be any unique string to handle the generated event appropriately. |
+
+### `web_app_secure_storage_get_key`
+
+Available since: **v9.0**
+
+Clears all keys previously stored by the bot in the device's secure storage.
+
+| Field  | Type     | Description                                                                                         |
+|--------|----------|-----------------------------------------------------------------------------------------------------|
+| req_id | `string` | Unique request identifier. Should be any unique string to handle the generated event appropriately. |
+| key    | `string` | A key to use to store the value.                                                                    |
+
+### `web_app_secure_storage_restore_key`
+
+Available since: **v9.0**
+
+Attempts to restore a key that previously existed on the current device. When called, the user will be asked for
+permission to restore the value.
+
+| Field  | Type     | Description                                                                                         |
+|--------|----------|-----------------------------------------------------------------------------------------------------|
+| req_id | `string` | Unique request identifier. Should be any unique string to handle the generated event appropriately. |
+| key    | `string` | A key to use to restore the value.                                                                  |
+
+### `web_app_secure_storage_save_key`
+
+Available since: **v9.0**
+
+Stores a value in the device's secure storage using the specified key.
+
+| Field  | Type             | Description                                                                                         |
+|--------|------------------|-----------------------------------------------------------------------------------------------------|
+| req_id | `string`         | Unique request identifier. Should be any unique string to handle the generated event appropriately. |
+| key    | `string`         | A key to use to store the value.                                                                    |
+| value  | `string \| null` | A value to store for the specified key. Passing `null` will lead to the key removal.                |
 
 ### `web_app_send_prepared_message`
 
@@ -564,6 +653,7 @@ Updates the [Main Button](main-button.md) settings.
 | color               | `string`  | _Optional_. The button background color in `#RRGGBB` format.                                                                                                  |
 | text_color          | `string`  | _Optional_. The button text color in `#RRGGBB` format.                                                                                                        |
 | has_shine_effect    | `boolean` | _Optional_. Should the button have a shining effect.                                                                                                          | `v7.8`          |
+| icon_custom_emoji_id    | `string` | _Optional_. The ID of custom emoji icon displayed alongside button text.                                                        | `v9.5`          |
 
 ### `web_app_setup_settings_button`
 
@@ -661,6 +751,7 @@ The method that updates the Secondary Button settings.
     <th>Field</th>
     <th>Type</th>
     <th>Description</th>
+    <th>Available since</th>
   </tr>
 
   </thead>
@@ -672,6 +763,7 @@ The method that updates the Secondary Button settings.
       <code>boolean</code>
     </td>
     <td><i>Optional</i>. Should the button be displayed.</td>
+    <td><code>v7.10</code></td>
   </tr>
 
   <tr>
@@ -680,6 +772,7 @@ The method that updates the Secondary Button settings.
       <code>boolean</code>
     </td>
     <td><i>Optional</i>. Should the button be enabled.</td>
+    <td><code>v7.10</code></td>
   </tr>
 
   <tr>
@@ -691,6 +784,7 @@ The method that updates the Secondary Button settings.
       <i>Optional</i>. Should loader inside the button be displayed. Use this property in case, 
       some operation takes time. This loader will make user notified about it.
     </td>
+    <td><code>v7.10</code></td>
   </tr>
 
   <tr>
@@ -699,6 +793,7 @@ The method that updates the Secondary Button settings.
       <code>string</code>
     </td>
     <td><i>Optional</i>. The button background color in <code>#RRGGBB</code> format.</td>
+    <td><code>v7.10</code></td>
   </tr>
 
   <tr>
@@ -707,6 +802,7 @@ The method that updates the Secondary Button settings.
       <code>string</code>
     </td>
     <td><i>Optional</i>. The button text color in <code>#RRGGBB</code> format.</td>
+    <td><code>v7.10</code></td>
   </tr>
 
   <tr>
@@ -715,6 +811,7 @@ The method that updates the Secondary Button settings.
       <code>boolean</code>
     </td>
     <td><i>Optional</i>. Should the button have a shining effect.</td>
+    <td><code>v7.10</code></td>
   </tr>
 
   <tr>
@@ -740,7 +837,18 @@ The method that updates the Secondary Button settings.
         </li>
       </ul>
     </td>
+    <td><code>v7.10</code></td>
   </tr>
+
+  <tr>
+    <td>icon_custom_emoji_id</td>
+    <td>
+      <code>string</code>
+    </td>
+    <td><i>Optional</i>. The ID of custom emoji icon displayed alongside button text.</td>
+    <td><code>v9.5</code></td>
+  </tr>
+
   </tbody>
 </table>
 
